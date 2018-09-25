@@ -1,4 +1,4 @@
-package com.hsshy.jpa.entity;
+package com.hsshy.beam.jpa.entity;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.hsshy.rest.modular.hello;
+package com.hsshy.beam.modular.hello;
 
 /**
  * @description: 测试类

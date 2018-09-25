@@ -13,6 +13,7 @@
 		<module>beam-rest</module>
 		<module>beam-common</module>
 		<module>beam-jpa</module>
+		<module>beam-mybatis</module>
 	</modules>
 
 	<parent>
@@ -28,6 +29,7 @@
 
 		<beam.common.version>0.0.1-SNAPSHOT</beam.common.version>
 		<beam.jpa.version>0.0.1-SNAPSHOT</beam.jpa.version>
+		<beam.mybatis.version>0.0.1-SNAPSHOT</beam.mybatis.version>
 
 		<swagger.version>2.9.2</swagger.version>
 		<fastjson.version>1.2.47</fastjson.version>
@@ -35,8 +37,11 @@
 		<ehcache.core.version>2.6.11</ehcache.core.version>
 		<zxing.version>3.2.1</zxing.version>
 		<mysql-connector-java.version>8.0.11</mysql-connector-java.version>
-
+		<mybatis-plus.version>3.0-RC1</mybatis-plus.version>
+		<mybatis-plus-boot-starter.version>3.0-RC1</mybatis-plus-boot-starter.version>
 		<spring.boot.jpa.version>2.0.5.RELEASE</spring.boot.jpa.version>
+
+
 	</properties>
 	<dependencyManagement>
 
@@ -53,6 +58,12 @@
 				<groupId>com.hsshy</groupId>
 				<artifactId>beam-jpa</artifactId>
 				<version>${beam.jpa.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.hsshy</groupId>
+				<artifactId>beam-mybatis</artifactId>
+				<version>${beam.mybatis.version}</version>
 			</dependency>
 
 			<!-- swagger -->
@@ -107,6 +118,17 @@
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
 				<version>${spring.boot.jpa.version}</version>
 			</dependency>
+
+
+			<!-- mybatis-plus begin -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus-boot-starter</artifactId>
+				<version>${mybatis-plus-boot-starter.version}</version>
+			</dependency>
+			<!-- mybatis-plus end -->
+
+
 
 
 

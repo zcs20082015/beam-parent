@@ -1,5 +1,5 @@
-package com.hsshy.rest.modular.hello.service;
-import com.hsshy.jpa.entity.BeamUser;
+package com.hsshy.beam.modular.hello.service;
+import com.hsshy.beam.jpa.entity.BeamUser;
 import org.springframework.data.repository.query.Param;
 
 /**

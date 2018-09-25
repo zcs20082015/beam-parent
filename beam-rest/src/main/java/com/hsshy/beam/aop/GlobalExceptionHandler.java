@@ -1,4 +1,4 @@
-package com.hsshy.rest.aop;
+package com.hsshy.beam.aop;
 import com.hsshy.common.enumeration.RetEnum;
 import com.hsshy.common.utils.R;
 import org.slf4j.Logger;

@@ -1,8 +1,8 @@
-package com.hsshy.rest.modular.hello.service.impl;
+package com.hsshy.beam.modular.hello.service.impl;
 
-import com.hsshy.jpa.entity.BeamUser;
-import com.hsshy.jpa.repository.BeamUserRepository;
-import com.hsshy.rest.modular.hello.service.BeamUserService;
+import com.hsshy.beam.jpa.entity.BeamUser;
+import com.hsshy.beam.jpa.repository.BeamUserRepository;
+import com.hsshy.beam.modular.hello.service.BeamUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package com.hsshy.jpa.repository;
+package com.hsshy.beam.jpa.repository;
 
-import com.hsshy.jpa.entity.BeamUser;
+import com.hsshy.beam.jpa.entity.BeamUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

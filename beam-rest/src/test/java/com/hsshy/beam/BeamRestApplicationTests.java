@@ -1,4 +1,4 @@
-package com.hsshy.rest;
+package com.hsshy.beam;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

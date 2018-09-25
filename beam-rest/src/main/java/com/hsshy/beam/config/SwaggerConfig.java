@@ -1,4 +1,4 @@
-package com.hsshy.rest.config;
+package com.hsshy.beam.config;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;

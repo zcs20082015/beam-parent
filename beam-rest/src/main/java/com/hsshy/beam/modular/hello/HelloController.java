@@ -1,6 +1,6 @@
-package com.hsshy.rest.modular.hello;
+package com.hsshy.beam.modular.hello;
+import com.hsshy.beam.modular.hello.service.BeamUserService;
 import com.hsshy.common.utils.R;
-import com.hsshy.rest.modular.hello.service.BeamUserService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
