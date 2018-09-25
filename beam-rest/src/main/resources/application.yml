@@ -1,0 +1,58 @@
+beam:
+  swagger-open: true              #是否开启swagger (true/false)
+
+jwt:
+  header: Authorization   #http请求头所需要的字段
+  secret: hsshy        #jwt秘钥
+  expiration: 604800      #7天 单位:秒
+  auth-path: auth         #认证请求的路径
+  md5-key: randomKey      #md5加密混淆key
+
+spring:
+  profiles:
+    active: @spring.active@
+
+---
+
+server:
+   port: 8081
+spring:
+  profiles: local
+  datasource:
+      url: jdbc:mysql://119.29.192.127:3306/beam_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      username: hsshy
+      password: Hs!23456
+      filters: log4j,wall,mergeStat
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+      url: jdbc:mysql://119.29.192.127:3306/beam_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      username: hsshy
+      password: Hs!23456
+      filters: log4j,wall,mergeStat
+---
+
+spring:
+  profiles: test
+  datasource:
+      url: jdbc:mysql://119.29.192.127:3306/beam_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      username: hsshy
+      password: Hs!23456
+      filters: log4j,wall,mergeStat
+---
+beam:
+  swagger-open: false              #是否开启swagger (true/false)
+
+spring:
+  profiles: produce
+  datasource:
+      url: jdbc:mysql://119.29.192.127:3306/beam_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      username: hsshy
+      password: Hs!23456
+      filters: log4j,wall,mergeStat
