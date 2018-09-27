@@ -14,42 +14,49 @@ import java.util.Date;
 /**
  * 数据Entity类
  * 
- * @author hfBeam
- * @date 2017-08-08
+ * @author hs
+ * @date 2018-09-27
  *
  */
-public abstract class DataEntity extends Model<DataEntity> {
+public abstract class DataEntity<ID> extends Model {
 
-	private static final long serialVersionUID = 1L;
 
-	@TableId("id")
+	public abstract ID getId();
+
+	public abstract void setId(ID id);
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.springframework.data.domain.Persistable#isNew()
+	 *
+	 */
+	public boolean isNew() {
+
+		return null == getId();
+	}
+
+	@TableId
 	private Long id;
 
 	@TableField(value = "remarks")
-	protected String remarks; // 备注
+	private String remarks; // 备注
 	@TableField(value = "create_by", el = "createBy.id", fill = FieldFill.INSERT)
-	protected Long createBy; // 创建者
+	private Long createBy; // 创建者
 	@TableField(value = "create_date", fill = FieldFill.INSERT)
-	protected Date createDate; // 创建日期
+	private Date createDate; // 创建日期
 	@TableField(value = "update_by", el = "updateBy.id", fill = FieldFill.UPDATE)
-	protected Long updateBy; // 更新者
+	private Long updateBy; // 更新者
 	@TableField(value = "update_date", fill = FieldFill.UPDATE)
-	protected Date updateDate; // 更新日期
+	private Date updateDate; // 更新日期
 	@TableField(value = "del_flag", fill = FieldFill.INSERT)
-	protected Integer delFlag = 0; // 删除标记（0：正常；1：删除 ）
+	private Integer delFlag; // 删除标记（0：正常；1：删除 ）
 
 	public DataEntity() {
 		super();
 		this.delFlag = DataBaseConstant.DEL_FLAG_NORMAL;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getRemarks() {
 		return remarks;

@@ -10,10 +10,19 @@ import java.io.Serializable;
  * @create: 2018-09-20 22:42:04
  **/
 @TableName("beam_hello")
-public class Hello extends DataEntity  {
+public class Hello extends DataEntity<Long>  {
+
+    private Long id;
 
     private String name;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -21,6 +30,11 @@ public class Hello extends DataEntity  {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    protected Serializable pkVal() {
+        return this.id;
     }
 
 }

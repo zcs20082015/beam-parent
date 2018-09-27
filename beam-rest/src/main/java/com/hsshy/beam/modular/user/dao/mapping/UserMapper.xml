@@ -15,15 +15,17 @@
 		<result column="email" property="email" />
 		<result column="phone" property="phone" />
 		<result column="status" property="status" />
-		<result column="createtime" property="createtime" />
 		<result column="version" property="version" />
+		<result column="remarks" property="remarks" />
+		<result column="create_by" property="createBy" />
+		<result column="create_date" property="createDate" />
+		<result column="update_by" property="updateBy" />
+		<result column="update_date" property="updateDate" />
+		<result column="del_flag" property="delFlag" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, account, name, birthday, sex, email, avatar,
-		phone, roleid,
-		deptid, status,
-		createtime, version
+		id, account, name, birthday, sex, email, avatar,phone, status,version,remarks,create_by,create_date,update_by,update_date,del_flag
 	</sql>
 
 

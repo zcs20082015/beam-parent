@@ -1,11 +1,9 @@
 package com.hsshy.beam.modular.user.entity;
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hsshy.beam.mybatis.base.DataEntity;
 import io.swagger.annotations.ApiModel;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,11 +16,10 @@ import java.util.Date;
  */
 @ApiModel(value="user对象",description="用户对象user")
 @TableName("beam_user")
-public class User   extends DataEntity {
+public class  User extends DataEntity<Long> {
 
-    private static final long serialVersionUID = 1L;
 
-	@TableId("id")
+	@TableId(value = "id")
 	private Long id;
     /**
      * 头像
@@ -67,14 +64,20 @@ public class User   extends DataEntity {
      */
 	private Integer status;
     /**
-     * 创建时间
-     */
-	private Date createtime;
-    /**
      * 保留字段
      */
 	private Integer version;
 
+
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getAvatar() {
 		return avatar;
@@ -156,13 +159,6 @@ public class User   extends DataEntity {
 		this.status = status;
 	}
 
-	public Date getCreatetime() {
-		return createtime;
-	}
-
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
 
 	public Integer getVersion() {
 		return version;
@@ -172,20 +168,13 @@ public class User   extends DataEntity {
 		this.version = version;
 	}
 
-	@Override
-	public Long getId() {
-		return id;
-	}
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 
 	@Override
 	public String toString() {
 		return "User{" +
-			"  id=" + id +
+			"  id=" + this.getId() +
 			", avatar=" + avatar +
 			", account=" + account +
 			", password=" + password +
@@ -196,13 +185,8 @@ public class User   extends DataEntity {
 			", email=" + email +
 			", phone=" + phone +
 			", status=" + status +
-			", createtime=" + createtime +
 			", version=" + version +
 			"}";
 	}
 
-	@Override
-	protected Serializable pkVal() {
-		return null;
-	}
 }
