@@ -29,7 +29,7 @@
 
         <dependency>
             <groupId>com.hsshy</groupId>
-            <artifactId>beam-jpa</artifactId>
+            <artifactId>beam-mybatis</artifactId>
         </dependency>
 
         <!-- web -->

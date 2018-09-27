@@ -1,4 +1,4 @@
-package com.hsshy.mybatis.config;
+package com.hsshy.beam.mybatis.config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 

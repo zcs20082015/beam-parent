@@ -1,8 +1,8 @@
-package com.hsshy.beam.modular.hello;
-import com.hsshy.beam.modular.hello.service.BeamUserService;
+package com.hsshy.beam.modular.hello.controller;
+
+import com.hsshy.beam.modular.hello.entity.Hello;
 import com.hsshy.common.utils.R;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,26 +20,14 @@ import java.util.List;
 @RequestMapping("/hello")
 public class HelloController {
 
-    @Autowired
-    private BeamUserService beamUserService;
+
 
 
     @ApiOperation(value = "index-value",notes = "index-notes")
     @GetMapping("/index")
     public Object index() {
 
-        Hello hello = new Hello();
-        hello.setId(1);
-        hello.setName("aa");
-
-        Hello hello1 = new Hello();
-        hello.setId(2);
-        hello.setName("bb");
-
         List<Hello> helloList = new ArrayList<Hello>();
-        helloList.add(hello);
-        helloList.add(hello1);
-
         return R.ok(helloList);
     }
 
@@ -78,12 +66,6 @@ public class HelloController {
     }
 
 
-    @ApiOperation("测试jpa")
-    @GetMapping("/findByAge")
-    @ApiImplicitParam(name="age",value="年龄",dataType="Integer", paramType = "query")
-    public Object findByAge(Integer age){
 
-        return R.ok(beamUserService.findByAge(age));
-    }
 
 }

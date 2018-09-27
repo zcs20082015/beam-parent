@@ -12,7 +12,6 @@
 		<module>beam-admin</module>
 		<module>beam-rest</module>
 		<module>beam-common</module>
-		<module>beam-jpa</module>
 		<module>beam-mybatis</module>
 	</modules>
 
@@ -40,7 +39,7 @@
 		<mybatis-plus.version>3.0-RC1</mybatis-plus.version>
 		<mybatis-plus-boot-starter.version>3.0-RC1</mybatis-plus-boot-starter.version>
 		<spring.boot.jpa.version>2.0.5.RELEASE</spring.boot.jpa.version>
-
+		<commons-lang3.version>3.3.2</commons-lang3.version>
 
 	</properties>
 	<dependencyManagement>
@@ -52,12 +51,6 @@
 				<groupId>com.hsshy</groupId>
 				<artifactId>beam-common</artifactId>
 				<version>${beam.common.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.hsshy</groupId>
-				<artifactId>beam-jpa</artifactId>
-				<version>${beam.jpa.version}</version>
 			</dependency>
 
 			<dependency>
@@ -128,11 +121,12 @@
 			</dependency>
 			<!-- mybatis-plus end -->
 
-
-
-
-
-
+			<!-- common-lang3 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
 
 
 		</dependencies>
