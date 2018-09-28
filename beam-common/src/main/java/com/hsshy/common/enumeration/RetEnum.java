@@ -39,21 +39,17 @@ public enum RetEnum {
      */
     ERRORSIGN(1002,"无效的签名"),
     /**
-     * clientid无效
-     */
-    ERRORCLIENTID(1003,"client_id无效"),
-    /**
      * 参数异常
      */
     ERRORPARAM(1004,"参数异常"),
     /**
-     * access_token无效
+     * token过期
      */
-    ERRORACCESSTOKEN(1005,"access_token无效"),
+    TOKEN_EXPIRED(1005,"token过期"),
     /**
-     * 密钥已过期
+     * token验证失败
      */
-    OVERDUECLIENTSECRET(1006,"密钥已过期"),
+    TOKEN_ERROR(1005,"token验证失败"),
 
     /**
      * 其他
