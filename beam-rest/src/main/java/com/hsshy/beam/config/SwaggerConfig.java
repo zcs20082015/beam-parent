@@ -1,4 +1,5 @@
 package com.hsshy.beam.config;
+import com.hsshy.beam.config.properties.BeamRestProperties;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 //从application.yml 取前缀为beam name为 swagger-open 值为true时 configuration生效
-@ConditionalOnProperty(prefix = "beam", name = "swagger-open", havingValue = "true")
+@ConditionalOnProperty(prefix = BeamRestProperties.BEAM_REST_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean

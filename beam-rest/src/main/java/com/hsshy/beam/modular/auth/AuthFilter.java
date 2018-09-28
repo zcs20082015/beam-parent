@@ -34,7 +34,6 @@ public class AuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        logger.error(jwtProperties.getAuthPath());
         if (request.getServletPath().equals("/" + jwtProperties.getAuthPath())) {
             chain.doFilter(request, response);
             return;

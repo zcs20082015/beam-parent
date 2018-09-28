@@ -1,6 +1,7 @@
 package com.hsshy.beam.config;
-
+import com.hsshy.beam.config.properties.BeamRestProperties;
 import com.hsshy.beam.modular.auth.AuthFilter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class WebConfig {
 
     @Bean
+    @ConditionalOnProperty(prefix = BeamRestProperties.BEAM_REST_PREFIX, name = "auth-open", havingValue = "true", matchIfMissing = true)
     public AuthFilter jwtAuthenticationTokenFilter() {
         return new AuthFilter();
     }
