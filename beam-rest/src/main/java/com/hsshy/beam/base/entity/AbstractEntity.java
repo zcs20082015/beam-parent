@@ -1,5 +1,5 @@
 
-package com.hsshy.beam.mybatis.base;
+package com.hsshy.beam.base.entity;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 

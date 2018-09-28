@@ -1,18 +1,20 @@
 package com.hsshy.beam.base.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hsshy.beam.base.service.ICommonService;
-import com.hsshy.beam.mybatis.base.DataEntity;
-import com.hsshy.beam.mybatis.constant.DataBaseConstant;
+import com.hsshy.beam.base.entity.DataEntity;
+import com.hsshy.common.constant.DataBaseConstant;
+import com.hsshy.common.utils.ObjectUtils;
 import com.hsshy.common.utils.R;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
-
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class CommonController<Entity extends DataEntity>
+public abstract class CommonController<Entity extends DataEntity<ID>,ID extends Serializable>
         extends BaseBeanController<Entity>{
 
     private ICommonService<Entity> commonService;
@@ -27,12 +29,35 @@ public abstract class CommonController<Entity extends DataEntity>
         this.commonService = commonService;
     }
 
+    public Entity get(ID id) {
+        if (!ObjectUtils.isNullOrEmpty(id)) {
+            return commonService.getById(id);
+        } else {
+            return newModel();
+        }
+    }
+
+    @ApiOperation(value = "查询")
+    @GetMapping(value = "/get/{id}")
+    public Object getOne(@RequestBody @ApiParam(name="id",value="id",required=true) @PathVariable Long id) {
+        Assert.notNull(id,"id不能为空");
+        return R.ok(commonService.getById(id));
+    }
+
     @ApiOperation(value = "列表")
     @GetMapping(value = "/list")
     public List<Entity> list() {
 
        return commonService.list(new QueryWrapper<Entity>());
     }
+
+    @ApiOperation(value = "分页列表")
+    @GetMapping(value = "/page/list/{currentPage}")
+    public Object pageList(@ApiParam(name="currentPage",value="currentPage",required=true) @PathVariable Integer currentPage) {
+
+        return R.ok(commonService.page(new Page<Entity>(currentPage, DataBaseConstant.PAGE_SIZE), new QueryWrapper<Entity>()));
+    }
+
 
 
     @ApiOperation(value = "新增")
@@ -91,7 +116,7 @@ public abstract class CommonController<Entity extends DataEntity>
 
     }
 
-    @ApiOperation(value = "通过id逻辑删除")
+    /*@ApiOperation(value = "通过id逻辑删除")
     @DeleteMapping(value = "/logic/delete/{id}")
     public Object logicDelete(@ApiParam(name="id",value="id",required=true) @PathVariable Long id) {
         Assert.notNull(id,"id不能为空");
@@ -118,5 +143,7 @@ public abstract class CommonController<Entity extends DataEntity>
             return R.ok("删除失败");
 
         }
-    }
+    }*/
+
+
 }

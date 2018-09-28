@@ -1,6 +1,6 @@
 package com.hsshy.beam.modular.hello.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hsshy.beam.mybatis.base.DataEntity;
+import com.hsshy.beam.base.entity.DataEntity;
 
 import java.io.Serializable;
 

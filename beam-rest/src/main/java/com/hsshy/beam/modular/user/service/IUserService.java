@@ -4,11 +4,11 @@ import com.hsshy.beam.modular.user.entity.User;
 
 /**
  * <p>
- * 管理员表 服务类
+ * 用户服务接口类
  * </p>
  *
- * @author stylefeng123
- * @since 2018-02-22
+ * @author hs
+ * @date 2019-09-22
  */
 public interface IUserService extends ICommonService<User> {
 

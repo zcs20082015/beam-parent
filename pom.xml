@@ -53,12 +53,6 @@
 				<version>${beam.common.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.hsshy</groupId>
-				<artifactId>beam-mybatis</artifactId>
-				<version>${beam.mybatis.version}</version>
-			</dependency>
-
 			<!-- swagger -->
 			<dependency>
 				<groupId>io.springfox</groupId>

@@ -1,9 +1,10 @@
 package com.hsshy.beam.modular.user.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hsshy.beam.mybatis.base.DataEntity;
+import com.hsshy.beam.base.entity.DataEntity;
 import io.swagger.annotations.ApiModel;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -70,11 +71,14 @@ public class  User extends DataEntity<Long> {
 
 
 	@Override
+	protected Serializable pkVal() {
+		return this.id;
+	}
+
 	public Long getId() {
 		return id;
 	}
 
-	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

@@ -1,14 +1,9 @@
-package com.hsshy.beam.mybatis.base;
-
-
-
+package com.hsshy.beam.base.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-import com.hsshy.beam.mybatis.constant.DataBaseConstant;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.hsshy.common.constant.DataBaseConstant;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,37 +13,19 @@ import java.util.Date;
  * @date 2018-09-27
  *
  */
-public abstract class DataEntity<ID> extends Model {
-
-
-	public abstract ID getId();
-
-	public abstract void setId(ID id);
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.springframework.data.domain.Persistable#isNew()
-	 *
-	 */
-	public boolean isNew() {
-
-		return null == getId();
-	}
-
-	@TableId
-	private Long id;
+public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 
 	@TableField(value = "remarks")
 	private String remarks; // 备注
-	@TableField(value = "create_by", el = "createBy.id", fill = FieldFill.INSERT)
+	@TableField(value = "create_by",  fill = FieldFill.INSERT)
 	private Long createBy; // 创建者
 	@TableField(value = "create_date", fill = FieldFill.INSERT)
 	private Date createDate; // 创建日期
-	@TableField(value = "update_by", el = "updateBy.id", fill = FieldFill.UPDATE)
+	@TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
 	private Long updateBy; // 更新者
-	@TableField(value = "update_date", fill = FieldFill.UPDATE)
+	@TableField(value = "update_date", fill = FieldFill.INSERT_UPDATE)
 	private Date updateDate; // 更新日期
+	@TableLogic
 	@TableField(value = "del_flag", fill = FieldFill.INSERT)
 	private Integer delFlag; // 删除标记（0：正常；1：删除 ）
 
@@ -106,8 +83,5 @@ public abstract class DataEntity<ID> extends Model {
 		this.delFlag = delFlag;
 	}
 
-	@Override
-	protected Serializable pkVal() {
-		return this.id;
-	}
+
 }

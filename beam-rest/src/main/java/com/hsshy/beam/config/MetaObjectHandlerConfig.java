@@ -11,12 +11,15 @@ public class MetaObjectHandlerConfig implements MetaObjectHandler {
 
   @Override
   public void insertFill(MetaObject metaObject) {
-    System.out.println("插入方法实体填充");
-    setFieldValByName("testDate", new Date(), metaObject);
+    setFieldValByName("createDate", new Date(), metaObject);
+    setFieldValByName("createBy", 1L, metaObject);
+    setFieldValByName("updateDate", new Date(), metaObject);
+    setFieldValByName("updateBy", 1L, metaObject);
   }
 
   @Override
   public void updateFill(MetaObject metaObject) {
-    System.out.println("更新方法实体填充");
+    setFieldValByName("updateDate", new Date(), metaObject);
+    setFieldValByName("updateBy", 1L, metaObject);
   }
 }

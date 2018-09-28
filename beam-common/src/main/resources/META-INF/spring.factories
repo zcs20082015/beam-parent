@@ -1,3 +1,5 @@
 # AutoConfiguration
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.hsshy.common.config.DefaultFastjsonConfig
+com.hsshy.common.config.DefaultFastjsonConfig,\
+com.hsshy.common.config.DefaultProperties
+

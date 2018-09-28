@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.user.service.impl;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hsshy.beam.modular.user.dao.UserMapper;
 import com.hsshy.beam.modular.user.entity.User;
@@ -8,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- * 管理员表 服务实现类
+ * 用户服务实现类
  * </p>
  *
- * @author stylefeng123
- * @since 2018-02-22
+ * @author hs
+ * @date 2019-09-22
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
