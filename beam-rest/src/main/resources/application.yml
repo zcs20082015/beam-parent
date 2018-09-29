@@ -71,7 +71,7 @@ spring:
 ---
 
 spring:
-  profiles: test
+  profiles: SignTest
   datasource:
       url: jdbc:mysql://119.29.192.127:3306/beam_rest?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
       username: hsshy

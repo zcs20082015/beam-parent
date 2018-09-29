@@ -54,6 +54,7 @@ public class AuthFilter extends OncePerRequestFilter {
         }
 
         final String requestHeader = request.getHeader(jwtProperties.getHeader());
+
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
@@ -67,12 +68,14 @@ public class AuthFilter extends OncePerRequestFilter {
                     return;
                 }
             } catch (JwtException e) {
+
                 //有异常就是token解析失败
                 RenderUtil.renderJson(response, R.fail(RetEnum.TOKEN_ERROR.getRet(), RetEnum.TOKEN_ERROR.getMsg()));
                 return;
             }
         } else {
             //header没有带Bearer字段
+
             RenderUtil.renderJson(response, R.fail(RetEnum.TOKEN_ERROR.getRet(), RetEnum.TOKEN_ERROR.getMsg()));
             return;
         }

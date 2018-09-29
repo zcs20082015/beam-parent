@@ -1,10 +1,11 @@
 package com.hsshy.beam.config;
 import com.hsshy.beam.config.properties.BeamRestProperties;
 import com.hsshy.beam.modular.auth.AuthFilter;
+import com.hsshy.beam.modular.auth.security.DataSecurityAction;
+import com.hsshy.beam.modular.auth.security.impl.Base64SecurityAction;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 /**
  * web配置
  *
@@ -20,5 +21,9 @@ public class WebConfig {
         return new AuthFilter();
     }
 
+    @Bean
+    public DataSecurityAction dataSecurityAction() {
+        return new Base64SecurityAction();
+    }
 
 }

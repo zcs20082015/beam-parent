@@ -50,6 +50,10 @@ public enum RetEnum {
      * token验证失败
      */
     TOKEN_ERROR(1005,"token验证失败"),
+    /**
+     * 签名异常
+     */
+    SIGN_ERROR(1005, "签名验证失败"),
 
     /**
      * 其他
