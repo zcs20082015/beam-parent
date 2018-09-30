@@ -61,10 +61,12 @@ public class WithSignMessageConverter extends FastJsonHttpMessageConverter {
         }
 
         //如果是泛型则将其解析为  获得 Class 定义中声明的父类的泛型参数类型
-        if(type.equals("Entity")){
+        if(type.toString().equals("Entity")){
+
             return JSON.parseObject(json, ReflectionUtils.getSuperGenericType(contextClass));
         }
         else {
+
             //校验签名后再转化成应该的对象
             return JSON.parseObject(json, type);
         }
