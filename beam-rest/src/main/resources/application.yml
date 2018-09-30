@@ -13,12 +13,13 @@ jwt:
 spring:
   profiles:
     active: @spring.active@
-
+#  flyway:
+#    baseline-on-migrate: true
 #mybatis
 mybatis-plus:
-  mapper-locations: classpath*:com/hsshy/beam/**/mapping/*.xml
+  mapper-locations: classpath*:com/hsshy/beam/rest/**/mapping/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.hsshy.beam.modular.*.entity
+  typeAliasesPackage: com.hsshy.beam.rest.modular.*.entity
 #  typeEnumsPackage: com.hsshy.beam.modular.*.enum
   global-config:
     # 数据库相关配置
@@ -42,6 +43,9 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+
+log:
+  path: beam-logs
 ---
 
 server:
