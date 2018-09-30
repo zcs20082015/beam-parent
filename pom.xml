@@ -12,6 +12,8 @@
 		<module>beam-admin</module>
 		<module>beam-rest</module>
 		<module>beam-common</module>
+		<module>beam-generator</module>
+		<module>beam-web</module>
 	</modules>
 
 	<parent>
@@ -26,7 +28,7 @@
 		<java.version>1.8</java.version>
 
 		<beam.common.version>0.0.1-SNAPSHOT</beam.common.version>
-		<beam.jpa.version>0.0.1-SNAPSHOT</beam.jpa.version>
+		<beam.web.version>0.0.1-SNAPSHOT</beam.web.version>
 		<beam.mybatis.version>0.0.1-SNAPSHOT</beam.mybatis.version>
 
 		<swagger.version>2.9.2</swagger.version>
@@ -54,7 +56,13 @@
 				<version>${beam.common.version}</version>
 			</dependency>
 
-			<!-- swagger -->
+			<dependency>
+				<groupId>com.hsshy</groupId>
+				<artifactId>beam-web</artifactId>
+				<version>${beam.web.version}</version>
+			</dependency>
+
+			 <!--swagger-->
 			<dependency>
 				<groupId>io.springfox</groupId>
 				<artifactId>springfox-swagger2</artifactId>

@@ -22,11 +22,19 @@
 
     <dependencies>
 
+        <!-- beam通用工具模块 -->
         <dependency>
             <groupId>com.hsshy</groupId>
             <artifactId>beam-common</artifactId>
         </dependency>
 
+        <!-- beam通用web模块 -->
+        <dependency>
+            <groupId>com.hsshy</groupId>
+            <artifactId>beam-web</artifactId>
+        </dependency>
+
+        <!--以上两个模块所引用的包需在此模块重新引入，因为以上包的依赖只在编译时使用-->
 
         <!-- web -->
         <dependency>
@@ -34,6 +42,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
 
 
         <!-- swagger -->

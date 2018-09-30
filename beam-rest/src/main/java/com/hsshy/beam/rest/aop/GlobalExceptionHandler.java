@@ -1,6 +1,7 @@
 package com.hsshy.beam.rest.aop;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.web.aop.BaseControllerExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @date 2018年9月19日 下午19:19:56
  */
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class GlobalExceptionHandler extends BaseControllerExceptionHandler {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
 

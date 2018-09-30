@@ -1,6 +1,6 @@
 package com.hsshy.beam.rest.modular.user.service;
-import com.hsshy.beam.rest.base.service.ICommonService;
 import com.hsshy.beam.rest.modular.user.entity.User;
+import com.hsshy.beam.web.base.service.ICommonService;
 
 /**
  * <p>

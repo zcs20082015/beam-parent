@@ -1,11 +1,11 @@
 package com.hsshy.beam.rest.modular.user.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hsshy.beam.rest.base.controller.CommonController;
 import com.hsshy.beam.rest.modular.auth.util.JwtTokenUtil;
 import com.hsshy.beam.rest.modular.user.dto.AuthRequest;
 import com.hsshy.beam.rest.modular.user.entity.User;
 import com.hsshy.beam.rest.modular.user.service.IUserService;
 import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.web.base.controller.BaseRestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Api(value="UserController",tags={"用户接口"})
 @RestController
 @RequestMapping("/user")
-public class UserController extends CommonController<User,Long> {
+public class UserController extends BaseRestController<User,Long> {
 
     @Autowired
     private IUserService userService;

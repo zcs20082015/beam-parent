@@ -1,9 +1,9 @@
 package com.hsshy.beam.rest.modular.user.entity;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.hsshy.beam.rest.base.entity.DataEntity;
+import com.hsshy.beam.web.base.entity.DataEntity;
+import com.hsshy.beam.web.base.entity.RestEntity;
 import io.swagger.annotations.ApiModel;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,7 +17,7 @@ import java.util.Date;
  */
 @ApiModel(value="user对象",description="用户对象user")
 @TableName("beam_user")
-public class  User extends DataEntity<Long> {
+public class  User extends RestEntity<Long> {
 
 
 	@TableId(value = "id")

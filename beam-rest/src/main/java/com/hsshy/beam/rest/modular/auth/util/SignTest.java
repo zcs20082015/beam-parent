@@ -9,8 +9,9 @@ public class SignTest {
         Base64SecurityAction base64SecurityAction = new Base64SecurityAction();
 
         String a = "{\n" +
-                "  \"password\": \"string\",\n" +
-                "  \"userName\": \"string\"\n" +
+                "\n" +
+                "  \"id\": 0\n" +
+                "\n" +
                 "}";
 
         String o = base64SecurityAction.doAction(a);
