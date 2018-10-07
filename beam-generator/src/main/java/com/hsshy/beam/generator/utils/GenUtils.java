@@ -44,17 +44,19 @@ import java.util.zip.ZipOutputStream;
  */
 public class GenUtils {
 
-	public static List<String> getTemplates(){
+
+
+	public static List<String> getBeamTemplates(){
 		List<String> templates = new ArrayList<String>();
-		templates.add("template/Entity.java.vm");
-		templates.add("template/Dao.java.vm");
-		templates.add("template/Dao.xml.vm");
-		templates.add("template/Service.java.vm");
-		templates.add("template/ServiceImpl.java.vm");
-		templates.add("template/Controller.java.vm");
-		templates.add("template/list.html.vm");
-		templates.add("template/list.js.vm");
-		templates.add("template/menu.sql.vm");
+		templates.add("template/beam/Entity.java.vm");
+		templates.add("template/beam/Mapper.java.vm");
+		templates.add("template/beam/Mapper.xml.vm");
+		templates.add("template/beam/Service.java.vm");
+		templates.add("template/beam/ServiceImpl.java.vm");
+		templates.add("template/beam/Controller.java.vm");
+//		templates.add("template/list.html.vm");
+//		templates.add("template/list.js.vm");
+//		templates.add("template/menu.sql.vm");
 		return templates;
 	}
 	
@@ -132,11 +134,13 @@ public class GenUtils {
 		map.put("moduleName", config.getString("moduleName" ));
 		map.put("author", config.getString("author"));
 		map.put("email", config.getString("email"));
+		map.put("baseController", config.getString("baseController"));
 		map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
         
         //获取模板列表
-		List<String> templates = getTemplates();
+//		List<String> templates = getTemplates();
+		List<String> templates = getBeamTemplates();
 		for(String template : templates){
 			//渲染模板
 			StringWriter sw = new StringWriter();
@@ -194,15 +198,15 @@ public class GenUtils {
 		}
 
 		if (template.contains("Entity.java.vm" )) {
-			return packagePath + "entity" + File.separator + className + "Entity.java";
+			return packagePath + "entity" + File.separator + className + ".java";
 		}
 
-		if (template.contains("Dao.java.vm" )) {
-			return packagePath + "dao" + File.separator + className + "Dao.java";
+		if (template.contains("Mapper.java.vm" )) {
+			return packagePath + "dao" + File.separator + className + "Mapper.java";
 		}
 
 		if (template.contains("Service.java.vm" )) {
-			return packagePath + "service" + File.separator + className + "Service.java";
+			return packagePath + "service" + File.separator + "I"+ className + "Service.java";
 		}
 
 		if (template.contains("ServiceImpl.java.vm" )) {
@@ -213,23 +217,24 @@ public class GenUtils {
 			return packagePath + "controller" + File.separator + className + "Controller.java";
 		}
 
-		if (template.contains("Dao.xml.vm" )) {
-			return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Dao.xml";
+		if (template.contains("Mapper.xml.vm" )) {
+			return packagePath + "dao" + File.separator + "mapping" + File.separator + className + "Mapper.xml";
+
 		}
 
-		if (template.contains("list.html.vm" )) {
-			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator
-					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".html";
-		}
-
-		if (template.contains("list.js.vm" )) {
-			return "main" + File.separator + "resources" + File.separator + "statics" + File.separator + "js" + File.separator
-					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".js";
-		}
-
-		if (template.contains("menu.sql.vm" )) {
-			return className.toLowerCase() + "_menu.sql";
-		}
+//		if (template.contains("list.html.vm" )) {
+//			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator
+//					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".html";
+//		}
+//
+//		if (template.contains("list.js.vm" )) {
+//			return "main" + File.separator + "resources" + File.separator + "statics" + File.separator + "js" + File.separator
+//					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".js";
+//		}
+//
+//		if (template.contains("menu.sql.vm" )) {
+//			return className.toLowerCase() + "_menu.sql";
+//		}
 
 		return null;
 	}
