@@ -5,7 +5,7 @@ import com.hsshy.beam.rest.modular.user.dto.AuthRequest;
 import com.hsshy.beam.rest.modular.user.entity.User;
 import com.hsshy.beam.rest.modular.user.service.IUserService;
 import com.hsshy.beam.common.utils.R;
-import com.hsshy.beam.web.base.controller.BaseRestController;
+import com.hsshy.beam.web.base.controller.beam.BaseRestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

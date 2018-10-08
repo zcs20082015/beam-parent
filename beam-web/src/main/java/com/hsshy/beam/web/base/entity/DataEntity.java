@@ -15,8 +15,7 @@ import java.util.Date;
  */
 public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 
-	@TableField(value = "remarks")
-	private String remarks; // 备注
+
 	@TableField(value = "create_by",  fill = FieldFill.INSERT)
 	private Long createBy; // 创建者
 	@TableField(value = "create_date", fill = FieldFill.INSERT)
@@ -34,13 +33,6 @@ public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 	}
 
 
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
 
 	public Long getCreateBy() {
 		return createBy;

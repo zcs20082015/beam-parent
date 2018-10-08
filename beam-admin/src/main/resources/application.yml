@@ -1,10 +1,21 @@
+beam:
+  rest:
+    swagger-open: true  #是否开启swagger (true/false)
+renren:
+  redis:
+    open: false  # 是否开启redis缓存  true开启   false关闭
+  shiro:
+    redis: false # true表示shiro session存到redis里，需要开启redis，才会生效【分布式场景】
 server:
    port: 8080
 
 spring:
   profiles:
     active: @spring.active@
-
+mybatis-plus:
+  mapper-locations: classpath*:com/hsshy/beam/admin/**/mapping/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.hsshy.beam.admin.modular.*.entity
 
 log:
   path: beam-logs
@@ -21,6 +32,12 @@ spring:
     username: hsshy
     password: Hs!23456
     filters: log4j,wall,mergeStat
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）
 
 ---
 

@@ -1,10 +1,10 @@
 package com.hsshy.beam.admin.modular.system.controller;
-
 import com.hsshy.beam.admin.modular.system.entity.User;
 import com.hsshy.beam.admin.modular.system.service.IUserService;
-import com.hsshy.beam.web.base.controller.BaseAdminController;
+import com.hsshy.beam.web.base.controller.beam.BaseAdminController;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value="UserController",tags={"User接口"})
 @RequestMapping("/system/user")
+@Controller
 public class UserController extends BaseAdminController<User,Long> {
 
     @Autowired

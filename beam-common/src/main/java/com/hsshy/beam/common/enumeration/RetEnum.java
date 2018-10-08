@@ -77,6 +77,7 @@ public enum RetEnum {
      */
     REQUEST_NULL(400, "请求有错误"),
 
+    CAPTCHA_LAPSED(500,"验证码已失效"),
    /**
     *  服务器异常
     * */

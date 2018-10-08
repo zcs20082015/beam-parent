@@ -58,21 +58,9 @@ public class User extends DataEntity<Long> {
 	 */
 	private String phone;
 	/**
-	 * 角色id
-	 */
-	private String roleid;
-	/**
-	 * 部门id
-	 */
-	private Integer deptid;
-	/**
 	 * 状态(1：启用  2：冻结  3：删除）
 	 */
 	private Integer status;
-	/**
-	 * 创建时间
-	 */
-	private Date createtime;
 	/**
 	 * 保留字段
 	 */
@@ -199,30 +187,6 @@ public class User extends DataEntity<Long> {
 		return phone;
 	}
 	/**
-	 * 设置：角色id
-	 */
-	public void setRoleid(String roleid) {
-		this.roleid = roleid;
-	}
-	/**
-	 * 获取：角色id
-	 */
-	public String getRoleid() {
-		return roleid;
-	}
-	/**
-	 * 设置：部门id
-	 */
-	public void setDeptid(Integer deptid) {
-		this.deptid = deptid;
-	}
-	/**
-	 * 获取：部门id
-	 */
-	public Integer getDeptid() {
-		return deptid;
-	}
-	/**
 	 * 设置：状态(1：启用  2：冻结  3：删除）
 	 */
 	public void setStatus(Integer status) {
@@ -233,18 +197,6 @@ public class User extends DataEntity<Long> {
 	 */
 	public Integer getStatus() {
 		return status;
-	}
-	/**
-	 * 设置：创建时间
-	 */
-	public void setCreatetime(Date createtime) {
-		this.createtime = createtime;
-	}
-	/**
-	 * 获取：创建时间
-	 */
-	public Date getCreatetime() {
-		return createtime;
 	}
 	/**
 	 * 设置：保留字段

@@ -27,6 +27,11 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 
+		<spring.boot.jpa.version>2.0.5.RELEASE</spring.boot.jpa.version>
+		<spring.boot.thymeleaf.version>2.0.5.RELEASE</spring.boot.thymeleaf.version>
+		<spring.boot.security.version>2.0.5.RELEASE</spring.boot.security.version>
+		<spring.boot.data.redis.version>2.0.5.RELEASE</spring.boot.data.redis.version>
+
 		<beam.common.version>0.0.1-SNAPSHOT</beam.common.version>
 		<beam.web.version>0.0.1-SNAPSHOT</beam.web.version>
 		<beam.mybatis.version>0.0.1-SNAPSHOT</beam.mybatis.version>
@@ -39,11 +44,15 @@
 		<mysql-connector-java.version>8.0.11</mysql-connector-java.version>
 		<mybatis-plus.version>3.0-RC1</mybatis-plus.version>
 		<mybatis-plus-boot-starter.version>3.0-RC1</mybatis-plus-boot-starter.version>
-		<spring.boot.jpa.version>2.0.5.RELEASE</spring.boot.jpa.version>
-		<spring.boot.thymeleaf.version>2.0.5.RELEASE</spring.boot.thymeleaf.version>
+
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<jwt.version>0.9.0</jwt.version>
 		<flywaydb.version>5.0.3</flywaydb.version>
+		<shiro.version>1.4.0</shiro.version>
+		<ehcache.version>3.3.1</ehcache.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+
+		<beetl.version>2.8.5</beetl.version>
 	</properties>
 	<dependencyManagement>
 
@@ -150,6 +159,57 @@
 				<artifactId>spring-boot-starter-thymeleaf</artifactId>
 				<version>${spring.boot.thymeleaf.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-security</artifactId>
+				<version>${spring.boot.security.version}</version>
+			</dependency>
+
+
+			<!--shiro依赖-->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+			<!-- ehcache -->
+			<dependency>
+				<groupId>org.ehcache</groupId>
+				<artifactId>ehcache</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.penggle</groupId>
+				<artifactId>kaptcha</artifactId>
+				<version>${kaptcha.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.ibeetl</groupId>
+				<artifactId>beetl</artifactId>
+				<version>${beetl.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-redis</artifactId>
+				<version>${spring.boot.data.redis.version}</version>
+			</dependency>
+
+
 
 
 		</dependencies>
