@@ -2,7 +2,7 @@ package ${mainPath}.${package}.${moduleName}.controller;
 
 import ${mainPath}.${package}.${moduleName}.entity.${className};
 import ${mainPath}.${package}.${moduleName}.service.I${className}Service;
-import com.hsshy.beam.web.base.controller.${baseController};
+import com.hsshy.beam.web.base.controller.beam.${baseController};
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -6,12 +6,8 @@ import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.web.base.controller.beam.BaseAdminController;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -41,6 +37,7 @@ public class LoginController extends BaseAdminController<User,Long> {
     }
 
     @PostMapping(value = "/login/form")
+    @ResponseBody
     public Object loginForm(String username, String password, String captcha){
 
         String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
@@ -61,7 +58,7 @@ public class LoginController extends BaseAdminController<User,Long> {
         }catch (AuthenticationException e) {
             return R.fail("账户验证失败");
         }
-        return REDIRECT + "/";
+        return R.ok("登陆成功");
     }
 
     @GetMapping(value = "/login/error")
@@ -77,7 +74,7 @@ public class LoginController extends BaseAdminController<User,Long> {
     @RequestMapping(value = "logout", method = RequestMethod.GET)
     public String logout() {
         ShiroUtils.logout();
-        return "redirect:login.html";
+        return "redirect:/login";
     }
 
 
