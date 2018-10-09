@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="utf-8">
@@ -29,11 +29,11 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="/hplus/img/profile_small.jpg" /></span>
+                            <span ><img style="width: 80px;height: 80px;"  alt="image" class="img-circle" th:src="${shiroUser.getAvatar()}"  /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs" th:text="${shiroUser.getName()}"><strong class="font-bold"></strong></span>
+                                <span class="text-muted text-xs block" >超级管理员<b class="caret"></b></span>
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
@@ -46,38 +46,14 @@
                                 <li><a class="J_menuItem" href="mailbox.html">信箱</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
+                                <li><a href="/logout">安全退出</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="logo-element">H+
                         </div>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-home"></i>
-                            <span class="nav-label">主页</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="index_v1.html" data-index="0">主页示例一</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="index_v2.html">主页示例二</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="index_v3.html">主页示例三</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="index_v4.html">主页示例四</a>
-                            </li>
-                            <li>
-                                <a href="index_v5.html" target="_blank">主页示例五</a>
-                            </li>
-                        </ul>
 
-                    </li>
                     <li>
                         <a href="#">
                             <i class="fa fa-user"></i>
@@ -86,7 +62,7 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="index_v5.html" target="_blank">用户管理</a>
+                                <a href="/system/user/list" target="_blank">用户管理</a>
                             </li>
                         </ul>
 
@@ -141,7 +117,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+                <a href="/logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v1.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>

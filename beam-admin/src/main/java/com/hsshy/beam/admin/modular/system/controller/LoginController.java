@@ -1,12 +1,15 @@
 package com.hsshy.beam.admin.modular.system.controller;
 import com.google.code.kaptcha.Constants;
 import com.hsshy.beam.admin.core.shiro.ShiroUtils;
+import com.hsshy.beam.admin.core.util.KaptchaUtil;
 import com.hsshy.beam.admin.modular.system.entity.User;
+import com.hsshy.beam.common.support.HttpKit;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.web.base.controller.beam.BaseAdminController;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,11 +22,13 @@ public class LoginController extends BaseAdminController<User,Long> {
      * 跳转到主页
      */
     @GetMapping(value = "/")
-    public String index() {
+    public String index(Model model) {
         //获取菜单列表
 
 
-        //获取用户头像
+        System.out.println("account:"+ShiroUtils.getUserEntity().getAvatar());
+
+        model.addAttribute("shiroUser",ShiroUtils.getUserEntity());
 
 
         return "/index.html";
@@ -40,9 +45,11 @@ public class LoginController extends BaseAdminController<User,Long> {
     @ResponseBody
     public Object loginForm(String username, String password, String captcha){
 
-        String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
-        if(!captcha.equalsIgnoreCase(kaptcha)){
-            return R.fail("验证码不正确");
+        if(new KaptchaUtil().isKaptchaOnOff()){
+            String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
+            if(!captcha.equalsIgnoreCase(kaptcha)){
+                return R.fail("验证码不正确");
+            }
         }
 
         try{

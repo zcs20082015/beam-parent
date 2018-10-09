@@ -15,23 +15,13 @@ public class BeamAdminProperties {
 
     public static final String BEAM_REST_PREFIX = "beam.admin";
 
-    private boolean authOpen = true;
+    private Boolean kaptchaOpen = false;
 
-    private boolean signOpen = true;
-
-    public boolean isAuthOpen() {
-        return authOpen;
+    public Boolean getKaptchaOpen() {
+        return kaptchaOpen;
     }
 
-    public void setAuthOpen(boolean authOpen) {
-        this.authOpen = authOpen;
-    }
-
-    public boolean isSignOpen() {
-        return signOpen;
-    }
-
-    public void setSignOpen(boolean signOpen) {
-        this.signOpen = signOpen;
+    public void setKaptchaOpen(Boolean kaptchaOpen) {
+        this.kaptchaOpen = kaptchaOpen;
     }
 }

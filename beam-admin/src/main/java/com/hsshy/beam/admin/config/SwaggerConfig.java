@@ -24,7 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 //从application.yml 取前缀为beam name为 swagger-open 值为true时 configuration生效
-@ConditionalOnProperty(prefix = BeamAdminProperties.BEAM_REST_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
+@ConditionalOnProperty(prefix = BeamAdminProperties.BEAM_REST_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = false)
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
