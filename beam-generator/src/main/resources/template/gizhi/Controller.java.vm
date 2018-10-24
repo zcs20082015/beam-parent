@@ -1,0 +1,23 @@
+package ${mainPath}.${package}.${moduleName}.controller;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.*;
+import com.gizhi.guns.core.base.controller.BaseRestController;
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Api(value="${className}Controller",tags={"${className}接口"})
+@RestController
+@RequestMapping("/${moduleName}/${pathName}")
+public class ${className}Controller extends BaseRestController {
+
+
+
+
+
+
+
+}

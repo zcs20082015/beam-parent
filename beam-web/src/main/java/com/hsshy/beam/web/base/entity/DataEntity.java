@@ -1,7 +1,6 @@
 package com.hsshy.beam.web.base.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.hsshy.beam.common.constant.DataBaseConstant;
 
 import java.util.Date;

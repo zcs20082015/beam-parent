@@ -229,11 +229,11 @@
         /**
          * Exposing dropzone
          */
-        module.exports = require("dropzone/lib/dropzone.js");
+        module.exports = require("dropzone/libs/dropzone.js");
 
     });
 
-    require.register("dropzone/lib/dropzone.js", function (exports, module) {
+    require.register("dropzone/libs/dropzone.js", function (exports, module) {
 
         /*
          *

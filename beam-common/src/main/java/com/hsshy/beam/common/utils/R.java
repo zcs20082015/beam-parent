@@ -60,11 +60,11 @@ public class R<T> extends HashMap<String, Object> {
 		return new R();
 	}
 
-	public static R ok(String msg) {
+	public static R ok(String data) {
 		R r = new R();
-		r.put("msg", msg);
+		r.put("msg", RetEnum.SUCCESS.getMsg());
 		r.put("code",RetEnum.SUCCESS.getRet());
-		r.put("data",null);
+		r.put("data",data);
 		r.put("error",false);
 
 		return r;

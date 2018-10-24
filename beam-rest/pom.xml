@@ -87,6 +87,28 @@
             <!--<artifactId>flyway-core</artifactId>-->
         <!--</dependency>-->
 
+        <dependency>
+            <groupId>com.baidu.aip</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.soundlibs</groupId>
+            <artifactId>mp3spi</artifactId>
+            <version>1.9.5.4</version>
+        </dependency>
+        <dependency>
+            <groupId>mp3.plugin</groupId>
+            <artifactId>mp3-plugin</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/src/main/resources/libs/mp3plugin.jar
+            </systemPath>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>
@@ -95,6 +117,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
         </plugins>
     </build>
 

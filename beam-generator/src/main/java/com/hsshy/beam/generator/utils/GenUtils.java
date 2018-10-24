@@ -59,6 +59,20 @@ public class GenUtils {
 //		templates.add("template/menu.sql.vm");
 		return templates;
 	}
+
+	public static List<String> getGizhiTemplates(){
+		List<String> templates = new ArrayList<String>();
+		templates.add("template/gizhi/Entity.java.vm");
+		templates.add("template/gizhi/Mapper.java.vm");
+		templates.add("template/gizhi/Mapper.xml.vm");
+		templates.add("template/gizhi/Service.java.vm");
+		templates.add("template/gizhi/ServiceImpl.java.vm");
+		templates.add("template/gizhi/Controller.java.vm");
+//		templates.add("template/list.html.vm");
+//		templates.add("template/list.js.vm");
+//		templates.add("template/menu.sql.vm");
+		return templates;
+	}
 	
 	/**
 	 * 生成代码
@@ -140,7 +154,8 @@ public class GenUtils {
         
         //获取模板列表
 //		List<String> templates = getTemplates();
-		List<String> templates = getBeamTemplates();
+//		List<String> templates = getBeamTemplates();
+		List<String> templates = getGizhiTemplates();
 		for(String template : templates){
 			//渲染模板
 			StringWriter sw = new StringWriter();

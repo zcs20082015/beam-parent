@@ -184,7 +184,7 @@
      *
      * * module `base`：WebUploader.Base
      * * module `file`: WebUploader.File
-     * * module `lib/dnd`: WebUploader.Lib.Dnd
+     * * module `libs/dnd`: WebUploader.Lib.Dnd
      * * module `runtime/html5/dnd`: WebUploader.Runtime.Html5.Dnd
      *
      *
@@ -1444,7 +1444,7 @@
     define('widgets/filednd',[
         'base',
         'uploader',
-        'lib/dnd',
+        'libs/dnd',
         'widgets/widget'
     ], function( Base, Uploader, Dnd ) {
         var $ = Base.$;
@@ -1551,7 +1551,7 @@
     define('widgets/filepaste',[
         'base',
         'uploader',
-        'lib/filepaste',
+        'libs/filepaste',
         'widgets/widget'
     ], function( Base, Uploader, FilePaste ) {
         var $ = Base.$;
@@ -1647,7 +1647,7 @@
      */
     define('lib/file',[
         'base',
-        'lib/blob'
+        'libs/blob'
     ], function( Base, Blob ) {
 
         var uid = 1,
@@ -1683,7 +1683,7 @@
     define('lib/filepicker',[
         'base',
         'runtime/client',
-        'lib/file'
+        'libs/file'
     ], function( Base, RuntimeClent, File ) {
 
         var $ = Base.$;
@@ -1815,7 +1815,7 @@
     define('widgets/filepicker',[
         'base',
         'uploader',
-        'lib/filepicker',
+        'libs/filepicker',
         'widgets/widget'
     ], function( Base, Uploader, FilePicker ) {
         var $ = Base.$;
@@ -1973,7 +1973,7 @@
          * @class File
          * @constructor 构造函数
          * @grammar new File( source ) => File
-         * @param {Lib.File} source [lib.File](#Lib.File)实例, 此source对象是带有Runtime信息的。
+         * @param {Lib.File} source [libs.File](#Lib.File)实例, 此source对象是带有Runtime信息的。
          */
         function WUFile( source ) {
 
@@ -2387,7 +2387,7 @@
         'uploader',
         'queue',
         'file',
-        'lib/file',
+        'libs/file',
         'runtime/client',
         'widgets/widget'
     ], function( Base, Uploader, Queue, WUFile, File, RuntimeClient ) {
@@ -2517,7 +2517,7 @@
 
             /**
              * @event filesQueued
-             * @param {File} files 数组，内容为原始File(lib/File）对象。
+             * @param {File} files 数组，内容为原始File(libs/File）对象。
              * @description 当一批文件添加进队列以后触发。
              * @for  Uploader
              */
@@ -2879,7 +2879,7 @@
         'base',
         'uploader',
         'file',
-        'lib/transport',
+        'libs/transport',
         'widgets/widget'
     ], function( Base, Uploader, WUFile, Transport ) {
 
@@ -4052,7 +4052,7 @@
      */
     define('runtime/html5/blob',[
         'runtime/html5/runtime',
-        'lib/blob'
+        'libs/blob'
     ], function( Html5Runtime, Blob ) {
 
         return Html5Runtime.register( 'Blob', {
@@ -4072,7 +4072,7 @@
     define('runtime/html5/dnd',[
         'base',
         'runtime/html5/runtime',
-        'lib/file'
+        'libs/file'
     ], function( Base, Html5Runtime, File ) {
 
         var $ = Base.$,
@@ -4281,7 +4281,7 @@
     define('runtime/html5/filepaste',[
         'base',
         'runtime/html5/runtime',
-        'lib/file'
+        'libs/file'
     ], function( Base, Html5Runtime, File ) {
 
         return Html5Runtime.register( 'FilePaste', {
@@ -4976,7 +4976,7 @@
      */
     define('runtime/flash/blob',[
         'runtime/flash/runtime',
-        'lib/blob'
+        'libs/blob'
     ], function( FlashRuntime, Blob ) {
 
         return FlashRuntime.register( 'Blob', {

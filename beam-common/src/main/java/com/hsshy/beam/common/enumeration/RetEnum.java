@@ -15,21 +15,9 @@ public enum RetEnum {
      */
     ERROR(400,"失败"),
     /**
-     * 验证码错误
-     */
-    ERROR_CHECKCODE(-3,"验证码错误"),
-    /**
-     * 设备禁止多终端登录
-     */
-    FORBID_MULTI_DEVICE(-4,"设备禁止多终端登录"),
-    /**
-     * 禁止该用户登录
-     */
-    FORBID_USER_LOGIN(-5,"禁止该用户登录"),
-    /**
      * 禁止访问
      */
-    FORBID(1000,"禁止访问"),
+    FORBID(403,"禁止访问"),
     /**
      * 请求已超时
      */
@@ -71,6 +59,8 @@ public enum RetEnum {
     FILE_READING_ERROR(400, "FILE_READING_ERROR!"),
 
     FILE_NOT_FOUND(400, "FILE_NOT_FOUND!"),
+
+    UPLOAD_ERROR(500,"上传图片出错"),
 
     /**
      * 错误的请求

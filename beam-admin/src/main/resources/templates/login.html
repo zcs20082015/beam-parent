@@ -28,6 +28,7 @@
                 <h1 class="logo-name">HS</h1>
             </div>
             <h3>欢迎使用 Beam 后台管理系统</h3>
+            <h4 style="color: red;" th:text="${tips}"></h4>
             <form class="m-t" role="form" action="/login/form" method="post">
                 <div class="form-group">
                     <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required="">

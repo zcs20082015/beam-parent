@@ -9,7 +9,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://119.29.192.127:3306/beam?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://119.29.192.127:3306/voice?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: hsshy
     password: Hs!23456
     #oracle配置

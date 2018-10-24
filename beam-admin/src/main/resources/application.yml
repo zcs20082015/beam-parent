@@ -2,11 +2,8 @@ beam:
   admin:
     swagger-open: true  #是否开启swagger (true/false)
     kaptcha-open: false
-renren:
-  redis:
-    open: false  # 是否开启redis缓存  true开启   false关闭
-  shiro:
-    redis: false # true表示shiro session存到redis里，需要开启redis，才会生效【分布式场景】
+    redis-open: false  # 是否开启redis缓存  true开启   false关闭
+    shiro-redis: false # true表示shiro session存到redis里，需要开启redis，才会生效【分布式场景】
 server:
    port: 8080
 
@@ -14,9 +11,9 @@ spring:
   profiles:
     active: @spring.active@
 mybatis-plus:
-  mapper-locations: classpath*:com/hsshy/beam/admin/**/mapping/*.xml
+  mapper-locations: classpath*:com/hsshy/beam/modular/**/mapping/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.hsshy.beam.admin.modular.*.entity
+  typeAliasesPackage: com.hsshy.beam.modular.*.entity
 
 log:
   path: beam-logs
