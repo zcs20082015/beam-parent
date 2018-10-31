@@ -14,13 +14,12 @@
 		<module>beam-common</module>
 		<module>beam-generator</module>
 		<module>beam-web</module>
-		<module>beam-quartz</module>
 	</modules>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.5.RELEASE</version>
+		<version>2.0.6.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -35,7 +34,6 @@
 
 		<beam.common.version>0.0.1-SNAPSHOT</beam.common.version>
 		<beam.web.version>0.0.1-SNAPSHOT</beam.web.version>
-		<beam.mybatis.version>0.0.1-SNAPSHOT</beam.mybatis.version>
 
 		<swagger.version>2.9.2</swagger.version>
 		<fastjson.version>1.2.47</fastjson.version>
@@ -47,6 +45,7 @@
 		<mybatis-plus-boot-starter.version>3.0-RC1</mybatis-plus-boot-starter.version>
 
 		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-io-version>2.5</commons-io-version>
 		<jwt.version>0.9.0</jwt.version>
 		<flywaydb.version>5.0.3</flywaydb.version>
 		<shiro.version>1.4.0</shiro.version>
@@ -54,6 +53,14 @@
 		<kaptcha.version>2.3.2</kaptcha.version>
 
 		<quartz.version>2.3.0</quartz.version>
+		<mp3spi-version>1.9.5.4</mp3spi-version>
+
+		<qiniu-version>[7.2.0, 7.2.99]</qiniu-version>
+		<aliyun.oss.version>2.5.0</aliyun.oss.version>
+		<qcloud.cos.version>4.4</qcloud.cos.version>
+
+		<lombok-version>1.16.12</lombok-version>
+
 
 	</properties>
 	<dependencyManagement>
@@ -67,12 +74,13 @@
 				<version>${beam.common.version}</version>
 			</dependency>
 
-			<!-- 自定义web模块 -->
+			<!-- 自定义通用模块 -->
 			<dependency>
 				<groupId>com.hsshy</groupId>
 				<artifactId>beam-web</artifactId>
 				<version>${beam.web.version}</version>
 			</dependency>
+
 
 			 <!--swagger-->
 			<dependency>
@@ -143,6 +151,12 @@
 				<version>${commons-lang3.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io-version}</version>
+			</dependency>
+
 			<!-- java web token-->
 			<dependency>
 				<groupId>io.jsonwebtoken</groupId>
@@ -203,13 +217,50 @@
 				<version>${spring.boot.data.redis.version}</version>
 			</dependency>
 
+			<!--定时任务quartz-->
 			<dependency>
 				<groupId>org.quartz-scheduler</groupId>
 				<artifactId>quartz</artifactId>
 				<version>${quartz.version}</version>
 			</dependency>
 
+			<!--MP3ToWav转化时需要用到-->
+			<dependency>
+				<groupId>com.googlecode.soundlibs</groupId>
+				<artifactId>mp3spi</artifactId>
+				<version>${mp3spi-version}</version>
+			</dependency>
 
+			<!-- 七牛 阿里 腾讯 -->
+			<dependency>
+				<groupId>com.qiniu</groupId>
+				<artifactId>qiniu-java-sdk</artifactId>
+				<version>${qiniu-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aliyun.oss</groupId>
+				<artifactId>aliyun-sdk-oss</artifactId>
+				<version>${aliyun.oss.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.qcloud</groupId>
+				<artifactId>cos_api</artifactId>
+				<version>${qcloud.cos.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!--七牛 阿里 腾讯-->
+
+
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok-version}</version>
+			</dependency>
 
 
 		</dependencies>

@@ -3,11 +3,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.core.common.factory.ConstantFactory;
 import com.hsshy.beam.core.shiro.ShiroUser;
 import com.hsshy.beam.core.util.Constant;
-import com.hsshy.beam.modular.system.dao.MenuMapper;
-import com.hsshy.beam.modular.system.dao.UserMapper;
-import com.hsshy.beam.modular.system.entity.Menu;
-import com.hsshy.beam.modular.system.entity.User;
+
 import com.hsshy.beam.common.utils.SpringContextHolder;
+import com.hsshy.beam.sys.dao.MenuMapper;
+import com.hsshy.beam.sys.dao.UserMapper;
+import com.hsshy.beam.sys.entity.Menu;
+import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;

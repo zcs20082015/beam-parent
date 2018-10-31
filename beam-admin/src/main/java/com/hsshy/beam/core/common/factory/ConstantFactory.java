@@ -2,8 +2,8 @@ package com.hsshy.beam.core.common.factory;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.utils.SpringContextHolder;
 import com.hsshy.beam.common.utils.ToolUtil;
-import com.hsshy.beam.modular.system.dao.*;
-import com.hsshy.beam.modular.system.entity.*;
+import com.hsshy.beam.sys.dao.*;
+import com.hsshy.beam.sys.entity.*;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 

@@ -16,8 +16,8 @@
 package com.hsshy.beam.core.shiro;
 import com.hsshy.beam.core.shiro.factory.IShiro;
 import com.hsshy.beam.core.shiro.factory.ShiroFactroy;
-import com.hsshy.beam.modular.system.entity.User;
 import com.hsshy.beam.common.utils.ToolUtil;
+import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;

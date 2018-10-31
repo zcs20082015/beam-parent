@@ -31,6 +31,7 @@
             <artifactId>beam-web</artifactId>
         </dependency>
 
+
         <!--以上两个模块所引用的包需在此模块重新引入，因为以上包的依赖只在编译时使用-->
 
         <dependency>
@@ -39,11 +40,7 @@
         </dependency>
 
 
-        <!-- thymeleaf -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+
 
         <!-- mybatis-plus -->
         <dependency>

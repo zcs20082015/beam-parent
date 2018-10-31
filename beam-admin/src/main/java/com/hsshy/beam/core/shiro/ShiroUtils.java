@@ -16,7 +16,6 @@
 
 package com.hsshy.beam.core.shiro;
 
-import com.hsshy.beam.modular.system.entity.User;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
 import org.apache.shiro.SecurityUtils;

@@ -1,7 +1,8 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.modular.system.entity.Role;
-import com.hsshy.beam.modular.system.service.IRoleService;
-import com.hsshy.beam.web.base.controller.BaseCommonController;
+import com.hsshy.beam.common.base.controller.BaseCommonController;
+
+import com.hsshy.beam.sys.entity.Role;
+import com.hsshy.beam.sys.service.IRoleService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

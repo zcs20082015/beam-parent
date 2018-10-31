@@ -1,6 +1,6 @@
 package com.hsshy.beam.core.shiro.factory;
 import com.hsshy.beam.core.shiro.ShiroUser;
-import com.hsshy.beam.modular.system.entity.User;
+import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import java.util.List;
 

@@ -1,10 +1,10 @@
 package com.hsshy.beam.modular.system.controller;
 import com.google.code.kaptcha.Constants;
+import com.hsshy.beam.common.base.controller.BaseAdminController;
 import com.hsshy.beam.core.shiro.ShiroUtils;
 import com.hsshy.beam.core.util.KaptchaUtil;
-import com.hsshy.beam.modular.system.entity.User;
 import com.hsshy.beam.common.utils.R;
-import com.hsshy.beam.web.base.controller.BaseAdminController;
+import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;

@@ -22,13 +22,16 @@ import java.util.Date;
 public class ${className} extends Model<${className}> {
 
 #foreach ($column in $columns)
-/**
- * $column.comments
- */
+	/**
+	 * $column.comments
+	 */
 	#if($column.columnName == $pk.columnName)
     @TableId
 	#end
-private $column.attrType $column.attrname;
+	#if($column.columnName != $pk.attrname)
+	@TableField(value = "$column.columnName")
+	#end
+	private $column.attrType $column.attrname;
 #end
 
 #foreach ($column in $columns)

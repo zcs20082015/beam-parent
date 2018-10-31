@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2017年8月23日12:51:41
  */
 @Configuration
-@MapperScan(basePackages = {"com.hsshy.beam.modular.*.dao"})
+@MapperScan(basePackages = {"com.hsshy.beam.*.dao"})
 public class MybatisPlusConfig {
 
     /**

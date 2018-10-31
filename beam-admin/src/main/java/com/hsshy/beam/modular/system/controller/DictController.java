@@ -1,7 +1,7 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.modular.system.entity.Dict;
-import com.hsshy.beam.modular.system.service.IDictService;
-import com.hsshy.beam.web.base.controller.BaseCommonController;
+import com.hsshy.beam.common.base.controller.BaseCommonController;
+import com.hsshy.beam.sys.entity.Dict;
+import com.hsshy.beam.sys.service.IDictService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

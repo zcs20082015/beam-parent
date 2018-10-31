@@ -1,7 +1,7 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.modular.system.entity.Dept;
-import com.hsshy.beam.modular.system.service.IDeptService;
-import com.hsshy.beam.web.base.controller.BaseCommonController;
+import com.hsshy.beam.common.base.controller.BaseCommonController;
+import com.hsshy.beam.sys.entity.Dept;
+import com.hsshy.beam.sys.service.IDeptService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -19,13 +19,9 @@ public enum RetEnum {
      */
     FORBID(403,"禁止访问"),
     /**
-     * 请求已超时
-     */
-    TIMEOUT(1001,"请求已超时"),
-    /**
      * SIGN签名无效
      */
-    ERRORSIGN(1002,"无效的签名"),
+    ERRORSIGN(401,"无效的签名"),
     /**
      * 参数异常
      */
@@ -33,15 +29,15 @@ public enum RetEnum {
     /**
      * token过期
      */
-    TOKEN_EXPIRED(1005,"token过期"),
+    TOKEN_EXPIRED(401,"token过期"),
     /**
      * token验证失败
      */
-    TOKEN_ERROR(1005,"token验证失败"),
+    TOKEN_ERROR(401,"token验证失败"),
     /**
      * 签名异常
      */
-    SIGN_ERROR(1005, "签名验证失败"),
+    SIGN_ERROR(401, "签名验证失败"),
 
     /**
      * 其他
@@ -56,16 +52,12 @@ public enum RetEnum {
     /**
      * 文件上传
      */
-    FILE_READING_ERROR(400, "FILE_READING_ERROR!"),
 
-    FILE_NOT_FOUND(400, "FILE_NOT_FOUND!"),
+    FILE_NOT_FOUND(404, "未找到文件!"),
+
+    FILE_READING_ERROR(500, "文件读取错误!"),
 
     UPLOAD_ERROR(500,"上传图片出错"),
-
-    /**
-     * 错误的请求
-     */
-    REQUEST_NULL(400, "请求有错误"),
 
     CAPTCHA_LAPSED(500,"验证码已失效"),
    /**

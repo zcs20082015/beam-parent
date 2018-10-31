@@ -15,7 +15,6 @@
         <groupId>com.hsshy</groupId>
         <artifactId>beam-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <!--<relativePath>../pom.xml</relativePath>-->
     </parent>
 
 
@@ -25,14 +24,16 @@
         <!-- beam通用工具模块 -->
         <dependency>
             <groupId>com.hsshy</groupId>
+            <artifactId>beam-web</artifactId>
+        </dependency>
+
+        <!-- 自定义通用模块 -->
+        <dependency>
+            <groupId>com.hsshy</groupId>
             <artifactId>beam-common</artifactId>
         </dependency>
 
-        <!-- beam通用web模块 -->
-        <dependency>
-            <groupId>com.hsshy</groupId>
-            <artifactId>beam-web</artifactId>
-        </dependency>
+
 
         <!--以上两个模块所引用的包需在此模块重新引入，因为以上包的依赖只在编译时使用-->
 
@@ -41,13 +42,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- mybatis-plus -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
 
         <!-- swagger -->
         <dependency>
@@ -87,25 +81,6 @@
             <!--<artifactId>flyway-core</artifactId>-->
         <!--</dependency>-->
 
-        <dependency>
-            <groupId>com.baidu.aip</groupId>
-            <artifactId>java-sdk</artifactId>
-            <version>4.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.soundlibs</groupId>
-            <artifactId>mp3spi</artifactId>
-            <version>1.9.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>mp3.plugin</groupId>
-            <artifactId>mp3-plugin</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>
-                ${project.basedir}/src/main/resources/libs/mp3plugin.jar
-            </systemPath>
-        </dependency>
 
 
 
@@ -123,6 +98,18 @@
             </plugin>
 
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 
 

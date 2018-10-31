@@ -203,10 +203,10 @@ public final class HTMLFilter {
 
     //---------------------------------------------------------------
     /**
-     * given a user submitted input String, filter out any invalid or restricted
+     * given a business submitted input String, filter out any invalid or restricted
      * html.
      *
-     * @param input text (i.e. submitted by a user) than may contain html
+     * @param input text (i.e. submitted by a business) than may contain html
      * @return "clean" version of input, with only valid, whitelisted html elements allowed
      */
     public String filter(final String input) {
