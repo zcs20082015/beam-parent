@@ -22,19 +22,19 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-               id,
-               avatar,
-               account,
-               password,
-               salt,
-               name,
-               birthday,
-               sex,
-               email,
-               phone,
-               dept_id as deptId,
-               status,
-               version
+               a.id,
+               a.avatar,
+               a.account,
+               a.name,
+               a.birthday,
+               a.sex,
+               a.email,
+               a.phone,
+               a.dept_id as deptId,
+               a.status,
+               a.version,
+               a.create_date as createDate,
+               a.update_date as updateDate
     	</sql>
     <!-- 查询用户的所有权限 -->
     <select id="queryAllPerms" resultType="string">
@@ -52,6 +52,18 @@
 	</select>
     <select id="getRoleIdsById" resultType="long">
         select role_id from sys_user_role where user_id = #{userId}
+    </select>
+    <select id="selectPageList" resultType="com.hsshy.beam.sys.entity.User">
+        select <include refid="Base_Column_List"/>
+        from sys_user a
+        <where>
+            <if test="user.account != null and user.account != ''">
+                a.account LIKE concat("%",#{user.account},"%")
+            </if>
+            <if test="user.name != null and user.name != ''">
+                a.name LIKE concat("%",#{user.name},"%")
+            </if>
+        </where>
     </select>
 
 </mapper>

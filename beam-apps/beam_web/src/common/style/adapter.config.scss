@@ -1,0 +1,89 @@
+
+// flex
+@mixin flex-a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+@mixin flex-full($val: 1) {
+  -webkit-box-flex: $val;
+  -webkit-flex: $val;
+  -moz-box-flex: $val;
+  -ms-flex: $val;
+  flex: $val;
+}
+
+@mixin flex-fixed($p: 0 0 auto) {
+  -webkit-box-flex: $p;
+  -webkit-flex: $p;
+  -moz-box-flex: $p;
+  -ms-flex: $p;
+  flex: $p;
+}
+
+@mixin flex-basis($basis) {
+  -webkit-flex-basis: $basis;
+  -ms-flex-preferred-size: $basis;
+  flex-basis: $basis;
+}
+
+@mixin flex-wrap($wrap: wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+
+@mixin flex($dir: null, $jc: null, $al: null) {
+  @include flex-a();
+
+  @if($jc) {
+    -webkit-box-pack: $jc;
+    -webkit-justify-content: $jc;
+    -moz-box-pack: $jc;
+    -ms-flex-pack: $jc;
+    justify-content: $jc;
+  }
+
+  @if($al) {
+    -webkit-box-align: $al;
+    -webkit-align-items: $al;
+    -moz-box-align: $al;
+    -ms-flex-align: $al;
+    align-items: $al;
+  }
+
+  @if($dir) {
+    -webkit-flex-direction: $dir;
+    -ms-flex-direction: $dir;
+    flex-direction: $dir;
+  }
+}
+
+//box-sizing
+@mixin box-sizing($p: border-box) {
+  -webkit-box-sizing: $p;
+  -moz-box-sizing: $p;
+  box-sizing: $p;
+}
+
+
+@mixin transform($trans) {
+  -webkit-transform: $trans;
+  -moz-transform: $trans;
+  -ms-transform: $trans;
+  -o-transform: $trans;
+  transform: $trans;
+}
+
+@mixin transition($attr, $time) {
+  -webkit-transition: $attr $time;
+  -moz-transition: $attr $time;
+  -ms-transition: $attr $time;
+  -o-transition: $attr $time;
+  transition: $attr $time;
+}
+

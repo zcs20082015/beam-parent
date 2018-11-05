@@ -1,6 +1,8 @@
 package com.hsshy.beam.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hsshy.beam.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,6 +16,8 @@ import java.util.List;
  * @date 2018-10-07 18:03:20
  */
 public interface UserMapper extends BaseMapper<User> {
+
+    IPage<User> selectPageList(Page page, @Param("user") User user);
 
     /**
      * 查询用户的所有权限

@@ -6,24 +6,18 @@ beam:
     shiro-redis: false # true表示shiro session存到redis里，需要开启redis，才会生效【分布式场景】
 server:
    port: 8080
-
+   servlet:
+     context-path: /beam_ht
 spring:
   profiles:
     active: @spring.active@
-mybatis-plus:
-  mapper-locations: classpath*:com/hsshy/beam/**/mapping/*.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.hsshy.beam.*.entity
+
 
 log:
   path: beam-logs
 ---
 
-server:
-  port: 8080
 spring:
-  thymeleaf:
-    cache: false
   profiles: local
   datasource:
     url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
@@ -40,8 +34,6 @@ spring:
 ---
 
 spring:
-  thymeleaf:
-    cache: false
   profiles: dev
   datasource:
     url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
@@ -53,8 +45,6 @@ spring:
 
 
 spring:
-  thymeleaf:
-    cache: false
   profiles: produce
   datasource:
     url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC

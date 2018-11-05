@@ -16,8 +16,8 @@
 
 package com.hsshy.beam.config;
 
-import com.hsshy.beam.core.shiro.RedisShiroSessionDAO;
-import com.hsshy.beam.core.shiro.UserRealm;
+import com.hsshy.beam.common.shiro.RedisShiroSessionDAO;
+import com.hsshy.beam.common.shiro.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -52,7 +52,7 @@ public class ShiroConfig {
         sessionManager.setSessionValidationSchedulerEnabled(true);
         sessionManager.setSessionIdUrlRewritingEnabled(false);
 
-        //如果开启redis缓存且renren.shiro.redis=true，则shiro session存到redis里
+        //如果开启redis缓存且beam.admin.shiro-redis=true，则shiro session存到redis里
         if(redisOpen && shiroRedis){
             sessionManager.setSessionDAO(redisShiroSessionDAO);
         }

@@ -2,14 +2,12 @@ package com.hsshy.beam.modular.business.controller;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.common.utils.ToolUtil;
-import com.hsshy.beam.config.properties.BeamRestProperties;
 import com.hsshy.beam.common.utils.R;
-import com.hsshy.beam.util.OSSFactory;
+import com.hsshy.beam.common.util.OSSFactory;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.File;
+
 import java.util.UUID;
 
 /*

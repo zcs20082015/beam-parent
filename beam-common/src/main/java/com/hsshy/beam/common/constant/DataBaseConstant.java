@@ -7,7 +7,7 @@ package com.hsshy.beam.common.constant;
  **/
 public class DataBaseConstant {
 
-    public static Integer PAGE_SIZE = 10;
+    public static long PAGE_SIZE = 10L;
     public static Integer DEL_FLAG_NORMAL = 0;
     public static Integer DEL_FLAG_DELETE = 1;
 
