@@ -5,6 +5,8 @@ beam:
     sign-open: false #签名机制是否开启(true或false)
     #file-upload-path: d:/tmp       #文件上传目录(不配置的话为java.io.tmpdir目录)
     file-upload-path: /upload/voice      #文件上传目录(不配置的话为java.io.tmpdir目录)
+  admin:
+    version: 0.0.1
 jwt:
   header: Authorization   #http请求头所需要的字段
   secret: hsshy        #jwt秘钥
@@ -37,7 +39,19 @@ spring:
       username: hsshy
       password: Hs!23456
       filters: log4j,wall,mergeStat
-
+dubbo:
+  application:
+    id: beam-rest
+    name: beam-rest
+    qos-enable: true
+    qos-port: 33333
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://119.29.192.127:2181
+    timeout: 100000
 ---
 
 spring:

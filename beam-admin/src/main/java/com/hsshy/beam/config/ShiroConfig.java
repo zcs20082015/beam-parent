@@ -73,7 +73,7 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
-        shiroFilter.setLoginUrl("/login");
+        shiroFilter.setLoginUrl("/login.html");
         shiroFilter.setUnauthorizedUrl("/");
 
         Map<String, String> filterMap = new LinkedHashMap<>();
@@ -85,7 +85,6 @@ public class ShiroConfig {
         filterMap.put("/swagger-resources/**", "anon");
 
 //        filterMap.put("/static/**", "anon");
-        filterMap.put("/hplus/**", "anon"); //hplus 资源过滤
         filterMap.put("/login/**", "anon"); //登陆
         filterMap.put("/kaptcha", "anon");  //验证码
         filterMap.put("/global/*", "anon");  //全局路径（错误或者超时）

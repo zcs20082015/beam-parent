@@ -121,7 +121,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         if(user.getPassword().equals(old)){
             String salt = RandomStringUtils.randomAlphanumeric(20);
             user.setSalt(salt);
-            user.setPassword(ShiroUtils.sha256("123456", salt));
+            user.setPassword(ShiroUtils.sha256(changePassowdForm.getNewPwd(), salt));
             this.updateById(user);
             return R.ok("修改成功");
         }

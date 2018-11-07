@@ -34,7 +34,7 @@ public class LoginController extends BaseAdminController<User,Long> {
         }catch (UnknownAccountException e) {
             return R.fail(e.getMessage());
         }catch (IncorrectCredentialsException e) {
-            return R.fail("账号或密码不正确");
+            return R.fail("账号或者密码不正确");
         }catch (LockedAccountException e) {
             return R.fail("账号已被锁定,请联系管理员");
         }catch (AuthenticationException e) {

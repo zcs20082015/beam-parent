@@ -24,7 +24,7 @@
       return {
         loading: false,
         account: {
-          username: 'admin',
+          username: 'hs',
           password: 'admin'
         },
         rules: {
@@ -45,8 +45,6 @@
             this.loading = true
             loginApi.login(this.account).then((res) => {
               this.loading = false
-
-
               if (res.error === false) {
                 this.$message.success(res.msg);
                 setToken(res.data)

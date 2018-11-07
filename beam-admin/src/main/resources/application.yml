@@ -4,6 +4,7 @@ beam:
     kaptcha-open: false
     redis-open: false  # 是否开启redis缓存  true开启   false关闭
     shiro-redis: false # true表示shiro session存到redis里，需要开启redis，才会生效【分布式场景】
+    version: 0.0.1
 server:
    port: 8080
    servlet:
@@ -30,6 +31,23 @@ spring:
     port: 6379
     password:      # 密码（默认为空）
     timeout: 6000ms  # 连接超时时长（毫秒）
+dubbo:
+  scan:
+    basePackages: com.hsshy.beam.modular.*.service
+  application:
+    id: beam-admin
+    name: beam-admin
+    qos-enable: true
+    qos-port: 33333
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20880
+    status: server
+  registry:
+    id: my-registry
+    address: zookeeper://119.29.192.127:2181
+    timeout: 100000
 
 ---
 
