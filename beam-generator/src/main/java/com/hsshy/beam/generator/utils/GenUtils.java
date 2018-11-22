@@ -153,9 +153,17 @@ public class GenUtils {
         VelocityContext context = new VelocityContext(map);
         
         //获取模板列表
-//		List<String> templates = getTemplates();
-//		List<String> templates = getBeamTemplates();
-		List<String> templates = getGizhiTemplates();
+
+		String engineering = config.getString("engineering");
+		List<String> templates = new ArrayList<>();
+		if(engineering.equals("beam")){
+			 templates = getBeamTemplates();
+
+		}
+		else if(engineering.equals("guns")){
+			 templates = getGizhiTemplates();
+
+		}
 		for(String template : templates){
 			//渲染模板
 			StringWriter sw = new StringWriter();

@@ -47,7 +47,7 @@
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<commons-io-version>2.5</commons-io-version>
 		<jwt.version>0.9.0</jwt.version>
-		<flywaydb.version>5.0.3</flywaydb.version>
+		<flywaydb.version>5.1.4</flywaydb.version>
 		<shiro.version>1.4.0</shiro.version>
 		<ehcache.version>3.3.1</ehcache.version>
 		<kaptcha.version>2.3.2</kaptcha.version>

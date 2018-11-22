@@ -76,7 +76,7 @@ public class MP3ToWav {
     }
 
     public static void main(String args[]) {
-        String filePath = "d:/tmp/test.mp3";
+        String filePath = "d:/tmp/delay.mp3";
         String targetPath = "d:/tmp/test1.wav";
         byteToWav(getBytes(filePath), targetPath);
 

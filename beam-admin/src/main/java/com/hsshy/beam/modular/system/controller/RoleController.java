@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.common.base.controller.BaseCommonController;
 
 import com.hsshy.beam.sys.entity.Role;
 import com.hsshy.beam.sys.service.IRoleService;
@@ -18,16 +17,13 @@ import org.springframework.web.bind.annotation.*;
 @Api(value="RoleController",tags={"Role接口"})
 @Controller
 @RequestMapping("/system/role")
-public class RoleController extends BaseCommonController<Role,Long> {
+public class RoleController  {
 
     @Autowired
     private IRoleService roleService;
 
 
 
-    public RoleController() {
-        setCommonService(roleService);
-    }
 
 
 

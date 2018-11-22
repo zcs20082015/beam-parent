@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class LoginController extends BaseAdminController<User,Long> {
+public class LoginController  {
 
 
 
@@ -53,6 +53,9 @@ public class LoginController extends BaseAdminController<User,Long> {
     public void logout() {
         ShiroUtils.logout();
     }
+
+
+
 
 
 

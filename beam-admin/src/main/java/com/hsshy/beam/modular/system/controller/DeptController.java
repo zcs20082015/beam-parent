@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.common.base.controller.BaseCommonController;
 import com.hsshy.beam.sys.entity.Dept;
 import com.hsshy.beam.sys.service.IDeptService;
 import io.swagger.annotations.Api;
@@ -17,16 +16,13 @@ import org.springframework.web.bind.annotation.*;
 @Api(value="DeptController",tags={"Dept接口"})
 @Controller
 @RequestMapping("/system/dept")
-public class DeptController extends BaseCommonController<Dept,Long> {
+public class DeptController  {
 
     @Autowired
     private IDeptService deptService;
 
 
 
-    public DeptController() {
-        setCommonService(deptService);
-    }
 
 
 

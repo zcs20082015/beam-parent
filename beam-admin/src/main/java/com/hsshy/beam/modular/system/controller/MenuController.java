@@ -18,16 +18,13 @@ import org.springframework.web.bind.annotation.*;
 @Api(value="MenuController",tags={"Menu接口"})
 @Controller
 @RequestMapping("/system/menu")
-public class MenuController extends BaseAdminController<Menu,Long> {
+public class MenuController  {
 
     @Autowired
     private IMenuService menuService;
 
 
 
-    public MenuController() {
-        setCommonService(menuService);
-    }
 
 
 

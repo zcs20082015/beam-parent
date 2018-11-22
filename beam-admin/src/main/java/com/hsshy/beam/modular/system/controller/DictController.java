@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.common.base.controller.BaseCommonController;
 import com.hsshy.beam.sys.entity.Dict;
 import com.hsshy.beam.sys.service.IDictService;
 import io.swagger.annotations.Api;
@@ -16,16 +15,14 @@ import org.springframework.stereotype.Controller;
 @Api(value="DictController",tags={"Dict接口"})
 @Controller
 @RequestMapping("/system/dict")
-public class DictController extends BaseCommonController<Dict,Long> {
+public class DictController {
 
     @Autowired
     private IDictService dictService;
 
 
 
-    public DictController() {
-        setCommonService(dictService);
-    }
+
 
 
 
