@@ -1,4 +1,4 @@
-package com.hsshy.beam.aop;
+package com.hsshy.beam.seckill.aop;
 
 import com.google.common.util.concurrent.RateLimiter;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -21,7 +21,7 @@ public class LimitAspect {
 	private static RateLimiter rateLimiter = RateLimiter.create(5.0);
 	
 	//Service层切点  限流
-	@Pointcut("@annotation(com.hsshy.beam.aop.ServiceLimit)")
+	@Pointcut("@annotation(com.hsshy.beam.seckill.aop.ServiceLimit)")
 	public void ServiceAspect() {
 		
 	}

@@ -1,5 +1,6 @@
-package com.hsshy.beam.aop;
+package com.hsshy.beam.seckill.aop;
 
+import com.hsshy.beam.seckill.util.redis.lock.RedissLockUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -24,7 +26,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Aspect
 @Order(1)
 //order越小越是最先执行，但更重要的是最先执行的最后结束。order默认值是2147483647
-public class LockAspect {
+public class RedisLockAspect {
 	/**
      * 思考：为什么不用synchronized
      * service 默认是单例的，并发下lock只有一个实例
@@ -32,22 +34,32 @@ public class LockAspect {
 	private static  Lock lock = new ReentrantLock(true);//互斥锁 参数默认false，不公平锁  
 	
 	//Service层切点     用于记录错误日志
-	@Pointcut("@annotation(com.hsshy.beam.aop.Servicelock)")
+	@Pointcut("@annotation(com.hsshy.beam.seckill.aop.RedisServicelock)")
 	public void lockAspect() {
 		
 	}
 	
     @Around("lockAspect()")
-    public  Object around(ProceedingJoinPoint joinPoint) { 
-    	lock.lock();
+    public  Object around(ProceedingJoinPoint joinPoint) {
+		boolean res=false;
+
     	Object obj = null;
+    	String seckillId = joinPoint.getArgs()[0].toString();
 		try {
-			obj = joinPoint.proceed();
+			res = RedissLockUtil.tryLock(seckillId, TimeUnit.SECONDS, 3, 20);
+
+			if(res){
+				obj = joinPoint.proceed();
+			}
+
+
 		} catch (Throwable e) {
 			e.printStackTrace();
 			throw new RuntimeException();       
 		} finally{
-			lock.unlock();
+			if(res){//释放锁
+				RedissLockUtil.unlock(seckillId+"");
+			}
 		}
     	return obj;
     } 
