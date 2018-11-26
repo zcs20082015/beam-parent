@@ -107,7 +107,7 @@
             </exclusions>
         </dependency>
 
-        <!--dubbo-->
+        <!--dubbo依赖包 使用dubbo时把注释打开-->
         <!--<dependency>-->
             <!--<groupId>com.alibaba.boot</groupId>-->
             <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
