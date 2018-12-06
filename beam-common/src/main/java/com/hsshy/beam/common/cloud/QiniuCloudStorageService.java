@@ -14,7 +14,8 @@
  * the License.
  */
 package com.hsshy.beam.common.cloud;
-import com.hsshy.beam.common.exception.RRException;
+import com.hsshy.beam.common.exception.BeamException;
+import com.hsshy.beam.common.exception.BeamException;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -92,7 +93,7 @@ public class QiniuCloudStorageService extends CloudStorageService {
                 throw new RuntimeException("上传七牛出错：" + res.toString());
             }
         } catch (Exception e) {
-            throw new RRException("上传文件失败，请核对七牛配置信息", e);
+            throw new BeamException("上传文件失败，请核对七牛配置信息", e);
         }
 
         return config.getQiniuDomain() + "/" + path;
@@ -104,7 +105,7 @@ public class QiniuCloudStorageService extends CloudStorageService {
             byte[] data = IOUtils.toByteArray(inputStream);
             return this.upload(data, path);
         } catch (IOException e) {
-            throw new RRException("上传文件失败", e);
+            throw new BeamException("上传文件失败", e);
         }
     }
 

@@ -1,5 +1,5 @@
 package com.hsshy.beam.quartz;
-import com.hsshy.beam.common.exception.RRException;
+import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import org.quartz.*;
 
@@ -33,7 +33,7 @@ public class ScheduleUtils {
         try {
             return (CronTrigger) scheduler.getTrigger(getTriggerKey(jobId));
         } catch (SchedulerException e) {
-            throw new RRException("获取定时任务CronTrigger出现异常", e);
+            throw new BeamException("获取定时任务CronTrigger出现异常", e);
         }
     }
 
@@ -62,7 +62,7 @@ public class ScheduleUtils {
             	pauseJob(scheduler, scheduleJob.getJobId());
             }
         } catch (SchedulerException e) {
-            throw new RRException("创建定时任务失败", e);
+            throw new BeamException("创建定时任务失败", e);
         }
     }
     
@@ -93,7 +93,7 @@ public class ScheduleUtils {
             }
             
         } catch (SchedulerException e) {
-            throw new RRException("更新定时任务失败", e);
+            throw new BeamException("更新定时任务失败", e);
         }
     }
 
@@ -108,7 +108,7 @@ public class ScheduleUtils {
         	
             scheduler.triggerJob(getJobKey(scheduleJob.getJobId()), dataMap);
         } catch (SchedulerException e) {
-            throw new RRException("立即执行定时任务失败", e);
+            throw new BeamException("立即执行定时任务失败", e);
         }
     }
 
@@ -119,7 +119,7 @@ public class ScheduleUtils {
         try {
             scheduler.pauseJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new RRException("暂停定时任务失败", e);
+            throw new BeamException("暂停定时任务失败", e);
         }
     }
 
@@ -130,7 +130,7 @@ public class ScheduleUtils {
         try {
             scheduler.resumeJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new RRException("暂停定时任务失败", e);
+            throw new BeamException("暂停定时任务失败", e);
         }
     }
 
@@ -141,7 +141,7 @@ public class ScheduleUtils {
         try {
             scheduler.deleteJob(getJobKey(jobId));
         } catch (SchedulerException e) {
-            throw new RRException("删除定时任务失败", e);
+            throw new BeamException("删除定时任务失败", e);
         }
     }
 }

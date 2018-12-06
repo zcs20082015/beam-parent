@@ -14,7 +14,7 @@
  * the License.
  */
 package com.hsshy.beam.common.cloud;
-import com.hsshy.beam.common.exception.RRException;
+import com.hsshy.beam.common.exception.BeamException;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
 import com.qcloud.cos.request.UploadFileRequest;
@@ -94,7 +94,7 @@ public class QcloudCloudStorageService extends CloudStorageService {
 
         JSONObject jsonObject = JSONObject.fromObject(response);
         if(jsonObject.getInt("code") != 0) {
-            throw new RRException("文件上传失败，" + jsonObject.getString("message"));
+            throw new BeamException("文件上传失败，" + jsonObject.getString("message"));
         }
 
         return config.getQcloudDomain() + path;
@@ -106,7 +106,7 @@ public class QcloudCloudStorageService extends CloudStorageService {
             byte[] data = IOUtils.toByteArray(inputStream);
             return this.upload(data, path);
         } catch (IOException e) {
-            throw new RRException("上传文件失败", e);
+            throw new BeamException("上传文件失败", e);
         }
     }
 

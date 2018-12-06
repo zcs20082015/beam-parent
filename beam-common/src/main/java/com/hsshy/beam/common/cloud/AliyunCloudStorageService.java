@@ -17,7 +17,7 @@
 package com.hsshy.beam.common.cloud;
 
 import com.aliyun.oss.OSSClient;
-import com.hsshy.beam.common.exception.RRException;
+import com.hsshy.beam.common.exception.BeamException;
 import org.apache.commons.lang3.StringUtils;
 import sun.misc.BASE64Decoder;
 
@@ -81,7 +81,7 @@ public class AliyunCloudStorageService extends CloudStorageService {
         try {
             client.putObject(config.getAliyunBucketName(), path, inputStream);
         } catch (Exception e){
-            throw new RRException("上传文件失败，请检查配置信息", e);
+            throw new BeamException("上传文件失败，请检查配置信息", e);
         }
 
         return config.getAliyunDomain() + "/" + path;

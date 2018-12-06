@@ -1,7 +1,7 @@
 
 package com.hsshy.beam.quartz;
 
-import com.hsshy.beam.common.exception.RRException;
+import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.common.utils.SpringContextHolder;
 import com.hsshy.beam.common.utils.ToolUtil;
 import org.springframework.util.ReflectionUtils;
@@ -40,7 +40,7 @@ public class ScheduleRunnable implements Runnable {
 				method.invoke(target);
 			}
 		}catch (Exception e) {
-			throw new RRException("执行定时任务失败", e);
+			throw new BeamException("执行定时任务失败", e);
 		}
 	}
 
