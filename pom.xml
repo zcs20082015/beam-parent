@@ -64,6 +64,7 @@
 		<hibernate.validator.version>6.0.2.Final</hibernate.validator.version>
 
 		<dubbo-version>0.2.0</dubbo-version>
+		<email-version>1.3.3</email-version>
 
 	</properties>
 	<dependencyManagement>
@@ -276,6 +277,12 @@
 				<groupId>com.alibaba.boot</groupId>
 				<artifactId>dubbo-spring-boot-starter</artifactId>
 				<version>${dubbo-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-email</artifactId>
+				<version>${email-version}</version>
 			</dependency>
 
 
