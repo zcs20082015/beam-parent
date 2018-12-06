@@ -1,7 +1,7 @@
 package com.hsshy.beam.seckill.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.hsshy.beam.seckill.aop.ServiceLimit;
-import com.hsshy.beam.seckill.aop.Servicelock;
+import com.hsshy.beam.seckill.annotation.ServiceLimit;
+import com.hsshy.beam.seckill.annotation.Servicelock;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.seckill.dao.SeckillMapper;
 import com.hsshy.beam.seckill.entity.Seckill;

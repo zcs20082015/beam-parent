@@ -1,4 +1,4 @@
-package com.hsshy.beam.seckill.aop;
+package com.hsshy.beam.seckill.annotation;
 import java.lang.annotation.*;
 
 

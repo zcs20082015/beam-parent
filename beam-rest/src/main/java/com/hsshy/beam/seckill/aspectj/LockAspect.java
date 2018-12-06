@@ -1,4 +1,4 @@
-package com.hsshy.beam.seckill.aop;
+package com.hsshy.beam.seckill.aspectj;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -32,7 +32,7 @@ public class LockAspect {
 	private static  Lock lock = new ReentrantLock(true);//互斥锁 参数默认false，不公平锁  
 	
 	//Service层切点     用于记录错误日志
-	@Pointcut("@annotation(com.hsshy.beam.seckill.aop.Servicelock)")
+	@Pointcut("@annotation(com.hsshy.beam.seckill.annotation.Servicelock)")
 	public void lockAspect() {
 		
 	}

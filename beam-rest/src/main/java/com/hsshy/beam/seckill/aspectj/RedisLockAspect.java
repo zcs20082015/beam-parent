@@ -1,4 +1,4 @@
-package com.hsshy.beam.seckill.aop;
+package com.hsshy.beam.seckill.aspectj;
 
 import com.hsshy.beam.seckill.util.redis.lock.RedissLockUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -34,7 +34,7 @@ public class RedisLockAspect {
 	private static  Lock lock = new ReentrantLock(true);//互斥锁 参数默认false，不公平锁  
 	
 	//Service层切点     用于记录错误日志
-	@Pointcut("@annotation(com.hsshy.beam.seckill.aop.RedisServicelock)")
+	@Pointcut("@annotation(com.hsshy.beam.seckill.annotation.RedisServicelock)")
 	public void lockAspect() {
 		
 	}
