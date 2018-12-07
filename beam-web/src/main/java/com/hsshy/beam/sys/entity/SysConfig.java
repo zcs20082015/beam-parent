@@ -3,6 +3,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hsshy.beam.common.base.entity.AbstractEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * @author rachel.li
  */
 @Data
+@NoArgsConstructor
 @TableName("sys_config")
 public class SysConfig extends AbstractEntity<Long> {
 
@@ -25,16 +27,6 @@ public class SysConfig extends AbstractEntity<Long> {
 	private Integer status;
 
 	private String remark;
-
-	@Override
-	public Long getId() {
-		return id;
-	}
-
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	@Override
 	protected Serializable pkVal() {

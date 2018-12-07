@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value="RoleController",tags={"Role接口"})
 @Controller
-@RequestMapping("/system/role")
+@RequestMapping("/sys/role")
 public class RoleController  {
 
     @Autowired

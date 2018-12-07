@@ -1,10 +1,13 @@
 package com.hsshy.beam.common.factory.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hsshy.beam.common.constant.cache.Cache;
+import com.hsshy.beam.common.constant.cache.CacheKey;
 import com.hsshy.beam.common.factory.IConstantFactory;
 import com.hsshy.beam.common.utils.SpringContextHolder;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.*;
 import com.hsshy.beam.sys.entity.*;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
@@ -74,7 +77,7 @@ public class ConstantFactory implements IConstantFactory {
      * 通过角色id获取角色名称
      */
     @Override
-//    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_NAME + "'+#roleId")
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_NAME + "'+#roleId")
     public String getSingleRoleName(Long roleId) {
         if (0 == roleId) {
             return "--";
@@ -90,7 +93,7 @@ public class ConstantFactory implements IConstantFactory {
      * 通过角色id获取角色英文名称
      */
     @Override
-//    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_TIP + "'+#roleId")
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_TIP + "'+#roleId")
     public String getSingleRoleTip(Long roleId) {
         if (0 == roleId) {
             return "--";
@@ -106,7 +109,7 @@ public class ConstantFactory implements IConstantFactory {
      * 获取部门名称
      */
     @Override
-//    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEPT_NAME + "'+#deptId")
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.DEPT_NAME + "'+#deptId")
     public String getDeptName(Long deptId) {
         Dept dept = deptMapper.selectById(deptId);
         if (ToolUtil.isNotEmpty(dept) && ToolUtil.isNotEmpty(dept.getName())) {

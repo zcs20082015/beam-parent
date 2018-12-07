@@ -38,7 +38,10 @@ public enum RetEnum {
      * 签名异常
      */
     SIGN_ERROR(401, "签名验证失败"),
-
+    /**
+     * session过期
+     */
+    LOGIN_EXPIRED(403,"请重新登陆"),
     /**
      * 其他
      */

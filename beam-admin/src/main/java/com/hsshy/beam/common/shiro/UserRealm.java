@@ -52,6 +52,8 @@ public class UserRealm extends AuthorizingRealm {
 		IShiro shiroFactory = ShiroFactroy.me();
 		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
 
+		List<Long> roleList = shiroUser.getRoleList();
+
 		List<String> permsList = shiroFactory.findPermissionsByUserId(shiroUser.getId());
 		//用户权限列表
 		Set<String> permsSet = new HashSet<>();

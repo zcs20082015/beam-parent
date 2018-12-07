@@ -19,6 +19,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -28,6 +31,8 @@ import java.util.Date;
  * @author Mark sunlightcs@gmail.com
  * @since 1.2.0 2016-11-28
  */
+@Data
+@NoArgsConstructor
 @TableName("schedule_job")
 public class ScheduleJobEntity extends Model<ScheduleJobEntity> implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -84,113 +89,5 @@ public class ScheduleJobEntity extends Model<ScheduleJobEntity> implements Seria
 		return this.jobId;
 	}
 
-	/**
-	 * 设置：任务id
-	 * @param jobId 任务id
-	 */
-	public void setJobId(Long jobId) {
-		this.jobId = jobId;
-	}
 
-	/**
-	 * 获取：任务id
-	 * @return Long
-	 */
-	public Long getJobId() {
-		return jobId;
-	}
-	
-	public String getBeanName() {
-		return beanName;
-	}
-
-	public void setBeanName(String beanName) {
-		this.beanName = beanName;
-	}
-
-	public String getMethodName() {
-		return methodName;
-	}
-
-	public void setMethodName(String methodName) {
-		this.methodName = methodName;
-	}
-
-	public String getParams() {
-		return params;
-	}
-
-	public void setParams(String params) {
-		this.params = params;
-	}
-
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-
-	/**
-	 * 设置：任务状态
-	 * @param status 任务状态
-	 */
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	/**
-	 * 获取：任务状态
-	 * @return String
-	 */
-	public Integer getStatus() {
-		return status;
-	}
-	
-	/**
-	 * 设置：cron表达式
-	 * @param cronExpression cron表达式
-	 */
-	public void setCronExpression(String cronExpression) {
-		this.cronExpression = cronExpression;
-	}
-
-	/**
-	 * 获取：cron表达式
-	 * @return String
-	 */
-	public String getCronExpression() {
-		return cronExpression;
-	}
-	
-	/**
-	 * 设置：创建时间
-	 * @param createTime 创建时间
-	 */
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
-	/**
-	 * 获取：创建时间
-	 * @return Date
-	 */
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	@Override
-	public String toString() {
-		return "ScheduleJobEntity{" +
-				"jobId=" + jobId +
-				", beanName='" + beanName + '\'' +
-				", methodName='" + methodName + '\'' +
-				", params='" + params + '\'' +
-				", cronExpression='" + cronExpression + '\'' +
-				", status=" + status +
-				", remark='" + remark + '\'' +
-				", createTime=" + createTime +
-				'}';
-	}
 }

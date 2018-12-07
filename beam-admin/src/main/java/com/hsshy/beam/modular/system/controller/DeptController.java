@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value="DeptController",tags={"Dept接口"})
 @Controller
-@RequestMapping("/system/dept")
+@RequestMapping("/sys/dept")
 public class DeptController  {
 
     @Autowired

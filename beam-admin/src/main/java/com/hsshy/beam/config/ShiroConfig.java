@@ -16,6 +16,7 @@
 
 package com.hsshy.beam.config;
 
+import com.hsshy.beam.common.intercept.GunsUserFilter;
 import com.hsshy.beam.common.shiro.RedisShiroSessionDAO;
 import com.hsshy.beam.common.shiro.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
@@ -30,6 +31,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -73,8 +76,13 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
-        shiroFilter.setLoginUrl("/login.html");
+        shiroFilter.setLoginUrl("/login");
         shiroFilter.setUnauthorizedUrl("/");
+
+        //session过期拦截
+        HashMap<String, Filter> myFilters = new HashMap<>();
+        myFilters.put("user", new GunsUserFilter());
+        shiroFilter.setFilters(myFilters);
 
         Map<String, String> filterMap = new LinkedHashMap<>();
         /*swagger 资源过滤*/
@@ -89,7 +97,7 @@ public class ShiroConfig {
         filterMap.put("/global/*", "anon");  //全局路径（错误或者超时）
 
         filterMap.put("/favicon.ico", "anon");
-        filterMap.put("/**", "authc");
+        filterMap.put("/**", "user");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 
         return shiroFilter;

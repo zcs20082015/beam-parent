@@ -3,6 +3,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hsshy.beam.common.base.entity.AbstractEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +16,7 @@ import java.util.Date;
  * @date 2018-10-10 21:13:03
  */
 @Data
+@NoArgsConstructor
 @TableName("sys_role")
 public class Role extends AbstractEntity<Long> {
 	private static final long serialVersionUID = 1L;
@@ -40,16 +42,6 @@ public class Role extends AbstractEntity<Long> {
 	 * 创建时间
 	 */
 	private Date createTime;
-
-	@Override
-	public Long getId() {
-		return id;
-	}
-
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 
 	@Override

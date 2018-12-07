@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018-10-07 18:03:20
  */
 @Api(value="UserController",tags={"User接口"})
-@RequestMapping("/system/user")
+@RequestMapping("/sys/user")
 @RestController
 public class UserController {
 

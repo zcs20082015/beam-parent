@@ -130,5 +130,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
     }
 
+    @Override
+    public List<Long> queryAllMenuId(Long userId) {
+        return baseMapper.queryAllMenuId(userId);
+    }
+
 
 }

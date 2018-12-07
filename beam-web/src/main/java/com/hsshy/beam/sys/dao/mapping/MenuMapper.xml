@@ -20,20 +20,25 @@
         <result property="delFlag" column="del_flag"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
+
+
+    <sql id="Nav_Column_List">
                id,
-               parentId,
+               parent_id as parentId,
                name,
                url,
-               perms,
                type,
-               icon,
-               orderNum,
-               createBy,
-               updateBy,
-               createDate,
-               updateDate,
-               delFlag
+               icon
     	</sql>
+
+    <select id="queryListParentId" resultType="com.hsshy.beam.sys.entity.Menu">
+		select <include refid="Nav_Column_List" />
+        from sys_menu where parent_id = #{parentId}  order by order_num asc
+	</select>
+
+    <select id="queryNotButtonList" resultType="com.hsshy.beam.sys.entity.Menu">
+		select <include refid="Nav_Column_List" />
+        from sys_menu where type != 2 order by order_num asc
+	</select>
 
 </mapper>

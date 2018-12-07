@@ -50,8 +50,9 @@ public class LoginController  {
      */
     @GetMapping(value = "/logout")
     @ResponseBody
-    public void logout() {
+    public Object logout() {
         ShiroUtils.logout();
+        return R.ok("退出成功");
     }
 
 

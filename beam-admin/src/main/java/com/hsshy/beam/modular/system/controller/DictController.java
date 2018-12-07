@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  */
 @Api(value="DictController",tags={"Dict接口"})
 @Controller
-@RequestMapping("/system/dict")
+@RequestMapping("/sys/dict")
 public class DictController {
 
     @Autowired

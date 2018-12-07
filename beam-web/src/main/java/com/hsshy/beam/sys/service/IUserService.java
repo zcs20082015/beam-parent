@@ -6,6 +6,8 @@ import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;
 import com.hsshy.beam.sys.entity.User;
 
+import java.util.List;
+
 /**
  * 管理员表
  *
@@ -26,5 +28,10 @@ public interface IUserService extends ICommonService<User> {
     R resetPassword(Long userIds[]);
 
     R changePassword(ChangePassowdForm changePassowdForm);
+
+    /**
+     * 查询用户的所有菜单ID
+     */
+    List<Long> queryAllMenuId(Long userId);
 
 }
