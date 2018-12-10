@@ -1,4 +1,5 @@
 package com.hsshy.beam.modular.system.controller;
+import com.hsshy.beam.common.annotion.Permission;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;
 import com.hsshy.beam.sys.entity.User;

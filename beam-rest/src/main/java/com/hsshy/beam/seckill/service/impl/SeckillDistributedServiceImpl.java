@@ -1,6 +1,6 @@
 package com.hsshy.beam.seckill.service.impl;
 
-import com.hsshy.beam.seckill.annotation.RedisServicelock;
+import com.hsshy.beam.common.annotion.RedisServicelock;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.seckill.util.redis.lock.RedissLockUtil;
 import com.hsshy.beam.seckill.dao.SeckillMapper;

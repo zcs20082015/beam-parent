@@ -1,4 +1,6 @@
 package com.hsshy.beam.modular.system.controller;
+import com.hsshy.beam.common.utils.R;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +19,11 @@ public class DashboardController {
     /**
      * 跳转到黑板
      */
+    @RequiresPermissions("sys:dashboard:info")
+//    @RequiresRoles("管理员")
     @GetMapping
-    public String blackboard() {
+    public Object blackboard() {
 
-        return "首页";
+        return R.ok("首页");
     }
 }

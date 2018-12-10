@@ -52,7 +52,8 @@ public class UserRealm extends AuthorizingRealm {
 		IShiro shiroFactory = ShiroFactroy.me();
 		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
 
-		List<Long> roleList = shiroUser.getRoleList();
+//		List<Long> roleList = shiroUser.getRoleList();
+		List<String> roleNameList = shiroUser.getRoleNames();
 
 		List<String> permsList = shiroFactory.findPermissionsByUserId(shiroUser.getId());
 		//用户权限列表
@@ -63,9 +64,10 @@ public class UserRealm extends AuthorizingRealm {
 			}
 			permsSet.addAll(Arrays.asList(perms.trim().split(",")));
 		}
-		
+
 		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 		info.setStringPermissions(permsSet);
+		info.addRoles(roleNameList);
 		return info;
 	}
 

@@ -41,7 +41,7 @@ public enum RetEnum {
     /**
      * session过期
      */
-    LOGIN_EXPIRED(403,"请重新登陆"),
+    LOGIN_EXPIRED(-1,"请重新登陆"),
     /**
      * 其他
      */

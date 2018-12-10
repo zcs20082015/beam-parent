@@ -34,7 +34,7 @@ public class RedisLockAspect {
 	private static  Lock lock = new ReentrantLock(true);//互斥锁 参数默认false，不公平锁  
 	
 	//Service层切点     用于记录错误日志
-	@Pointcut("@annotation(com.hsshy.beam.seckill.annotation.RedisServicelock)")
+	@Pointcut("@annotation(com.hsshy.beam.common.annotion.RedisServicelock)")
 	public void lockAspect() {
 		
 	}

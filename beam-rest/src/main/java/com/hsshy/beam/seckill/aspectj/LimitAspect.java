@@ -21,7 +21,7 @@ public class LimitAspect {
 	private static RateLimiter rateLimiter = RateLimiter.create(5.0);
 	
 	//Service层切点  限流
-	@Pointcut("@annotation(com.hsshy.beam.seckill.annotation.ServiceLimit)")
+	@Pointcut("@annotation(com.hsshy.beam.common.annotion.ServiceLimit)")
 	public void ServiceAspect() {
 		
 	}

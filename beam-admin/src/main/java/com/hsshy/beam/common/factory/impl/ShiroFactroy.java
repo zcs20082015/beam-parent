@@ -3,7 +3,6 @@ package com.hsshy.beam.common.factory.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.shiro.ShiroUser;
-import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.utils.SpringContextHolder;
 import com.hsshy.beam.common.factory.IShiro;
 import com.hsshy.beam.sys.dao.MenuMapper;

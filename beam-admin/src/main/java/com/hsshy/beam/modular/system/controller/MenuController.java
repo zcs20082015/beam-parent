@@ -38,7 +38,6 @@ public class MenuController extends BaseController {
     @ApiOperation(value = "导航菜单")
     @GetMapping("/nav")
     public R nav(){
-        redisUtil.set("test","huangshuai");
         List<Menu> menuList = menuService.getUserMenuList(ShiroUtils.getUserId());
         return R.ok(menuList);
     }

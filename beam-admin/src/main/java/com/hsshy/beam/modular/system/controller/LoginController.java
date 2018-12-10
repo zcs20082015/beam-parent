@@ -40,7 +40,7 @@ public class LoginController  {
         }catch (AuthenticationException e) {
             return R.fail("账户验证失败");
         }
-        return R.ok("登陆成功");
+        return R.ok(ShiroUtils.getUserEntity());
     }
 
 
