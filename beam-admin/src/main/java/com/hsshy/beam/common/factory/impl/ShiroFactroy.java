@@ -71,7 +71,6 @@ public class ShiroFactroy implements IShiro {
 
         List<Long> roleList = ConstantFactory.me().getRoleIdsById(user.getId());
         List<String> roleNameList = new ArrayList<String>();
-        System.out.println("长度："+roleList.size());
         for (Long roleId : roleList) {
             roleNameList.add(ConstantFactory.me().getSingleRoleName(roleId));
         }
