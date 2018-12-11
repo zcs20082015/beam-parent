@@ -82,6 +82,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public R deleteUser(Long[] userIds) {
+        if(ToolUtil.isEmpty(userIds)||userIds.length<=0){
+            return R.fail("未选择删除的用户");
+        }
         for(Long userId:userIds){
             if(userId == Constant.SUPER_ADMIN){
                 return R.fail("管理员不能删除");
@@ -93,6 +96,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public R resetPassword(Long[] userIds) {
+        if(ToolUtil.isEmpty(userIds)||userIds.length<=0){
+            return R.fail("未选择要重置密码的用户");
+        }
         for(Long userId:userIds){
             if(userId == Constant.SUPER_ADMIN){
                 return R.fail("管理员密码不能重置");
