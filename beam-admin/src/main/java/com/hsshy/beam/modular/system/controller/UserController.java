@@ -29,7 +29,7 @@ public class UserController {
     @GetMapping(value = "/page/list")
     public Object pageList(User user)  {
 
-        return  userService.selectPageList(user);
+        return  R.ok(userService.selectPageList(user));
     }
 
     @ApiOperation("改变状态,是否可用")
@@ -52,7 +52,7 @@ public class UserController {
 
     @ApiOperation("用户详情")
     @PostMapping(value = "/info}")
-    public Object delete(@RequestBody Long userId){
+    public Object info(@RequestBody Long userId){
 
         return R.ok(userService.getById(userId));
     }

@@ -1,7 +1,10 @@
 package com.hsshy.beam.sys.service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.hsshy.beam.common.base.service.ICommonService;
+import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.entity.Role;
+import com.hsshy.beam.sys.entity.User;
 
 /**
  * 角色
@@ -12,6 +15,9 @@ import com.hsshy.beam.sys.entity.Role;
  */
 public interface IRoleService extends IService<Role> {
 
+    IPage<Role> selectPageList(Role role);
+
+    R deleteRole(Long roleIds[]);
 
 
 }

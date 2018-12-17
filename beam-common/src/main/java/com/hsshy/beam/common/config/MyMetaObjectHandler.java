@@ -18,13 +18,13 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     public void insertFill(MetaObject metaObject) {
 
 
-        setFieldValByName("createDate",  new Timestamp(System.currentTimeMillis()), metaObject);
-        setFieldValByName("updateDate", new Timestamp(System.currentTimeMillis()), metaObject);
+        setFieldValByName("createTime",  new Timestamp(System.currentTimeMillis()), metaObject);
+        setFieldValByName("updateTime", new Timestamp(System.currentTimeMillis()), metaObject);
 
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        setFieldValByName("updateDate", new Timestamp(System.currentTimeMillis()), metaObject);
+        setFieldValByName("updateTime", new Timestamp(System.currentTimeMillis()), metaObject);
     }
 }

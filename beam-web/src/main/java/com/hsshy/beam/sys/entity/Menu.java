@@ -31,6 +31,7 @@ public class Menu extends DataEntity<Long> {
 	/**
 	 * 父菜单ID，一级菜单为0
 	 */
+	@TableField(value = "parent_id")
 	private Long parentId;
 	/**
 	 * 菜单名称
@@ -55,26 +56,14 @@ public class Menu extends DataEntity<Long> {
 	/**
 	 * 排序
 	 */
+	@TableField(value = "order_num")
 	private Integer orderNum;
+
+
 	/**
 	 * 
 	 */
-	private Long createBy;
-	/**
-	 * 
-	 */
-	private Long updateBy;
-	/**
-	 * 
-	 */
-	private Date createDate;
-	/**
-	 * 
-	 */
-	private Date updateDate;
-	/**
-	 * 
-	 */
+	@TableField(value = "del_flag")
 	private Integer delFlag;
 
 	@TableField(exist=false)

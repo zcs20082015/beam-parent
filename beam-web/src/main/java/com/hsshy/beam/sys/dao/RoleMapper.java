@@ -1,7 +1,11 @@
 package com.hsshy.beam.sys.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hsshy.beam.sys.entity.Role;
+import org.apache.ibatis.annotations.Param;
+
 
 /**
  * 角色
@@ -11,5 +15,10 @@ import com.hsshy.beam.sys.entity.Role;
  * @date 2018-10-10 21:13:03
  */
 public interface RoleMapper extends BaseMapper<Role> {
-	
+
+    IPage<Role> selectPageList(Page page, @Param("role") Role role);
+
+    Integer getCountByRoleId(Long roleId);
+
+
 }

@@ -33,8 +33,8 @@
                a.dept_id as deptId,
                a.status,
                a.version,
-               a.create_date as createDate,
-               a.update_date as updateDate
+               a.create_time as createTime,
+               a.update_time as updateTime
     	</sql>
     <!-- 查询用户的所有权限 -->
     <select id="queryAllPerms" resultType="string">

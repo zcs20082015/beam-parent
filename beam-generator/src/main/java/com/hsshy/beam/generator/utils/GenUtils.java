@@ -54,25 +54,13 @@ public class GenUtils {
 		templates.add("template/beam/Service.java.vm");
 		templates.add("template/beam/ServiceImpl.java.vm");
 		templates.add("template/beam/Controller.java.vm");
-//		templates.add("template/list.html.vm");
-//		templates.add("template/list.js.vm");
+		templates.add("template/beam/list.vue.vm");
+		templates.add("template/beam/list.js.vm");
 //		templates.add("template/menu.sql.vm");
 		return templates;
 	}
 
-	public static List<String> getGizhiTemplates(){
-		List<String> templates = new ArrayList<String>();
-		templates.add("template/gizhi/Entity.java.vm");
-		templates.add("template/gizhi/Mapper.java.vm");
-		templates.add("template/gizhi/Mapper.xml.vm");
-		templates.add("template/gizhi/Service.java.vm");
-		templates.add("template/gizhi/ServiceImpl.java.vm");
-		templates.add("template/gizhi/Controller.java.vm");
-//		templates.add("template/list.html.vm");
-//		templates.add("template/list.js.vm");
-//		templates.add("template/menu.sql.vm");
-		return templates;
-	}
+
 	
 	/**
 	 * 生成代码
@@ -160,10 +148,7 @@ public class GenUtils {
 			 templates = getBeamTemplates();
 
 		}
-		else if(engineering.equals("guns")){
-			 templates = getGizhiTemplates();
 
-		}
 		for(String template : templates){
 			//渲染模板
 			StringWriter sw = new StringWriter();
@@ -245,15 +230,13 @@ public class GenUtils {
 
 		}
 
-//		if (template.contains("list.html.vm" )) {
-//			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator
-//					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".html";
-//		}
-//
-//		if (template.contains("list.js.vm" )) {
-//			return "main" + File.separator + "resources" + File.separator + "statics" + File.separator + "js" + File.separator
-//					+ "modules" + File.separator + moduleName + File.separator + className.toLowerCase() + ".js";
-//		}
+		if (template.contains("list.vue.vm" )) {
+			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator + className.toLowerCase() + ".vue";
+		}
+
+		if (template.contains("list.js.vm" )) {
+			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator  + className.toLowerCase() + ".js";
+		}
 //
 //		if (template.contains("menu.sql.vm" )) {
 //			return className.toLowerCase() + "_menu.sql";

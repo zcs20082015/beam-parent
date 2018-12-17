@@ -3,7 +3,7 @@
 
 <mapper namespace="com.hsshy.beam.sys.dao.RoleMapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
+    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.hsshy.beam.sys.entity.Role" id="BaseResultMap">
         <result property="id" column="id"/>
         <result property="roleName" column="role_name"/>
@@ -13,11 +13,29 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-               id,
-               roleName,
-               remark,
-               deptId,
-               createTime
-    	</sql>
+		        a.`id` AS "id",
+                a.`role_name` AS "roleName",
+                a.`remark` AS "remark",
+                a.`dept_id` AS "deptId",
+                a.`create_time` AS "createTime"
+        </sql>
+    <select id="selectPageList" resultType="com.hsshy.beam.sys.entity.Role">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_role a
+        <where>
+            <if test="role.roleName != null and role.roleName != ''">
+                a.role_name LIKE concat("%",#{role.roleName},"%")
+            </if>
+            <if test="role.deptId != null and role.deptId != ''">
+                a.dept_id = #{role.deptId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getCountByRoleId" resultType="java.lang.Integer">
+        select count(1) from sys_user_role
+        where role_id = #{roleId}
+    </select>
 
 </mapper>

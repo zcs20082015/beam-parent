@@ -14,33 +14,30 @@ import java.util.Date;
 public abstract class RestEntity<ID> extends AbstractEntity<ID> {
 
 
-	@TableField(value = "create_date", fill = FieldFill.INSERT)
-	private Date createDate; // 创建日期
-	@TableField(value = "update_date", fill = FieldFill.INSERT_UPDATE)
-	private Date updateDate; // 更新日期
+	@TableField(value = "create_time", fill = FieldFill.INSERT)
+	private Date createTime; // 创建日期
+	@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+	private Date updateTime; // 更新日期
 
 	public RestEntity() {
 		super();
 
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public Date getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
-
-
-
-
 }

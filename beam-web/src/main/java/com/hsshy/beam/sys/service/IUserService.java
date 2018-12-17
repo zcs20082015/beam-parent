@@ -1,6 +1,7 @@
 package com.hsshy.beam.sys.service;
 
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.hsshy.beam.common.base.service.ICommonService;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface IUserService extends ICommonService<User> {
 
-    R selectPageList(User user);
+    IPage<User> selectPageList(User user);
 
     R saveUser(User user);
 

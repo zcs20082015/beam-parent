@@ -17,12 +17,12 @@ public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 
 	@TableField(value = "create_by",  fill = FieldFill.INSERT)
 	private Long createBy; // 创建者
-	@TableField(value = "create_date", fill = FieldFill.INSERT)
-	private Date createDate; // 创建日期
+	@TableField(value = "create_time", fill = FieldFill.INSERT)
+	private Date createTime; // 创建日期
 	@TableField(value = "update_by", fill = FieldFill.INSERT_UPDATE)
 	private Long updateBy; // 更新者
-	@TableField(value = "update_date", fill = FieldFill.INSERT_UPDATE)
-	private Date updateDate; // 更新日期
+	@TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
+	private Date updateTime; // 更新日期
 	@TableField(value = "del_flag", fill = FieldFill.INSERT)
 	private Integer delFlag; // 删除标记（0：正常；1：删除 ）
 
@@ -41,13 +41,7 @@ public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 		this.createBy = createBy;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
-	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
 
 	public Long getUpdateBy() {
 		return updateBy;
@@ -57,13 +51,7 @@ public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 		this.updateBy = updateBy;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
-	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
 
 	public Integer getDelFlag() {
 		return delFlag;
@@ -73,5 +61,19 @@ public abstract class DataEntity<ID> extends AbstractEntity<ID> {
 		this.delFlag = delFlag;
 	}
 
+	public Date getCreateTime() {
+		return createTime;
+	}
 
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
 }

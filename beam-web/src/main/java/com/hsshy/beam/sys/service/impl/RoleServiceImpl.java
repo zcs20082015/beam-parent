@@ -1,10 +1,17 @@
 package com.hsshy.beam.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hsshy.beam.common.constant.Constant;
+import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.RoleMapper;
 import com.hsshy.beam.sys.entity.Role;
 import com.hsshy.beam.sys.service.IRoleService;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 
 /**
  * 角色
@@ -17,4 +24,26 @@ import org.springframework.stereotype.Service;
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
 
+    @Override
+    public IPage<Role> selectPageList(Role role) {
+        return baseMapper.selectPageList(new Page(role.getCurrentPage(),role.getPageSize()),role);
+    }
+
+    @Override
+    public R deleteRole(Long[] roleIds) {
+        if(ToolUtil.isEmpty(roleIds)||roleIds.length<=0){
+            return R.fail("未选择删除的角色");
+        }
+
+
+        for(Long roleId:roleIds){
+            Integer count = baseMapper.getCountByRoleId(roleId);
+            if(count>0){
+                return R.fail("当前删除的角色，还有用户关联，请先取消其关联");
+            }
+        }
+
+        this.removeByIds(Arrays.asList(roleIds));
+        return R.ok();
+    }
 }

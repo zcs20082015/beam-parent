@@ -1,14 +1,19 @@
 package com.hsshy.beam.sys.dao;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hsshy.beam.sys.entity.Dept;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 部门管理
  * 
  * @author hs
  * @email 457030599@qq.com
- * @date 2018-10-10 21:13:03
+ * @date 2018-12-17 15:21:00
  */
 public interface DeptMapper extends BaseMapper<Dept> {
-	
+
+    IPage<Dept> selectPageList(Page page, @Param("dept") Dept dept);
+
 }
