@@ -47,7 +47,7 @@ public class ${className}Controller extends BaseController {
     @PostMapping(value = "/save")
     public R save(@RequestBody ${className} ${classname}){
 
-            ${classname}Service.save(${classname});
+            ${classname}Service.saveOrUpdate(${classname});
         return R.ok();
     }
     @ApiOperation("删除")

@@ -1,10 +1,12 @@
 package com.hsshy.beam.sys.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.constant.cache.Cache;
 import com.hsshy.beam.common.constant.cache.CacheKey;
+import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.MenuMapper;
 import com.hsshy.beam.sys.entity.Menu;
 import com.hsshy.beam.sys.service.IMenuService;
@@ -46,9 +48,25 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
         return userMenuList;
     }
 
+
+
     @Override
     public List<Menu> queryListParentId(Long parentId) {
         return baseMapper.queryListParentId(parentId);
+    }
+
+
+    @Override
+    public List<Menu> treeMenuList(Long menuId,Menu menu) {
+        List<Menu> menuList ;
+        if(ToolUtil.isNotEmpty(menu.getName())){
+            menuList = this.list(new QueryWrapper<Menu>().lambda().like(Menu::getName,menu.getName()));
+        }
+        else {
+            menuList =  queryListParentId(menuId);
+        }
+
+        return getAllMenuTreeList(menuList);
     }
 
 
@@ -79,7 +97,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     }
 
     /**
-     * 递归
+     * 获取目录和菜单 递归
      */
     private List<Menu> getMenuTreeList(List<Menu> menuList, List<Long> menuIdList){
         List<Menu> subMenuList = new ArrayList<Menu>();
@@ -88,6 +106,23 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
             //目录
             if(entity.getType() == Constant.MenuType.CATALOG.getValue()){
                 entity.setList(getMenuTreeList(queryListParentId(entity.getId(), menuIdList), menuIdList));
+            }
+            subMenuList.add(entity);
+        }
+
+        return subMenuList;
+    }
+
+    /**
+     * 获取所有菜单 递归
+     */
+    private List<Menu> getAllMenuTreeList(List<Menu> menuList){
+        List<Menu> subMenuList = new ArrayList<Menu>();
+
+        for(Menu entity : menuList){
+            //目录
+            if(entity.getType() == Constant.MenuType.CATALOG.getValue()||entity.getType() == Constant.MenuType.MENU.getValue()){
+                entity.setChildren(getAllMenuTreeList(queryListParentId(entity.getId())));
             }
             subMenuList.add(entity);
         }

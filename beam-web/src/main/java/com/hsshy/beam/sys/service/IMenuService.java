@@ -32,4 +32,10 @@ public interface IMenuService extends IService<Menu> {
      */
     List<Menu> queryListParentId(Long parentId);
 
+    /**
+     * 获取树形菜单列表
+     */
+    List<Menu> treeMenuList(Long menuId,Menu menu);
+
+
 }

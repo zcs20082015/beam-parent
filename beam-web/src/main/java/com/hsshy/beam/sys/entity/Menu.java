@@ -69,6 +69,9 @@ public class Menu extends DataEntity<Long> {
 	@TableField(exist=false)
 	private List<?> list;
 
+	@TableField(exist=false)
+	private List<?> children;
+
 
 	@Override
 	protected Serializable pkVal() {
