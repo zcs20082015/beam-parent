@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.entity.Dept;
+import com.hsshy.beam.sys.entity.Menu;
 import com.hsshy.beam.sys.service.IDeptService;
 import com.hsshy.beam.common.base.controller.BaseController;
 import io.swagger.annotations.Api;
@@ -54,7 +55,7 @@ public class DeptController extends BaseController {
     @PostMapping(value = "/save")
     public R save(@RequestBody Dept dept){
 
-            deptService.save(dept);
+        deptService.saveOrUpdate(dept);
         return R.ok();
     }
     @ApiOperation("删除")
@@ -66,6 +67,23 @@ public class DeptController extends BaseController {
         }
             deptService.removeByIds(Arrays.asList(deptIds));
         return R.ok();
+    }
+
+    /**
+     * 树形
+     */
+    @ApiOperation(value = "树形部门")
+    @GetMapping("/tree/dept")
+    public R treeDept(Dept dept){
+        return R.ok(deptService.treeDeptList(0L,dept));
+    }
+
+
+    @ApiOperation("详情")
+    @GetMapping(value = "/info")
+    public R info(@RequestParam Long deptId){
+
+        return R.ok(deptService.getById(deptId));
     }
 
 

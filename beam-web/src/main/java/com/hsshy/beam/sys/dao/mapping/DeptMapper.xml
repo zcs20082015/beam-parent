@@ -40,5 +40,9 @@
 
         </where>
     </select>
+    <select id="queryListParentId" resultType="com.hsshy.beam.sys.entity.Dept">
+        select <include refid="Base_Column_List" />
+        from sys_dept a where a.parent_id = #{parentId} and a.del_flag = 0  order by a.order_num asc
+    </select>
 
 </mapper>
