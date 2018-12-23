@@ -12,6 +12,7 @@ import com.hsshy.beam.sys.service.IRoleService;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 角色
@@ -45,5 +46,32 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
         this.removeByIds(Arrays.asList(roleIds));
         return R.ok();
+    }
+
+    @Override
+    public List<Long> getCheckMenuIds(Long roleId) {
+        return baseMapper.getCheckMenuIds(roleId);
+    }
+
+    @Override
+    public R saveMuenPerms(Role role) {
+        Role r = this.getById(role.getId());
+        if(ToolUtil.isEmpty(r)){
+            return R.fail("找不到该角色");
+        }
+        baseMapper.delMenuPermByRoleId(role.getId());
+
+        if(role.getMenuIds().length<=0){
+            return R.ok();
+        }
+        baseMapper.saveMenuPerms(role);
+
+
+
+        return R.ok();
+
+
+
+
     }
 }

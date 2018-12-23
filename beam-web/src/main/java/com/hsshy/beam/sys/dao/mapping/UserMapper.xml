@@ -36,6 +36,20 @@
                a.create_time as createTime,
                a.update_time as updateTime
     	</sql>
+
+    <delete id="delURByUserId">
+        delete from sys_user_role where user_id = #{userId}
+    </delete>
+    <!--保存用户角色信息-->
+    <insert id="saveUserRole">
+        insert into sys_user_role (user_id,role_id)
+        values
+        <foreach collection ="user.roleIds" item="roleId" index= "index" separator =",">
+            (
+            #{user.id}, #{roleId}
+            )
+        </foreach >
+    </insert>
     <!-- 查询用户的所有权限 -->
     <select id="queryAllPerms" resultType="string">
 		select m.perms from sys_user_role ur
@@ -54,14 +68,18 @@
         select role_id from sys_user_role where user_id = #{userId}
     </select>
     <select id="selectPageList" resultType="com.hsshy.beam.sys.entity.User">
-        select <include refid="Base_Column_List"/>
-        from sys_user a
+        select <include refid="Base_Column_List"/>,
+        b.name as deptName
+        from sys_user a left join sys_dept b on a.dept_id = b.id
         <where>
             <if test="user.account != null and user.account != ''">
                 a.account LIKE concat("%",#{user.account},"%")
             </if>
             <if test="user.name != null and user.name != ''">
                 a.name LIKE concat("%",#{user.name},"%")
+            </if>
+            <if test="user.deptIds != null and user.deptIds != ''">
+                a.dept_id in (${user.deptIds})
             </if>
         </where>
     </select>

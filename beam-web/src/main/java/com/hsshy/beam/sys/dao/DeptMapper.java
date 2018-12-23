@@ -1,4 +1,5 @@
 package com.hsshy.beam.sys.dao;
+import com.hsshy.beam.common.base.dto.TreeNode;
 import com.hsshy.beam.sys.entity.Dept;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -20,6 +21,7 @@ public interface DeptMapper extends BaseMapper<Dept> {
     IPage<Dept> selectPageList(Page page, @Param("dept") Dept dept);
 
     List<Dept> queryListParentId(Long parentId);
+
 
 
 }

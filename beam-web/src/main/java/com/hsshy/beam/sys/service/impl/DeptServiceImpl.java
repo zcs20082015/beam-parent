@@ -3,6 +3,7 @@ package com.hsshy.beam.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import com.hsshy.beam.common.base.dto.TreeNode;
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.DeptMapper;
@@ -43,19 +44,25 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
         return baseMapper.queryListParentId(parentId);
     }
 
+
+
+
     /**
-     * 获取所有菜单 递归
+     * 部门树形表格
      */
     private List<Dept> getAllDeptTreeList(List<Dept> deptList){
         List<Dept> subDeptList = new ArrayList<Dept>();
 
         for(Dept entity : deptList){
-            //目录
-                entity.setChildren(getAllDeptTreeList(queryListParentId(entity.getId())));
+            entity.setChildren(getAllDeptTreeList(queryListParentId(entity.getId())));
             subDeptList.add(entity);
         }
 
         return subDeptList;
     }
+
+
+
+
 
 }

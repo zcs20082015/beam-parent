@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 部门管理
@@ -83,7 +85,20 @@ public class DeptController extends BaseController {
     @GetMapping(value = "/info")
     public R info(@RequestParam Long deptId){
 
-        return R.ok(deptService.getById(deptId));
+        Dept dept = deptService.getById(deptId);
+        if(ToolUtil.isEmpty(dept)){
+            return R.fail("找不到该部门");
+        }
+
+        if(dept.getParentId()!=0){
+            Dept pdept = deptService.getById(dept.getParentId());
+            dept.setPname(pdept.getName());
+        }
+        else {
+            dept.setPname("顶级");
+
+        }
+        return R.ok(dept);
     }
 
 

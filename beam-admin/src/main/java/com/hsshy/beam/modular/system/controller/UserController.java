@@ -1,13 +1,21 @@
 package com.hsshy.beam.modular.system.controller;
 import com.hsshy.beam.common.annotion.Permission;
+import com.hsshy.beam.common.factory.IConstantFactory;
+import com.hsshy.beam.common.factory.impl.ConstantFactory;
+import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;
+import com.hsshy.beam.sys.entity.Dept;
 import com.hsshy.beam.sys.entity.User;
+import com.hsshy.beam.sys.service.IDeptService;
 import com.hsshy.beam.sys.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 管理员表
@@ -24,11 +32,18 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private IDeptService deptService;
+
 
     @ApiOperation(value = "分页列表")
     @GetMapping(value = "/page/list")
     public Object pageList(User user)  {
 
+        if(ToolUtil.isNotEmpty(user.getDeptIds())){
+            System.out.println(user.getDeptIds());
+
+        }
         return  R.ok(userService.selectPageList(user));
     }
 
@@ -51,10 +66,20 @@ public class UserController {
     }
 
     @ApiOperation("用户详情")
-    @PostMapping(value = "/info}")
-    public Object info(@RequestBody Long userId){
+    @GetMapping(value = "/info")
+    public Object info(@RequestParam Long userId){
+        User user = userService.getById(userId);
+        if(ToolUtil.isEmpty(user)){
+            return R.fail("找不到该用户");
+        }
+        List<Long> roleIds = ConstantFactory.me().getRoleIdsById(userId);
+        user.setRoleIds(roleIds);
+        Dept dept = deptService.getById(user.getDeptId());
+        if(ToolUtil.isNotEmpty(dept)){
+            user.setDeptName(dept.getName());
 
-        return R.ok(userService.getById(userId));
+        }
+        return R.ok(user);
     }
 
     @ApiOperation("重置用户密码")
@@ -69,6 +94,10 @@ public class UserController {
 
         return userService.changePassword(changePassowdForm);
     }
+
+
+
+
 
 
 

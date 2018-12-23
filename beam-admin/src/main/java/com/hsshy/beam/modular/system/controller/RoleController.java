@@ -1,5 +1,6 @@
 package com.hsshy.beam.modular.system.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.entity.Role;
 import com.hsshy.beam.sys.service.IRoleService;
@@ -31,11 +32,20 @@ public class RoleController  {
         return  R.ok(roleService.selectPageList(role));
     }
 
+    @ApiOperation(value = "列表")
+    @GetMapping(value = "/list")
+    public Object list(Role role)  {
+
+        QueryWrapper qw = new QueryWrapper<Role>();
+        return  R.ok(roleService.list(qw));
+    }
+
+
     @ApiOperation("保存角色")
     @PostMapping(value = "/save")
     public Object save(@RequestBody Role role){
-
-        return roleService.saveOrUpdate(role);
+        roleService.saveOrUpdate(role);
+        return R.ok();
     }
 
     @ApiOperation("批量删除用户")
@@ -45,11 +55,25 @@ public class RoleController  {
         return roleService.deleteRole(roleIds);
     }
 
-    @ApiOperation("用户详情")
-    @PostMapping(value = "/info}")
-    public Object info(@RequestBody Long roleId){
+    @ApiOperation("角色详情")
+    @GetMapping(value = "/info}")
+    public Object info(@RequestParam Long roleId){
 
         return R.ok(roleService.getById(roleId));
+    }
+
+    @ApiOperation(value = "获取角色的菜单权限")
+    @GetMapping(value = "/menu/list")
+    public Object roleMenuList(@RequestParam Long roleId)  {
+
+        return  R.ok(roleService.getCheckMenuIds(roleId));
+    }
+
+    @ApiOperation("配置菜单权限")
+    @PostMapping(value = "/save/menu/perm")
+    public Object saveMuenPerms(@RequestBody Role role){
+
+        return roleService.saveMuenPerms(role);
     }
 
 

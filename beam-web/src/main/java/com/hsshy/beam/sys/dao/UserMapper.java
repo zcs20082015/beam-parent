@@ -32,5 +32,9 @@ public interface UserMapper extends BaseMapper<User> {
 
 
     List<Long> getRoleIdsById(@Param("userId") Long userId);
+
+    void saveUserRole(@Param("user") User user);
+
+    void delURByUserId(Long userId);
 	
 }

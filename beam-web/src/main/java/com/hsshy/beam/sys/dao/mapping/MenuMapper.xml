@@ -28,7 +28,9 @@
                name,
                url,
                type,
-               icon
+               icon,
+               order_num as orderNum,
+               perms
     	</sql>
 
     <select id="queryListParentId" resultType="com.hsshy.beam.sys.entity.Menu">

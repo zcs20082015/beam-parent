@@ -1,4 +1,5 @@
 package com.hsshy.beam.sys.entity;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hsshy.beam.common.base.entity.DataEntity;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 管理员表
@@ -74,6 +76,16 @@ public class User extends DataEntity<Long> {
 	 * 保留字段
 	 */
 	private Integer version;
+
+	@TableField(exist = false)
+	private String deptName;
+
+	//查询
+	@TableField(exist = false)
+	private String deptIds;
+
+	@TableField(exist = false)
+	private List<Long> roleIds;
 
 
 	@Override

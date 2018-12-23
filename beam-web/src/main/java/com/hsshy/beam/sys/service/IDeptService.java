@@ -1,5 +1,6 @@
 package com.hsshy.beam.sys.service;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hsshy.beam.common.base.dto.TreeNode;
 import com.hsshy.beam.common.base.service.ICommonService;
 import com.hsshy.beam.sys.entity.Dept;
 import com.hsshy.beam.sys.entity.Menu;
@@ -22,5 +23,8 @@ public interface IDeptService extends IService<Dept> {
     List<Dept> treeDeptList(Long deptId, Dept dept);
 
     List<Dept> queryListParentId(Long parentId);
+
+
+
 
 }

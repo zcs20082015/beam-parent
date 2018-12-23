@@ -30,9 +30,10 @@ public class Role extends RestEntity<Long> {
     // 备注
     @TableField(value = "remark")
     private String remark;
-    // 部门ID
-    @TableField(value = "dept_id")
-    private Long deptId;
+
+    @TableField(exist = false)
+    private Long[] menuIds;
+
 
 
     @Override

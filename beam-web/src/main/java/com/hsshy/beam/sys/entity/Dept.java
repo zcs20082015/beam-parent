@@ -38,7 +38,14 @@ public class Dept extends RestEntity<Long> {
     @TableField(value = "del_flag")
     private Integer delFlag;
 
+    @TableField(exist = false)
     private List<?> children;
+
+    @TableField(exist = false)
+    private String label;
+
+    @TableField(exist = false)
+    private String pname;
 
 
     @Override

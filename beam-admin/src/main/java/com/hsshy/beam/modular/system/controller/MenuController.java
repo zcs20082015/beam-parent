@@ -7,6 +7,7 @@ import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.RedisUtil;
 import com.hsshy.beam.common.utils.ToolUtil;
+import com.hsshy.beam.sys.entity.Dept;
 import com.hsshy.beam.sys.entity.Menu;
 import com.hsshy.beam.sys.service.IMenuService;
 import io.swagger.annotations.Api;
@@ -83,7 +84,21 @@ public class MenuController extends BaseController {
     @GetMapping(value = "/info")
     public R info(@RequestParam Long menuId){
 
-        return R.ok(menuService.getById(menuId));
+        Menu menu = menuService.getById(menuId);
+        if(ToolUtil.isEmpty(menu)){
+            return R.fail("找不到该菜单");
+        }
+
+        if(menu.getParentId()!=0){
+            Menu pmenu = menuService.getById(menu.getParentId());
+            menu.setPname(pmenu.getName());
+        }
+        else {
+            menu.setPname("顶级");
+
+        }
+        return R.ok(menu);
+
     }
 
     @ApiOperation("删除")

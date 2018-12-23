@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.shiro.ShiroUtils;
+import com.hsshy.beam.common.utils.MapUtils;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.UserMapper;
@@ -45,7 +46,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             User oldUser = this.getById(user.getId());
             Assert.notNull(oldUser,"找不到该用户");
             if(this.updateById(user)){
-                return R.ok();
+
+                //删除用户关联角色
+                baseMapper.delURByUserId(user.getId());
+                // 插入用户角色关系
+
+                if(user.getRoleIds().size()<=0){
+                    return R.ok();
+                }
+                else {
+                    baseMapper.saveUserRole(user);
+                    return R.ok();
+
+                }
+
             }
             else {
                 return R.fail("未知原因，保存失败");
