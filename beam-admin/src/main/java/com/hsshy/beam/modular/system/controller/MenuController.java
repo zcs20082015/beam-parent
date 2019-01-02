@@ -34,6 +34,8 @@ public class MenuController extends BaseController {
     @Autowired
     private IMenuService menuService;
 
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 导航菜单
@@ -69,6 +71,8 @@ public class MenuController extends BaseController {
     public R save(@RequestBody Menu menu){
 
         if(menuService.saveOrUpdate(menu)){
+            //清除缓存
+            redisUtil.clearCache();
             return R.ok();
 
         }
@@ -112,7 +116,8 @@ public class MenuController extends BaseController {
             }
 
         }
-
+        //清除缓存
+        redisUtil.clearCache();
         menuService.removeByIds(Arrays.asList(menuIds));
         return R.ok();
     }

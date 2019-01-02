@@ -3,18 +3,20 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hsshy.beam.common.cache.CacheKit;
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.constant.cache.Cache;
+import com.hsshy.beam.common.constant.cache.CacheKey;
 import com.hsshy.beam.common.shiro.ShiroUtils;
-import com.hsshy.beam.common.utils.MapUtils;
 import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.common.utils.RedisUtil;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.UserMapper;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;
 import com.hsshy.beam.sys.entity.User;
 import com.hsshy.beam.sys.service.IUserService;
 import org.apache.commons.lang.RandomStringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import java.util.Arrays;
@@ -30,6 +32,9 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public IPage<User> selectPageList(User user) {
@@ -52,6 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 //删除用户关联角色
                 baseMapper.delURByUserId(user.getId());
                 // 插入用户角色关系
+
+                redisUtil.clearCache();
 
 
                 if(user.getRoleIds().size()<=0){

@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.common.cache.CacheKit;
 import com.hsshy.beam.common.constant.cache.Cache;
 import com.hsshy.beam.common.factory.impl.ConstantFactory;
 import com.hsshy.beam.common.utils.R;
@@ -56,7 +55,7 @@ public class UserController {
     @PostMapping(value = "/save")
     public Object save(@RequestBody User user){
         //删除缓存
-        CacheKit.removeAll(Cache.CONSTANT);
+
         return userService.saveUser(user);
     }
 
