@@ -3,7 +3,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hsshy.beam.common.cache.CacheKit;
 import com.hsshy.beam.common.constant.Constant;
+import com.hsshy.beam.common.constant.cache.Cache;
 import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.utils.MapUtils;
 import com.hsshy.beam.common.utils.R;
@@ -50,6 +52,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
                 //删除用户关联角色
                 baseMapper.delURByUserId(user.getId());
                 // 插入用户角色关系
+
 
                 if(user.getRoleIds().size()<=0){
                     return R.ok();

@@ -3,7 +3,9 @@ package com.hsshy.beam.sys.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hsshy.beam.common.cache.CacheKit;
 import com.hsshy.beam.common.constant.Constant;
+import com.hsshy.beam.common.constant.cache.Cache;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dao.RoleMapper;
@@ -55,6 +57,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
     @Override
     public R saveMuenPerms(Role role) {
+
         Role r = this.getById(role.getId());
         if(ToolUtil.isEmpty(r)){
             return R.fail("找不到该角色");
@@ -62,11 +65,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
         baseMapper.delMenuPermByRoleId(role.getId());
 
         if(role.getMenuIds().length<=0){
+
             return R.ok();
         }
         baseMapper.saveMenuPerms(role);
 
-
+        //删除缓存
+        CacheKit.removeAll(Cache.CONSTANT);
 
         return R.ok();
 

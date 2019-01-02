@@ -43,14 +43,14 @@ public class ScheduleUtils {
     public static void createScheduleJob(Scheduler scheduler, ScheduleJobEntity scheduleJob) {
         try {
         	//构建job信息
-            JobDetail jobDetail = JobBuilder.newJob(ScheduleJob.class).withIdentity(getJobKey(scheduleJob.getJobId())).build();
+            JobDetail jobDetail = JobBuilder.newJob(ScheduleJob.class).withIdentity(getJobKey(scheduleJob.getId())).build();
 
             //表达式调度构建器
             CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression())
             		.withMisfireHandlingInstructionDoNothing();
 
             //按新的cronExpression表达式构建一个新的trigger
-            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(getTriggerKey(scheduleJob.getJobId())).withSchedule(scheduleBuilder).build();
+            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(getTriggerKey(scheduleJob.getId())).withSchedule(scheduleBuilder).build();
 
             //放入参数，运行时的方法可以获取
             jobDetail.getJobDataMap().put(ScheduleJobEntity.JOB_PARAM_KEY, scheduleJob);
@@ -59,7 +59,7 @@ public class ScheduleUtils {
             
             //暂停任务
             if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
-            	pauseJob(scheduler, scheduleJob.getJobId());
+            	pauseJob(scheduler, scheduleJob.getId());
             }
         } catch (SchedulerException e) {
             throw new BeamException("创建定时任务失败", e);
@@ -71,13 +71,13 @@ public class ScheduleUtils {
      */
     public static void updateScheduleJob(Scheduler scheduler, ScheduleJobEntity scheduleJob) {
         try {
-            TriggerKey triggerKey = getTriggerKey(scheduleJob.getJobId());
+            TriggerKey triggerKey = getTriggerKey(scheduleJob.getId());
 
             //表达式调度构建器
             CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression())
             		.withMisfireHandlingInstructionDoNothing();
 
-            CronTrigger trigger = getCronTrigger(scheduler, scheduleJob.getJobId());
+            CronTrigger trigger = getCronTrigger(scheduler, scheduleJob.getId());
             
             //按新的cronExpression表达式重新构建trigger
             trigger = trigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(scheduleBuilder).build();
@@ -89,7 +89,7 @@ public class ScheduleUtils {
             
             //暂停任务
             if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
-            	pauseJob(scheduler, scheduleJob.getJobId());
+            	pauseJob(scheduler, scheduleJob.getId());
             }
             
         } catch (SchedulerException e) {
@@ -106,7 +106,7 @@ public class ScheduleUtils {
         	JobDataMap dataMap = new JobDataMap();
         	dataMap.put(ScheduleJobEntity.JOB_PARAM_KEY, scheduleJob);
         	
-            scheduler.triggerJob(getJobKey(scheduleJob.getJobId()), dataMap);
+            scheduler.triggerJob(getJobKey(scheduleJob.getId()), dataMap);
         } catch (SchedulerException e) {
             throw new BeamException("立即执行定时任务失败", e);
         }

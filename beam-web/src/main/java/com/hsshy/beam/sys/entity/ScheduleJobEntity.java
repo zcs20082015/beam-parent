@@ -19,6 +19,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.hsshy.beam.common.base.entity.RestEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,7 +35,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @TableName("schedule_job")
-public class ScheduleJobEntity extends Model<ScheduleJobEntity> implements Serializable {
+public class ScheduleJobEntity extends RestEntity<Long> {
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -46,7 +47,7 @@ public class ScheduleJobEntity extends Model<ScheduleJobEntity> implements Seria
 	 * 任务id
 	 */
 	@TableId
-	private Long jobId;
+	private Long id;
 
 	/**
 	 * spring bean名称
@@ -78,15 +79,21 @@ public class ScheduleJobEntity extends Model<ScheduleJobEntity> implements Seria
 	 */
 	private String remark;
 
-	/**
-	 * 创建时间
-	 */
-	@TableField(fill = FieldFill.INSERT)
-	private Date createTime;
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 
 	@Override
 	protected Serializable pkVal() {
-		return this.jobId;
+		return this.id;
 	}
 
 
