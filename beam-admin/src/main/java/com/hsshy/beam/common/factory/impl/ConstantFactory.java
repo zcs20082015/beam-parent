@@ -28,42 +28,9 @@ public class ConstantFactory implements IConstantFactory {
     private DeptMapper deptMapper = SpringContextHolder.getBean(DeptMapper.class);
     private DictMapper dictMapper = SpringContextHolder.getBean(DictMapper.class);
     private UserMapper userMapper = SpringContextHolder.getBean(UserMapper.class);
-    private MenuMapper menuMapper = SpringContextHolder.getBean(MenuMapper.class);
 
     public static IConstantFactory me() {
         return SpringContextHolder.getBean("constantFactory");
-    }
-
-    /**
-     * 根据用户id获取用户名称
-     *
-     * @author stylefeng
-     * @Date 2017/5/9 23:41
-     */
-    @Override
-    public String getUserNameById(Long userId) {
-        User user = userMapper.selectById(userId);
-        if (user != null) {
-            return user.getName();
-        } else {
-            return "--";
-        }
-    }
-
-    /**
-     * 根据用户id获取用户账号
-     *
-     * @author stylefeng
-     * @date 2017年5月16日21:55:371
-     */
-    @Override
-    public String getUserAccountById(Long userId) {
-        User user = userMapper.selectById(userId);
-        if (user != null) {
-            return user.getAccount();
-        } else {
-            return "--";
-        }
     }
 
 
@@ -119,41 +86,11 @@ public class ConstantFactory implements IConstantFactory {
     }
 
 
-    /**
-     * 获取菜单名称
-     */
-    @Override
-    public String getMenuName(Long menuId) {
-        if (ToolUtil.isEmpty(menuId)) {
-            return "";
-        } else {
-            Menu menu = menuMapper.selectById(menuId);
-            if (menu == null) {
-                return "";
-            } else {
-                return menu.getName();
-            }
-        }
-    }
 
 
 
-    /**
-     * 获取字典名称
-     */
-    @Override
-    public String getDictName(Long dictId) {
-        if (ToolUtil.isEmpty(dictId)) {
-            return "";
-        } else {
-            Dict dict = dictMapper.selectById(dictId);
-            if (dict == null) {
-                return "";
-            } else {
-                return dict.getName();
-            }
-        }
-    }
+
+
 
 
 
@@ -179,56 +116,6 @@ public class ConstantFactory implements IConstantFactory {
             return "";
         }
     }
-
-    /**
-     * 获取性别名称
-     */
-    @Override
-    public String getSexName(Integer sex) {
-        return getDictsByName("性别", sex);
-    }
-
-
-    /**
-     * 查询字典
-     */
-    @Override
-    public List<Dict> findInDict(Long id) {
-        if (ToolUtil.isEmpty(id)) {
-            return null;
-        } else {
-            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-            List<Dict> dicts = dictMapper.selectList(wrapper.eq("pid", id));
-            if (dicts == null || dicts.size() == 0) {
-                return null;
-            } else {
-                return dicts;
-            }
-        }
-    }
-
-
-
-    /**
-     * 获取子部门id
-     */
-    @Override
-    public List<Long> getSubDeptId(Long deptid) {
-        QueryWrapper<Dept> wrapper = new QueryWrapper<>();
-        wrapper = wrapper.like("pids", "%[" + deptid + "]%");
-        List<Dept> depts = this.deptMapper.selectList(wrapper);
-
-        ArrayList<Long> deptids = new ArrayList<>();
-
-        if(depts != null && depts.size() > 0){
-            for (Dept dept : depts) {
-                deptids.add(dept.getId());
-            }
-        }
-
-        return deptids;
-    }
-
 
 
 

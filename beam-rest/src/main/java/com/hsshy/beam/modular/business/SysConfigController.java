@@ -1,4 +1,4 @@
-package com.hsshy.beam.modular.business.controller;
+package com.hsshy.beam.modular.business;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.service.ISysConfigService;
 import io.swagger.annotations.Api;

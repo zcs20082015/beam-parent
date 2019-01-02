@@ -3,13 +3,12 @@ beam:
     swagger-open: true  #是否开启swagger (true/false)
     auth-open: false #jwt鉴权机制是否开启(true或者false)
     sign-open: false #签名机制是否开启(true或false)
-    #file-upload-path: d:/tmp       #文件上传目录(不配置的话为java.io.tmpdir目录)
-    file-upload-path: /upload/voice      #文件上传目录(不配置的话为java.io.tmpdir目录)
+    file-upload-path: /upload/test      #文件上传目录(不配置的话为java.io.tmpdir目录)
   admin:
     version: 0.0.1
 jwt:
   header: Authorization   #http请求头所需要的字段
-  secret: hsshy        #jwt秘钥
+  secret: miyao        #jwt秘钥
   expiration: 604800      #7天 单位:秒
   auth-path: auth         #认证请求的路径
   md5-key: randomKey      #md5加密混淆key
@@ -19,14 +18,8 @@ spring:
     active: @spring.active@
 
 
-
-mybatis-plus:
-  mapper-locations: classpath*:com/hsshy/beam/**/dao/mapping/*.xml
-  #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.hsshy.beam.*.entity
-
 log:
-  path: beam-logs
+  path: beam-rest-logs
 ---
 
 server:
@@ -34,20 +27,43 @@ server:
 spring:
   profiles: local
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://127.0.0.1:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
       username: root
       password: 123456
       filters: log4j,wall,mergeStat
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）
+
+# Redis高可用集群Redis Cluster搭建
+# 博客 https://www.jianshu.com/p/c39e7345caff
+#  redis:
+#    database: 0
+#    timeout: 6000ms  # 连接超时时长（毫秒）
+#    cluster:
+#      nodes: xxx.xx.xx.xx:7000,xxx.xx.xx.xx:7001,xxx.xx.xx.xx:7002,xxx.xx.xx.xx:7003,xxx.xx.xx.xx:7004,xxx.xx.xx.xx:7005
+#      connTimeOut: 1000 #连接server超时时间
+#      soTimeOut: 1000 #等待response超时时间
+#      maxAttempts: 2 #连接失败重试次数
+#    password: testpwd    # 密码（默认为空）
+
+
+# redis 锁
+# 博客 https://www.jianshu.com/p/c5048208709c
 # 哨兵模式
 #redisson:
 #  master-name: mymaster
 #  password:
 #  sentinel-addresses: 10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
-
 redisson:
   address: redis://127.0.0.1:6379
   password:
 
+
+# 博客 https://www.jianshu.com/p/e1df915f0125
 #dubbo:
 #  application:
 #    id: beam-rest
@@ -67,12 +83,16 @@ redisson:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
       username: hsshy
       password: Hs!23456
       filters: log4j,wall,mergeStat
-
-
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）
 ---
 beam:
   swagger-open: false              #是否开启swagger (true/false)
@@ -80,9 +100,13 @@ beam:
 spring:
   profiles: produce
   datasource:
-      url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=UTC
+      url: jdbc:mysql://119.29.192.127:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
       username: hsshy
       password: Hs!23456
       filters: log4j,wall,mergeStat
-
-
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # 密码（默认为空）
+    timeout: 6000ms  # 连接超时时长（毫秒）

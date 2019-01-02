@@ -13,19 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-
 package com.hsshy.beam.common.shiro;
-
-import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
-import org.apache.commons.collections.functors.ConstantFactory;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
-import java.util.List;
 
 /**
  * Shiro工具类

@@ -34,9 +34,6 @@ public class MenuController extends BaseController {
     @Autowired
     private IMenuService menuService;
 
-    @Autowired
-    private RedisUtil redisUtil;
-
 
     /**
      * 导航菜单

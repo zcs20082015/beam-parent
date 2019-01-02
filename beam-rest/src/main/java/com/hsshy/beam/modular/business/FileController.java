@@ -1,4 +1,4 @@
-package com.hsshy.beam.modular.business.controller;
+package com.hsshy.beam.modular.business;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.common.utils.ToolUtil;

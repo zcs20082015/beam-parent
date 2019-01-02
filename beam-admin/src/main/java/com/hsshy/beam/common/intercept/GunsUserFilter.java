@@ -17,9 +17,6 @@
  * under the License.
  */
 package com.hsshy.beam.common.intercept;
-
-
-
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.RenderUtil;

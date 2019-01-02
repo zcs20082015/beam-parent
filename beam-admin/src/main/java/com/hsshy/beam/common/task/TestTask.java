@@ -29,8 +29,7 @@ import org.springframework.stereotype.Component;
  *
  * testTask为spring bean的名称
  *
- * @author Mark sunlightcs@gmail.com
- * @since 1.2.0 2016-11-28
+ * @author hs
  */
 @Component("testTask")
 public class TestTask {

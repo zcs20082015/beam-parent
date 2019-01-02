@@ -10,9 +10,7 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-
-@Controller
+@RestController
 public class LoginController  {
 
 

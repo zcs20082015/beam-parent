@@ -14,13 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/dashboard")
 public class DashboardController {
 
-
-
     /**
      * 跳转到黑板
      */
     @RequiresPermissions("sys:dashboard:info")
-//    @RequiresRoles("管理员")
     @GetMapping
     public Object blackboard() {
 

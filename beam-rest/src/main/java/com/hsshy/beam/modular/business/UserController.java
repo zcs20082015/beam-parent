@@ -1,4 +1,4 @@
-package com.hsshy.beam.modular.business.controller;
+package com.hsshy.beam.modular.business;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.service.IRoleService;

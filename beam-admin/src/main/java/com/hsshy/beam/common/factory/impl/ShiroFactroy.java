@@ -43,8 +43,6 @@ public class ShiroFactroy implements IShiro {
         User user = userMapper.selectOne(new QueryWrapper<User>().lambda().eq(User::getAccount,account));
 
 
-
-
         //账号不存在
         if(user == null) {
             throw new UnknownAccountException("账号或密码不正确");
@@ -96,10 +94,7 @@ public class ShiroFactroy implements IShiro {
         return permsList;
     }
 
-    @Override
-    public String findRoleNameByRoleId(Long roleId) {
-        return ConstantFactory.me().getSingleRoleTip(roleId);
-    }
+
 
     @Override
     public SimpleAuthenticationInfo info(ShiroUser shiroUser, User user, String realmName) {

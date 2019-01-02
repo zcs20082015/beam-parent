@@ -1,5 +1,4 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.sys.entity.Dict;
 import com.hsshy.beam.sys.service.IDictService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;

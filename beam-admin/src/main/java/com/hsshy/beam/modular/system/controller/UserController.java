@@ -1,10 +1,7 @@
 package com.hsshy.beam.modular.system.controller;
-import com.hsshy.beam.common.annotion.Permission;
 import com.hsshy.beam.common.cache.CacheKit;
 import com.hsshy.beam.common.constant.cache.Cache;
-import com.hsshy.beam.common.factory.IConstantFactory;
 import com.hsshy.beam.common.factory.impl.ConstantFactory;
-import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.dto.ChangePassowdForm;

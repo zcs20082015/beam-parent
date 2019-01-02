@@ -23,6 +23,7 @@ import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import com.hsshy.beam.sys.service.ScheduleJobService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.quartz.CronExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,10 +77,15 @@ public class ScheduleJobController {
 	@RequestMapping("/save")
 //	@RequiresPermissions("sys:schedule:save")
 	public R save(@RequestBody ScheduleJobEntity scheduleJob){
+		if(CronExpression.isValidExpression(scheduleJob.getCronExpression())){
+			scheduleJobService.saveScheduleJob(scheduleJob);
+			return R.ok();
 
-		scheduleJobService.saveScheduleJob(scheduleJob);
-		
-		return R.ok();
+		}
+		else {
+			return R.fail("cron表达式有误");
+		}
+
 	}
 	
 	/**
@@ -88,10 +94,15 @@ public class ScheduleJobController {
 	@RequestMapping("/update")
 //	@RequiresPermissions("sys:schedule:update")
 	public R update(@RequestBody ScheduleJobEntity scheduleJob){
+		if(CronExpression.isValidExpression(scheduleJob.getCronExpression())){
+			scheduleJobService.update(scheduleJob);
 
-		scheduleJobService.update(scheduleJob);
+			return R.ok();
+		}
+		else {
+			return R.fail("cron表达式有误");
+		}
 
-		return R.ok();
 	}
 	
 	/**

@@ -56,7 +56,6 @@ public class GenUtils {
 		templates.add("template/beam/Controller.java.vm");
 		templates.add("template/beam/list.vue.vm");
 		templates.add("template/beam/list.js.vm");
-//		templates.add("template/menu.sql.vm");
 		return templates;
 	}
 
@@ -237,10 +236,7 @@ public class GenUtils {
 		if (template.contains("list.js.vm" )) {
 			return "main" + File.separator + "resources" + File.separator + "templates" + File.separator  + className.toLowerCase() + ".js";
 		}
-//
-//		if (template.contains("menu.sql.vm" )) {
-//			return className.toLowerCase() + "_menu.sql";
-//		}
+
 
 		return null;
 	}

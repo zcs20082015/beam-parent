@@ -35,15 +35,10 @@ import java.util.Set;
 
 /**
  * 认证
- * 
- * @author chenshun
- * @email sunlightcs@gmail.com
- * @date 2016年11月10日 上午11:55:49
+ *
  */
 @Component
 public class UserRealm extends AuthorizingRealm {
-
-    
     /**
      * 授权(验证权限时调用)
      */
@@ -52,7 +47,6 @@ public class UserRealm extends AuthorizingRealm {
 		IShiro shiroFactory = ShiroFactroy.me();
 		ShiroUser shiroUser = (ShiroUser) principals.getPrimaryPrincipal();
 
-//		List<Long> roleList = shiroUser.getRoleList();
 		List<String> roleNameList = shiroUser.getRoleNames();
 
 		List<String> permsList = shiroFactory.findPermissionsByUserId(shiroUser.getId());
