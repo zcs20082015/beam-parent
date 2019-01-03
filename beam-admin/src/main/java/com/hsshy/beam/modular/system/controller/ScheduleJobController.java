@@ -44,7 +44,7 @@ public class ScheduleJobController {
 	 * 定时任务列表
 	 */
 	@RequestMapping("/page/list")
-//	@RequiresPermissions("sys:schedule:list")
+	@RequiresPermissions("sys:schedule:list")
 	public R list(ScheduleJobEntity scheduleJobEntity){
 
 		QueryWrapper qw = new QueryWrapper<ScheduleJobEntity>();
@@ -75,7 +75,7 @@ public class ScheduleJobController {
 	 * 保存定时任务
 	 */
 	@RequestMapping("/save")
-//	@RequiresPermissions("sys:schedule:save")
+	@RequiresPermissions("sys:schedule:save")
 	public R save(@RequestBody ScheduleJobEntity scheduleJob){
 		if(CronExpression.isValidExpression(scheduleJob.getCronExpression())){
 			scheduleJobService.saveScheduleJob(scheduleJob);
@@ -92,7 +92,7 @@ public class ScheduleJobController {
 	 * 修改定时任务
 	 */
 	@RequestMapping("/update")
-//	@RequiresPermissions("sys:schedule:update")
+	@RequiresPermissions("sys:schedule:update")
 	public R update(@RequestBody ScheduleJobEntity scheduleJob){
 		if(CronExpression.isValidExpression(scheduleJob.getCronExpression())){
 			scheduleJobService.update(scheduleJob);
@@ -109,7 +109,7 @@ public class ScheduleJobController {
 	 * 删除定时任务
 	 */
 	@RequestMapping("/delete")
-//	@RequiresPermissions("sys:schedule:delete")
+	@RequiresPermissions("sys:schedule:delete")
 	public R delete(@RequestBody Long[] jobIds){
 		scheduleJobService.deleteBatch(jobIds);
 		

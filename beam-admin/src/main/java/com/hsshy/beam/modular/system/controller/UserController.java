@@ -10,6 +10,7 @@ import com.hsshy.beam.sys.service.IDeptService;
 import com.hsshy.beam.sys.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,6 +37,7 @@ public class UserController {
 
     @ApiOperation(value = "分页列表")
     @GetMapping(value = "/page/list")
+    @RequiresPermissions("sys:user:list")
     public Object pageList(User user)  {
 
         if(ToolUtil.isNotEmpty(user.getDeptIds())){
@@ -53,6 +55,7 @@ public class UserController {
 
     @ApiOperation("保存用户")
     @PostMapping(value = "/save")
+    @RequiresPermissions("sys:user:save")
     public Object save(@RequestBody User user){
         //删除缓存
 
@@ -61,6 +64,7 @@ public class UserController {
 
     @ApiOperation("批量删除用户")
     @PostMapping(value = "/delete")
+    @RequiresPermissions("sys:user:del")
     public Object delete(@RequestBody Long userIds[]){
         return userService.deleteUser(userIds);
     }
@@ -84,11 +88,13 @@ public class UserController {
 
     @ApiOperation("重置用户密码")
     @PostMapping(value = "/reset/password")
+    @RequiresPermissions("sys:user:resetPassword")
     public Object resetPassword(@RequestBody Long userIds[]){
         return userService.resetPassword(userIds);
     }
 
     @ApiOperation("修改密码")
+    @RequiresPermissions("sys:user:changePassword")
     @PostMapping(value = "/change/password")
     public Object changePassword(@RequestBody ChangePassowdForm changePassowdForm){
 

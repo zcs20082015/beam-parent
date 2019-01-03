@@ -13,6 +13,7 @@ import com.hsshy.beam.sys.service.IMenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -67,6 +68,7 @@ public class MenuController extends BaseController {
         return R.ok(menuList);
     }
     @ApiOperation("保存")
+    @RequiresPermissions("sys:menu:save")
     @PostMapping(value = "/save")
     public R save(@RequestBody Menu menu){
 
@@ -83,6 +85,7 @@ public class MenuController extends BaseController {
 
     @ApiOperation("详情")
     @GetMapping(value = "/info")
+    @RequiresPermissions("sys:menu:info")
     public R info(@RequestParam Long menuId){
 
         Menu menu = menuService.getById(menuId);
@@ -101,7 +104,7 @@ public class MenuController extends BaseController {
         return R.ok(menu);
 
     }
-
+    @RequiresPermissions("sys:menu:delete")
     @ApiOperation("删除")
     @PostMapping(value = "/delete")
     public R delete(@RequestBody Long menuIds[]){
@@ -127,6 +130,7 @@ public class MenuController extends BaseController {
      */
     @ApiOperation(value = "树形菜单")
     @GetMapping("/tree/menu")
+    @RequiresPermissions("sys:menu:tree")
     public R treeMenu(Menu menu){
         return R.ok(menuService.treeMenuList(0L,menu));
     }

@@ -10,6 +10,7 @@ import com.hsshy.beam.sys.service.IDeptService;
 import com.hsshy.beam.common.base.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +56,7 @@ public class DeptController extends BaseController {
     }
     @ApiOperation("保存")
     @PostMapping(value = "/save")
+    @RequiresPermissions("sys:dept:save")
     public R save(@RequestBody Dept dept){
 
         deptService.saveOrUpdate(dept);
@@ -62,6 +64,7 @@ public class DeptController extends BaseController {
     }
     @ApiOperation("删除")
     @PostMapping(value = "/delete")
+    @RequiresPermissions("sys:dept:del")
     public R delete(@RequestBody Long deptIds[]){
 
         if(ToolUtil.isEmpty(deptIds)||deptIds.length<=0){
@@ -75,6 +78,7 @@ public class DeptController extends BaseController {
      * 树形
      */
     @ApiOperation(value = "树形部门")
+    @RequiresPermissions("sys:dept:tree")
     @GetMapping("/tree/dept")
     public R treeDept(Dept dept){
         return R.ok(deptService.treeDeptList(0L,dept));
@@ -83,6 +87,7 @@ public class DeptController extends BaseController {
 
     @ApiOperation("详情")
     @GetMapping(value = "/info")
+    @RequiresPermissions("sys:dept:info")
     public R info(@RequestParam Long deptId){
 
         Dept dept = deptService.getById(deptId);
