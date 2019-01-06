@@ -54,6 +54,8 @@ beam-parent
 - MySQL5.5+
 - Maven3.0+
 
+#### 前端地址：
+https://gitee.com/hsshy/beam-manage-system
 
 #### 演示地址
 http://www.hsshy.cn
