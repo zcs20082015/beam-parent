@@ -4,7 +4,7 @@ package com.hsshy.beam.seckill.controller;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.seckill.service.ISeckillService;
 import com.hsshy.beam.seckill.service.ISeckillDistributedService;
-import com.hsshy.beam.seckill.util.redis.RedisUtil;
+import com.hsshy.beam.seckill.util.redis.SeckillRedisUtil;
 import com.hsshy.beam.seckill.util.redis.message.RedisSender;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,7 +39,7 @@ public class SeckillDistributedController {
 
 
 	@Autowired
-	private RedisUtil redisUtil;
+	private SeckillRedisUtil seckillRedisUtil;
 
 	@Autowired
 	private RedisSender redisSender;
@@ -109,7 +109,7 @@ public class SeckillDistributedController {
 	@ApiOperation(value="秒杀三(Redis分布式队列-订阅监听)",nickname="科帮网")
 	@PostMapping("/startRedisQueue")
 	public R startRedisQueue(long seckillId){
-		redisUtil.cacheValue(seckillId+"", null);//秒杀结束
+		seckillRedisUtil.cacheValue(seckillId+"", null);//秒杀结束
 		seckillService.deleteSeckill(seckillId);
 		final long killId =  seckillId;
 		LOGGER.info("开始秒杀三");
@@ -118,7 +118,7 @@ public class SeckillDistributedController {
 			Runnable task = new Runnable() {
 				@Override
 				public void run() {
-					if(redisUtil.getValue(killId+"")==null){
+					if(seckillRedisUtil.getValue(killId+"")==null){
 						//思考如何返回给用户信息ws
 						redisSender.sendChannelMess("seckill",killId+";"+userId);
 					}else{
@@ -130,7 +130,7 @@ public class SeckillDistributedController {
 		}
 		try {
 			Thread.sleep(10000);
-			redisUtil.cacheValue(killId+"", null);
+			seckillRedisUtil.cacheValue(killId+"", null);
 			Long  seckillCount = seckillService.getSeckillCount(seckillId);
 			LOGGER.info("一共秒杀出{}件商品",seckillCount);
 		} catch (InterruptedException e) {

@@ -1,6 +1,6 @@
-package com.hsshy.beam.modular.auth.util;
+package com.hsshy.beam.filter.util;
 
-import com.hsshy.beam.config.properties.JwtProperties;
+import com.hsshy.beam.filter.properties.JwtProperties;
 import com.hsshy.beam.common.utils.ToolUtil;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;

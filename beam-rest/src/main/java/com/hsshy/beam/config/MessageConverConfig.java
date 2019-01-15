@@ -1,7 +1,7 @@
 package com.hsshy.beam.config;
 import com.hsshy.beam.common.config.DefaultFastjsonConfig;
 import com.hsshy.beam.config.properties.BeamRestProperties;
-import com.hsshy.beam.modular.auth.converter.WithSignMessageConverter;
+import com.hsshy.beam.filter.converter.WithSignMessageConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -16,9 +16,9 @@ import java.util.concurrent.TimeUnit;
  * 创建时间	2018年4月8日
  */
 @Component
-public class RedisUtil {
+public class SeckillRedisUtil {
 	
-   private static final Logger logger = LoggerFactory.getLogger(RedisUtil.class);
+   private static final Logger logger = LoggerFactory.getLogger(SeckillRedisUtil.class);
 	
     @Resource
 	private RedisTemplate<Serializable, Serializable> redisTemplate;

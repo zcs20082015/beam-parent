@@ -1,6 +1,6 @@
-package com.hsshy.beam.modular.auth.util;
+package com.hsshy.beam.filter.util;
 
-import com.hsshy.beam.modular.auth.security.impl.Base64SecurityAction;
+import com.hsshy.beam.filter.security.impl.Base64SecurityAction;
 import com.hsshy.beam.common.utils.MD5Util;
 
 public class SignTest {

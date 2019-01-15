@@ -1,9 +1,9 @@
-package com.hsshy.beam.modular.auth.converter;
+package com.hsshy.beam.filter.converter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.hsshy.beam.config.properties.JwtProperties;
-import com.hsshy.beam.modular.auth.security.DataSecurityAction;
-import com.hsshy.beam.modular.auth.util.JwtTokenUtil;
+import com.hsshy.beam.filter.properties.JwtProperties;
+import com.hsshy.beam.filter.security.DataSecurityAction;
+import com.hsshy.beam.filter.util.JwtTokenUtil;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.common.support.HttpKit;
@@ -50,8 +50,6 @@ public class WithSignMessageConverter extends FastJsonHttpMessageConverter {
         String object = baseTransferEntity.getObject();
         String json = dataSecurityAction.unlock(object);
         String encrypt = MD5Util.encrypt(object + md5KeyFromToken);
-
-
 
         if (encrypt.equals(baseTransferEntity.getSign())) {
             System.out.println("签名校验成功!");

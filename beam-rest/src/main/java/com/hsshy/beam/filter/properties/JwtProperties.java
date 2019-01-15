@@ -1,4 +1,4 @@
-package com.hsshy.beam.config.properties;
+package com.hsshy.beam.filter.properties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 

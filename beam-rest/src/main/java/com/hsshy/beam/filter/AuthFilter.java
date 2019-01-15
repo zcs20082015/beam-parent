@@ -1,6 +1,6 @@
-package com.hsshy.beam.modular.auth;
-import com.hsshy.beam.config.properties.JwtProperties;
-import com.hsshy.beam.modular.auth.util.JwtTokenUtil;
+package com.hsshy.beam.filter;
+import com.hsshy.beam.filter.properties.JwtProperties;
+import com.hsshy.beam.filter.util.JwtTokenUtil;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.support.StrKit;
 import com.hsshy.beam.common.utils.R;

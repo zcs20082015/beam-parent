@@ -1,4 +1,4 @@
-package com.hsshy.beam.modular.auth.converter;
+package com.hsshy.beam.filter.converter;
 
 /**
  * 基础的传输bean

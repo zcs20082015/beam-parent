@@ -1,4 +1,4 @@
-package com.hsshy.beam.modular.auth.security;
+package com.hsshy.beam.filter.security;
 
 /**
  * <pre>
