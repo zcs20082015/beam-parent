@@ -165,6 +165,13 @@
             <artifactId>commons-email</artifactId>
         </dependency>
 
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 
