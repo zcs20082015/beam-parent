@@ -13,6 +13,7 @@ public class SignTest {
                 "  \"id\": 0\n" +
                 "\n" +
                 "}";
+        String b = "{wordName: \"哎呀妈呀脑瓜疼脑瓜疼脑瓜疼\", wordId: null, totalMoney: \"1\", totalCount: \"1\", serviceMoney: \"0.02\",orderNo:null}";
 
         String o = base64SecurityAction.doAction(a);
         System.out.println(o);

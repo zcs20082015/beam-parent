@@ -3,6 +3,7 @@ package com.hsshy.beam.seckill.util.redis.lock;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
+import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.Config;
 import org.redisson.config.SingleServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,31 @@ public class RedissonAutoConfiguration {
 
     @Autowired
     private RedissonProperties redssionProperties;
+
+    /**
+     * 集群模式自动装配
+     * @return
+     */
+    @Bean
+    @ConditionalOnProperty(name="redisson.cluster")
+    RedissonClient redissonCluster() {
+        Config config = new Config();
+
+        for(String node:redssionProperties.getClusterAddresses()){
+            System.out.println("节点："+node);
+
+        }
+        ClusterServersConfig clusterServersConfig = config.useClusterServers() //这是用的集群server
+                .setScanInterval(2000) //设置集群状态扫描时间
+                .setMasterConnectionPoolSize(redssionProperties.getMasterConnectionPoolSize()) //设置连接数
+                .setSlaveConnectionPoolSize(redssionProperties.getSlaveConnectionPoolSize())
+                .addNodeAddress(redssionProperties.getClusterAddresses());
+        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
+            clusterServersConfig.setPassword(redssionProperties.getPassword());
+        }
+        return Redisson.create(config);
+
+    }
 
     /**
      * 哨兵模式自动装配

@@ -19,9 +19,16 @@ public class RedissonProperties {
 
     private int masterConnectionPoolSize = 250;
 
+
+    //Sentinel 哨兵模式
+    private String masterName;
     private String[] sentinelAddresses;
 
-    private String masterName;
+
+
+    //cluster 集群模式
+    private String[] clusterAddresses;
+    private int scanInterval = 2000;
 
     public int getTimeout() {
         return timeout;
@@ -93,5 +100,21 @@ public class RedissonProperties {
 
     public void setConnectionMinimumIdleSize(int connectionMinimumIdleSize) {
         this.connectionMinimumIdleSize = connectionMinimumIdleSize;
+    }
+
+    public String[] getClusterAddresses() {
+        return clusterAddresses;
+    }
+
+    public void setClusterAddresses(String clusterAddresses) {
+        this.clusterAddresses = clusterAddresses.split(",");
+    }
+
+    public int getScanInterval() {
+        return scanInterval;
+    }
+
+    public void setScanInterval(int scanInterval) {
+        this.scanInterval = scanInterval;
     }
 }
