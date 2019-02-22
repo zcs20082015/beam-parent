@@ -58,7 +58,7 @@ beam-parent
 https://gitee.com/hsshy/beam-manage-system
 
 #### 演示地址
-http://www.hsshy.cn
+http://www.hsshy.com
 
 #### 项目截图
 ##### 后台管理系统：
