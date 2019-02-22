@@ -132,6 +132,16 @@
             <version>3.5.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>acrcloud.api</groupId>
+            <artifactId>acrcloud-api</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                ${project.basedir}/src/main/resources/libs/commons-codec-1.10.jar
+            </systemPath>
+        </dependency>
+
 
 
 
