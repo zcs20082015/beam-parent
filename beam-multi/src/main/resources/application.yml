@@ -8,8 +8,7 @@ spring:
   profiles:
     active: @spring.active@
 
-log:
-  path: beam-rest-logs
+#动态数据源：https://www.jianshu.com/p/eb4114b25d22
 ---
 
 server:
