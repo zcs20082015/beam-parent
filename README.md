@@ -22,10 +22,9 @@ beam-parent
 │           
 ├─beam-seckill     秒杀案例模块
 │        
-│
 ├─beam-multi     动态数据源案例模块
 │ 
-│
+├─beam-rabbitmq  springboot整合rabbitmq案例模块
 │        
 │ 
 │ 
