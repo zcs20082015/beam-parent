@@ -1,6 +1,4 @@
 package com.hsshy.beam.seckill.util.redis.message;
-
-
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.seckill.service.ISeckillService;
 import com.hsshy.beam.seckill.util.redis.SeckillRedisUtil;
@@ -26,15 +24,12 @@ public class RedisConsumer {
     		R result = seckillService.startSeckilDBPCC_TWO(Long.parseLong(array[0]), Long.parseLong(array[1]));
     		if(result.equals(R.ok())){
 				System.out.println(array[0].toString()+"秒杀成功");
-//    			WebSocketServer.sendInfo(array[0].toString(), "秒杀成功");//推送给前台
     		}else{
-//    			WebSocketServer.sendInfo(array[0].toString(), "秒杀失败");//推送给前台
 				System.out.println(array[0].toString()+"秒杀失败");
     			seckillRedisUtil.cacheValue(array[0], "ok");//秒杀结束
     		}
     	}else{
 			System.out.println(array[0].toString()+"秒杀失败");
-//    		WebSocketServer.sendInfo(array[0].toString(), "秒杀失败");//推送给前台
     	}
     }
 }

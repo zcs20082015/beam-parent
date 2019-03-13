@@ -47,7 +47,7 @@ public interface ISeckillService extends IService<Seckill> {
      * @param userId
      * @return
      */
-    R startSeckil(long seckillId,long userId);
+    R startSeckil(long seckillId, long userId);
 
     /**
      * 秒杀 二、程序锁
@@ -55,14 +55,14 @@ public interface ISeckillService extends IService<Seckill> {
      * @param userId
      * @return
      */
-    R startSeckilLock(long seckillId,long userId);
+    R startSeckilLock(long seckillId, long userId);
     /**
      * 秒杀 二、程序锁AOP
      * @param seckillId
      * @param userId
      * @return
      */
-    R startSeckilAopLock(long seckillId,long userId);
+    R startSeckilAopLock(long seckillId, long userId);
 
     /**
      * 秒杀 二、数据库悲观锁
@@ -70,7 +70,7 @@ public interface ISeckillService extends IService<Seckill> {
      * @param userId
      * @return
      */
-    R startSeckilDBPCC_ONE(long seckillId,long userId);
+    R startSeckilDBPCC_ONE(long seckillId, long userId);
     /**
      * 秒杀 三、数据库悲观锁
      * @param seckillId
@@ -84,7 +84,7 @@ public interface ISeckillService extends IService<Seckill> {
      * @param userId
      * @return
      */
-    R startSeckilDBOCC(long seckillId,long userId,Long number);
+    R startSeckilDBOCC(long seckillId, long userId, Long number);
 
     /**
      * 秒杀 四、事物模板
@@ -92,6 +92,6 @@ public interface ISeckillService extends IService<Seckill> {
      * @param userId
      * @return
      */
-    R startSeckilTemplate(long seckillId,long userId,long number);
+    R startSeckilTemplate(long seckillId, long userId, long number);
 
 }

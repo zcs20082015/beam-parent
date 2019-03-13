@@ -1,4 +1,4 @@
-package com.hsshy.beam.common.config;
+package com.hsshy.beam.common.config.multi;
 import com.hsshy.beam.common.mutidatasource.DynamicDataSource;
 import com.hsshy.beam.common.mutidatasource.aop.MultiSourceExAop;
 import com.zaxxer.hikari.HikariDataSource;

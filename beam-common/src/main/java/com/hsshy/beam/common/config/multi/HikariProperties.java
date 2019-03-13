@@ -1,4 +1,4 @@
-package com.hsshy.beam.common.config;
+package com.hsshy.beam.common.config.multi;
 
 
 import com.zaxxer.hikari.HikariDataSource;

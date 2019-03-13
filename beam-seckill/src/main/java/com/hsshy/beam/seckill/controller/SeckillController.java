@@ -42,7 +42,7 @@ public class SeckillController extends BaseController {
 
 
 
-    @ApiOperation(value="秒杀一(最low实现)",nickname="科帮网")
+    @ApiOperation(value="秒杀一(最low实现)")
     @PostMapping("/start")
     public R start(long seckillId){
         int skillNum = 1000;
@@ -75,7 +75,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀二(程序锁)",nickname="科帮网")
+    @ApiOperation(value="秒杀二(程序锁)")
     @PostMapping("/startLock")
     public R startLock(long seckillId){
         int skillNum = 1000;
@@ -104,7 +104,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀三(AOP程序锁)",nickname="科帮网")
+    @ApiOperation(value="秒杀三(AOP程序锁)")
     @PostMapping("/startAopLock")
     public R startAopLock(long seckillId){
         int skillNum = 1000;
@@ -133,7 +133,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀四(数据库悲观锁)",nickname="科帮网")
+    @ApiOperation(value="秒杀四(数据库悲观锁)")
     @PostMapping("/startDBPCC_ONE")
     public R startDBPCC_ONE(long seckillId){
         int skillNum = 1000;
@@ -163,7 +163,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀五(数据库悲观锁)",nickname="科帮网")
+    @ApiOperation(value="秒杀五(数据库悲观锁)")
     @PostMapping("/startDPCC_TWO")
     public R startDPCC_TWO(long seckillId){
         int skillNum = 1000;
@@ -192,7 +192,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀六(数据库乐观锁)",nickname="科帮网")
+    @ApiOperation(value="秒杀六(数据库乐观锁)")
     @PostMapping("/startDBOCC")
     public R startDBOCC(long seckillId){
         int skillNum = 1000;
@@ -223,7 +223,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀柒(进程内队列)",nickname="科帮网")
+    @ApiOperation(value="秒杀柒(进程内队列)")
     @PostMapping("/startQueue")
     public R startQueue(long seckillId){
 
@@ -262,7 +262,7 @@ public class SeckillController extends BaseController {
         }
         return R.ok();
     }
-    @ApiOperation(value="秒杀柒(Disruptor队列)",nickname="科帮网")
+    @ApiOperation(value="秒杀柒(Disruptor队列)")
     @PostMapping("/startDisruptorQueue")
     public R startDisruptorQueue(long seckillId){
         seckillService.deleteSeckill(seckillId);

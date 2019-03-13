@@ -27,26 +27,26 @@ public class RedissonAutoConfiguration {
      * 集群模式自动装配
      * @return
      */
-    @Bean
-    @ConditionalOnProperty(name="redisson.cluster")
-    RedissonClient redissonCluster() {
-        Config config = new Config();
-
-        for(String node:redssionProperties.getClusterAddresses()){
-            System.out.println("节点："+node);
-
-        }
-        ClusterServersConfig clusterServersConfig = config.useClusterServers() //这是用的集群server
-                .setScanInterval(2000) //设置集群状态扫描时间
-                .setMasterConnectionPoolSize(redssionProperties.getMasterConnectionPoolSize()) //设置连接数
-                .setSlaveConnectionPoolSize(redssionProperties.getSlaveConnectionPoolSize())
-                .addNodeAddress(redssionProperties.getClusterAddresses());
-        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
-            clusterServersConfig.setPassword(redssionProperties.getPassword());
-        }
-        return Redisson.create(config);
-
-    }
+//    @Bean
+//    @ConditionalOnProperty(name="redisson.cluster")
+//    RedissonClient redissonCluster() {
+//        Config config = new Config();
+//
+//        for(String node:redssionProperties.getClusterAddresses()){
+//            System.out.println("节点："+node);
+//
+//        }
+//        ClusterServersConfig clusterServersConfig = config.useClusterServers() //这是用的集群server
+//                .setScanInterval(2000) //设置集群状态扫描时间
+//                .setMasterConnectionPoolSize(redssionProperties.getMasterConnectionPoolSize()) //设置连接数
+//                .setSlaveConnectionPoolSize(redssionProperties.getSlaveConnectionPoolSize())
+//                .addNodeAddress(redssionProperties.getClusterAddresses());
+//        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
+//            clusterServersConfig.setPassword(redssionProperties.getPassword());
+//        }
+//        return Redisson.create(config);
+//
+//    }
 
     /**
      * 哨兵模式自动装配

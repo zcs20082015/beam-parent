@@ -18,9 +18,10 @@ beam-parent
 │           ├─logback-spring.xml  日志配置文件
 │ 
 ├─beam-rest        API服务
-│        └─seckill 秒杀测试模块
+│        
 │           
-│ 
+├─beam-seckill     秒杀案例模块
+│        
 │ 
 │ 
 ├─beam-generator  代码生成器

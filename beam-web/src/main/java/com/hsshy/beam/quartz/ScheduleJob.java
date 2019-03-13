@@ -20,7 +20,6 @@ import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -43,7 +42,6 @@ public class ScheduleJob extends QuartzJobBean {
         //获取spring bean
 
 
-        
         //任务开始时间
         long startTime = System.currentTimeMillis();
         
