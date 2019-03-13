@@ -9,7 +9,7 @@ package com.hsshy.beam.common.constant;
  */
 public interface DatasourceEnum {
 
-	String DATA_SOURCE_GUNS = "dataSourceBeam";			//beam数据源
+	String DATA_SOURCE_BEAM = "dataSourceBeam";			//beam数据源
 	
 	String DATA_SOURCE_BIZ = "dataSourceBiz";			//其他业务的数据源
 }

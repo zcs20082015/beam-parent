@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: hs
  * @create: 2019-02-12 16:08:14
  **/
-@Api(value="TestController",tags={"测试数据源"})
+@Api(value="TestController",tags={"测试数据源(测试前新建测试表test)"})
 @RequestMapping("/test/multi")
 @RestController
 public class TestController {
@@ -25,7 +25,7 @@ public class TestController {
     @ApiOperation(value="测试数据源beam")
     @PostMapping("/beam")
     public R beam(){
-        testService.testGuns();
+        testService.testBeam();
         return R.ok();
     }
     @ApiOperation(value="测试数据源biz")
