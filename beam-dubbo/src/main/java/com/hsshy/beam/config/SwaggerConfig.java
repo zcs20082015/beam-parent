@@ -1,5 +1,5 @@
 package com.hsshy.beam.config;
-import com.hsshy.beam.config.properties.MultiProperties;
+import com.hsshy.beam.config.properties.DubboProperties;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(prefix = MultiProperties.MULTI_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
+@ConditionalOnProperty(prefix = DubboProperties.MULTI_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean

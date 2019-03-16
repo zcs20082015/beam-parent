@@ -1,0 +1,74 @@
+dubbo:
+  swagger-open: true  #\u662F\u5426\u5F00\u542Fswagger (true/false)
+  auth-open: true #\u62E6\u622A\u5668\u662F\u5426\u5F00\u542F(true\u6216\u8005false)
+  sign-open: true #\u7B7E\u540D\u673A\u5236\u662F\u5426\u5F00\u542F(true\u6216false)
+  file-upload-path: /home/upload/data      #\u6587\u4EF6\u4E0A\u4F20\u76EE\u5F55(\u4E0D\u914D\u7F6E\u7684\u8BDD\u4E3Ajava.io.tmpdir\u76EE\u5F55)
+
+spring:
+  profiles:
+    active: @spring.active@
+
+
+---
+
+# \u5355\u673A\u6A21\u5F0F
+redisson:
+  address: redis://127.0.0.1:6379
+  password:
+
+server:
+  port: 7070
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    filters: log4j,wall,mergeStat
+    hikari:
+      readOnly: false
+      connectionTimeout: 60000
+      idleTimeout: 60000
+      validationTimeout: 3000
+      maxLifetime: 60000
+      loginTimeout: 5
+      maximumPoolSize: 60
+      minimumIdle: 10
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # \u5BC6\u7801\uFF08\u9ED8\u8BA4\u4E3A\u7A7A\uFF09
+    timeout: 6000ms  # \u8FDE\u63A5\u8D85\u65F6\u65F6\u957F\uFF08\u6BEB\u79D2\uFF09
+
+---
+dubbo:
+  swagger-open: false              #\u662F\u5426\u5F00\u542Fswagger (true/false)
+
+server:
+  port: 7070
+spring:
+  profiles: produce
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/beam?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    filters: log4j,wall,mergeStat
+    hikari:
+      readOnly: false
+      connectionTimeout: 60000
+      idleTimeout: 60000
+      validationTimeout: 3000
+      maxLifetime: 60000
+      loginTimeout: 5
+      maximumPoolSize: 60
+      minimumIdle: 10
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:      # \u5BC6\u7801\uFF08\u9ED8\u8BA4\u4E3A\u7A7A\uFF09
+    timeout: 6000ms  # \u8FDE\u63A5\u8D85\u65F6\u65F6\u957F\uFF08\u6BEB\u79D2\uFF09
+
+
+

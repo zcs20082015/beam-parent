@@ -9,10 +9,10 @@ import static com.hsshy.beam.common.utils.ToolUtil.getTempPath;
 import static com.hsshy.beam.common.utils.ToolUtil.isEmpty;
 
 @Configuration
-@ConfigurationProperties(prefix = MultiProperties.MULTI_PREFIX)
-public class MultiProperties {
+@ConfigurationProperties(prefix = DubboProperties.DUBBO_PREFIX)
+public class DubboProperties {
 
-    public static final String MULTI_PREFIX = "multi";
+    public static final String DUBBO_PREFIX = "dubbo";
 
 
     private String fileUploadPath;

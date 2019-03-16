@@ -1,6 +1,6 @@
 package com.hsshy.beam.config;
 import com.hsshy.beam.common.config.DefaultFastjsonConfig;
-import com.hsshy.beam.config.properties.MultiProperties;
+import com.hsshy.beam.config.properties.DubboProperties;
 import com.hsshy.beam.interceptors.AppInterceptor;
 import com.hsshy.beam.interceptors.converter.WithSignMessageConverter;
 import com.hsshy.beam.interceptors.security.DataSecurityAction;
@@ -35,7 +35,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = MultiProperties.MULTI_PREFIX, name = "sign-open", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = DubboProperties.MULTI_PREFIX, name = "sign-open", havingValue = "true", matchIfMissing = true)
     public WithSignMessageConverter withSignMessageConverter() {
         WithSignMessageConverter withSignMessageConverter = new WithSignMessageConverter();
         DefaultFastjsonConfig defaultFastjsonConfig = new DefaultFastjsonConfig();
