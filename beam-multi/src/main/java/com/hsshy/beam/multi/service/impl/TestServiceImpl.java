@@ -31,13 +31,13 @@ public class TestServiceImpl implements TestService {
         test.setName("gunsBeam");
         testMapper.insert(test);
     }
-
     @Override
     @Transactional
     public void testAll() {
+        testBiz();
+
         testBeam();
 
-        testBiz();
 //        int i = 1 / 0;
     }
 
