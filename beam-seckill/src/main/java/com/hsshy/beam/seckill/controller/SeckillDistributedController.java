@@ -49,12 +49,12 @@ public class SeckillDistributedController {
 	@ApiOperation(value="秒杀一(Rediss分布式锁)",nickname="科帮网")
 	@PostMapping("/startRedisLock")
 	public R startRedisLock(long seckillId){
-		int skillNum = 10000;
+		int skillNum = 1000;
 		final CountDownLatch latch = new CountDownLatch(skillNum);//N个购买者
 		seckillService.deleteSeckill(seckillId);
 		final long killId =  seckillId;
 		LOGGER.info("开始秒杀一");
-		for(int i=0;i<10000;i++){
+		for(int i=0;i<1000;i++){
 			final long userId = i;
 			Runnable task = new Runnable() {
 				@Override
@@ -79,12 +79,12 @@ public class SeckillDistributedController {
 	@ApiOperation(value="秒杀一(AOP Rediss分布式锁)",nickname="科帮网")
 	@PostMapping("/startAopRedisLock")
 	public R startAopRedisLock(long seckillId){
-		int skillNum = 11000;
+		int skillNum = 1000;
 		final CountDownLatch latch = new CountDownLatch(skillNum);//N个购买者
 		seckillService.deleteSeckill(seckillId);
 		final long killId =  seckillId;
 		LOGGER.info("开始秒杀一");
-		for(int i=0;i<11000;i++){
+		for(int i=0;i<1000;i++){
 			final long userId = i;
 			Runnable task = new Runnable() {
 				@Override

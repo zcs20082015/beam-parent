@@ -16,6 +16,19 @@ redisson:
   address: redis://127.0.0.1:6379
   password:
 
+# redis 锁
+# 博客 https://www.jianshu.com/p/c5048208709c
+#cluster模式
+#redisson:
+#  cluster: true
+#  password: testpwd
+#  cluster-addresses: redis://10.186.25.64:7000,redis://10.186.25.64:7001,redis://10.186.25.64:7002,redis://10.186.25.64:7003,redis://10.186.25.64:7004,redis://10.186.25.64:7005
+# 哨兵模式
+#redisson:
+#  master-name: mymaster
+#  password:
+#  sentinel-addresses: 10.47.91.83:26379,10.47.91.83:26380,10.47.91.83:26381
+
 server:
    port: 7070
 spring:
@@ -40,6 +53,27 @@ spring:
     port: 6379
     password:      # 密码（默认为空）
     timeout: 6000ms  # 连接超时时长（毫秒）
+#  redis:
+#    database: 0
+#    timeout: 6000ms  # 连接超时时长（毫秒）
+#    cluster:
+#      nodes: 10.186.25.64:7000,10.186.25.64:7001,10.186.25.64:7002,10.186.25.64:7003,10.186.25.64:7004,10.186.25.64:7005 #内网地址
+#      connTimeOut: 1000 #连接server超时时间
+#      soTimeOut: 1000 #等待response超时时间
+#      maxAttempts: 2 #连接失败重试次数
+#    password: testpwd    # 密码（默认为空）
+
+# Redis高可用集群Redis Cluster搭建
+# 博客 https://www.jianshu.com/p/c39e7345caff
+#  redis:
+#    database: 0
+#    timeout: 6000ms  # 连接超时时长（毫秒）
+#    cluster:
+#      nodes: 119.29.192.127:7000,119.29.192.127:7001,119.29.192.127:7002,119.29.192.127:7003,119.29.192.127:7004,119.29.192.127:7005
+#      connTimeOut: 1000 #连接server超时时间
+#      soTimeOut: 1000 #等待response超时时间
+#      maxAttempts: 2 #连接失败重试次数
+#    password: testpwd    # 密码（默认为空）
 
 ---
 # 单机模式

@@ -35,7 +35,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = DubboProperties.MULTI_PREFIX, name = "sign-open", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = DubboProperties.DUBBO_PREFIX, name = "sign-open", havingValue = "true", matchIfMissing = true)
     public WithSignMessageConverter withSignMessageConverter() {
         WithSignMessageConverter withSignMessageConverter = new WithSignMessageConverter();
         DefaultFastjsonConfig defaultFastjsonConfig = new DefaultFastjsonConfig();

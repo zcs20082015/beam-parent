@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
-@ConditionalOnProperty(prefix = DubboProperties.MULTI_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
+@ConditionalOnProperty(prefix = DubboProperties.DUBBO_PREFIX, name = "swagger-open", havingValue = "true",matchIfMissing = true)
 public class SwaggerConfig implements WebMvcConfigurer {
 
     @Bean
