@@ -6,7 +6,7 @@
   - Guns:https://gitee.com/stylefeng/guns。
   - renren-security：https://gitee.com/renrenio/renren-security。
   - vue-manage-system：https://github.com/lin-xin/vue-manage-system。
-
+- 子项目除了beam-common、beam-web为必须，其他均可删除。
 #### 项目结构
 ````
 beam-parent

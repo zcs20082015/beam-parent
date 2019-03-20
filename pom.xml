@@ -9,12 +9,16 @@
 	<packaging>pom</packaging> <!--重要 父级packageing为 pom-->
 
 	<modules>
-		<module>beam-admin</module>
-		<module>beam-rest</module>
-		<module>beam-common</module>
-		<module>beam-generator</module>
-		<module>beam-web</module>
+		<module>beam-admin</module><!--后台管理系统-->
+		<module>beam-rest</module><!--api服务（将删除）-->
+		<module>beam-common</module><!--通用工具类-->
+		<module>beam-generator</module><!--代码生成器-->
+		<module>beam-web</module><!--通用实体、dao、service-->
 		<module>beam-seckill</module><!--秒杀模块-->
+		<module>beam-rabbitmq</module><!--rabbitmq案例模块-->
+		<module>beam-multi</module><!--多数据源案例模块-->
+		<module>beam-dubbo-consumer</module><!--dubbo消费者模块-->
+		<module>beam-dubbo-provider</module><!--dubbo服务提供者模块-->
 	</modules>
 
 	<parent>
