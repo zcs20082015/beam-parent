@@ -26,6 +26,12 @@ beam-parent
 │ 
 ├─beam-rabbitmq  springboot整合rabbitmq案例模块
 │        
+├─beam-dubbo-consumer  springboot整合dubbo消费者
+│ 
+├─beam-dubbo-provider  springboot整合dubbo服务提供者
+│ 
+│ 
+│ 
 │ 
 │ 
 │ 
