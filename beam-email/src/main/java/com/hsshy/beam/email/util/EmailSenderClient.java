@@ -1,24 +1,34 @@
-package com.hsshy.beam.common.mail;
+package com.hsshy.beam.email.util;
 
 import org.apache.commons.mail.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by liuguanqing on 15/4/11.
- */
+@Component
 public class EmailSenderClient {
 
+    //QQ邮箱
+    //邮箱中是否开启了这项服务，如果尚未开启，请您在邮箱设置=》帐号=》POP3/IMAP/SMTP/Exchange服务中勾选POP3/SMTP服务和IMAP/SMTP服务；
+    //POP3服务器（端口995）	pop.qq.com
+    //SMTP服务器（端口465或587）smtp.qq.com
+
+    //163邮箱
+    //IMAP服务器  imap.163.com SSL协议端口 993 非SSL协议端口143
+    //SMTP服务器  smtp.163.com SSL协议端口 465/994 非SSL协议端口25
+    //POP3服务器  pop.163.com  SSL协议端口 995 非SSL协议端口110
+
+    @Value("${email.hostName}")
     private String hostName;//发送端Host
-
-    private int smtpPort;//发送端口
-
+    @Value("${email.smtpPort}")
+    private String smtpPort;//发送端口
+    @Value("${email.username}")
     private String username;
-
+    @Value("${email.password}")
     private String password;
-
+    @Value("${email.fromAddress}")
     private String fromAddress;//发送邮件的发送地址
 
     private boolean sslOn = true;
@@ -29,7 +39,7 @@ public class EmailSenderClient {
         this.hostName = hostName;
     }
 
-    public void setSmtpPort(int smtpPort) {
+    public void setSmtpPort(String smtpPort) {
         this.smtpPort = smtpPort;
     }
 
@@ -56,7 +66,7 @@ public class EmailSenderClient {
         email.setFrom(fromAddress);
         email.setSSLOnConnect(sslOn);
         email.setHostName(hostName);
-        email.setSmtpPort(smtpPort);
+        email.setSmtpPort(new Integer(smtpPort));
         email.send();
     }
 
@@ -103,31 +113,6 @@ public class EmailSenderClient {
 
 
 
-    //QQ邮箱
-    //邮箱中是否开启了这项服务，如果尚未开启，请您在邮箱设置=》帐号=》POP3/IMAP/SMTP/Exchange服务中勾选POP3/SMTP服务和IMAP/SMTP服务；
-    //POP3服务器（端口995）	pop.qq.com
-    //SMTP服务器（端口465或587）smtp.qq.com
 
-    //163邮箱
-    //IMAP服务器  imap.163.com SSL协议端口 993 非SSL协议端口143
-    //SMTP服务器  smtp.163.com SSL协议端口 465/994 非SSL协议端口25
-    //POP3服务器  pop.163.com  SSL协议端口 995 非SSL协议端口110
-    public static void main(String[] args) throws Exception{
-        EmailSenderClient client = new EmailSenderClient();
-        client.setSmtpPort(465);
-        client.setHostName("smtp.qq.com");
-        client.setUsername("457030599@qq.com");
-        //邮箱密码：https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
-        client.setPassword("ltvdkgoapjtdcafc");//您的邮箱密码
-        client.setSslOn(true);
-        client.setFromAddress("457030599@qq.com");
 
-        String targetAddress = "1096845079@qq.com";
-        client.sendTextEmail(targetAddress,"测试邮件","是否可以收到邮件！");
-//        Map<String,URL> attaches = new HashMap<String, URL>();
-//        attaches.put("logo",new URL("http://www.baidu.com/img/bd_logo1.png"));
-//        attaches.put("logo2",new URL("http://commons.apache.org/proper/commons-email/images/commons-logo.png"));
-//        client.sendMultipartEmail(targetAddress, "测试邮件", "test", attaches);
-        System.out.println("发送成功！");
-    }
 }

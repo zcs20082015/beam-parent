@@ -15,7 +15,7 @@ public class ProducerService {
     public void send() {
         String context = "hello " + new Date();
         System.out.println("Sender : " + context);
-        this.rabbitTemplate.convertAndSend("task_queue", context);
+        this.rabbitTemplate.convertAndSend("common_queue", context);
     }
 
     public void topicSend1() {

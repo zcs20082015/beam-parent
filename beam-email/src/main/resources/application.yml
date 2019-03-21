@@ -1,23 +1,23 @@
-multi:
+beam:
     swagger-open: true  #是否开启swagger (true/false)
     auth-open: true #拦截器是否开启(true或者false)
     sign-open: true #签名机制是否开启(true或false)
     file-upload-path: /home/upload/data      #文件上传目录(不配置的话为java.io.tmpdir目录)
+email:
+  hostName: smtp.qq.com
+  smtpPort: 465
+  username: 457030599@qq.com
+  password: xxxxxxxxx #邮箱密码：https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
+  fromAddress: 457030599@qq.com
 
 spring:
   profiles:
     active: @spring.active@
-    #默认配置也是这样
-    rabbitmq:
-        host: localhost
-        port: 5672
-        username: guest
-        password: guest
 
 ---
 
 server:
-   port: 7072
+   port: 7075
 spring:
   profiles: local
   datasource:
@@ -46,7 +46,7 @@ multi:
     swagger-open: false              #是否开启swagger (true/false)
 
 server:
-  port: 7072
+  port: 7075
 spring:
   profiles: produce
   datasource:
