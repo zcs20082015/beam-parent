@@ -30,7 +30,7 @@ beam-parent
 │ 
 ├─beam-dubbo-provider  springboot整合dubbo服务提供者
 │ 
-│ 
+├─beam-email  springboot整合email发送邮件（异步发送、消息队列发送）
 │ 
 │ 
 │ 
