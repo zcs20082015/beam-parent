@@ -44,7 +44,15 @@ beam-parent
 │       
 │ 
 ├─beam-web  公用实体类、dao、service
-│       
+│   
+│ 
+├─doc  数据库sql文件
+│ 
+│ 
+│ 
+│ 
+│ 
+│     
 │ 
 ````
 
