@@ -79,6 +79,7 @@ https://gitee.com/hsshy/beam-manage-system
 
 #### 演示地址
 http://www.hsshy.com
+超级管理员：admin 123456
 
 #### 项目截图
 ##### 后台管理系统：
