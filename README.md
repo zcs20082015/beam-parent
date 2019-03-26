@@ -6,7 +6,7 @@
   - Guns:https://gitee.com/stylefeng/guns。
   - renren-security：https://gitee.com/renrenio/renren-security。
   - vue-manage-system：https://github.com/lin-xin/vue-manage-system。
-- 子项目除了beam-common、beam-web为必须，其他均可删除。
+- 子项目除了beam-common、beam-web为必须，其他均可删除。后期将把其余演示模块独立出来，此项目改为快速开发框架。
 #### 项目结构
 ````
 beam-parent
