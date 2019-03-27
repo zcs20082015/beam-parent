@@ -72,6 +72,10 @@ public class MenuController extends BaseController {
     @PostMapping(value = "/save")
     public R save(@RequestBody Menu menu){
 
+        if(ToolUtil.isEmpty(menu.getParentId())){
+            menu.setParentId(0L);
+        }
+
         if(menuService.saveOrUpdate(menu)){
             //清除缓存
             redisUtil.clearCache();
