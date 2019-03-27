@@ -81,7 +81,7 @@ https://gitee.com/hsshy/beam-manage-system
 http://www.hsshy.com
 超级管理员：admin 123456
 
-#### 常见问题（近两天修复，最近太忙）
+#### 常见问题
 第一次运行项目若菜单没有出来，先注释掉MenuServiceImpl里的缓存注解
 
 #### 项目截图
