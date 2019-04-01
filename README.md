@@ -20,17 +20,6 @@ beam-parent
 ├─beam-rest        API服务（后期将删除）
 │        
 │           
-├─beam-seckill     秒杀案例模块
-│        
-├─beam-multi     动态数据源案例模块
-│ 
-├─beam-rabbitmq  springboot整合rabbitmq案例模块
-│        
-├─beam-dubbo-consumer  springboot整合dubbo消费者
-│ 
-├─beam-dubbo-provider  springboot整合dubbo服务提供者
-│ 
-├─beam-email  springboot整合email发送邮件（异步发送、消息队列发送）
 │ 
 │ 
 │ 
@@ -68,6 +57,14 @@ beam-parent
 - 页面交互：Vue2.x
 - 前后端分离
 
+#### Spring Boot其他案例
+- 秒杀案例模块
+- 动态数据源案例模块
+- springboot整合rabbitmq案例模块
+- springboot整合dubbo消费者
+- springboot整合dubbo服务提供者
+- springboot整合email发送邮件（异步发送、消息队列发送）
+地址：https://gitee.com/hsshy/beam-example
 
 #### 软件需求
 - JDK1.8
