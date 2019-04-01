@@ -17,7 +17,7 @@ package com.hsshy.beam.common.util;
 import com.hsshy.beam.common.cloud.*;
 import com.hsshy.beam.common.constant.Constant;
 import com.hsshy.beam.common.utils.SpringContextHolder;
-import com.hsshy.beam.sys.service.ISysConfigService;
+import com.hsshy.beam.common.service.ISysConfigService;
 
 /**
  * 文件上传Factory
