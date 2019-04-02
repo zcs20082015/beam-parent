@@ -19,10 +19,6 @@ beam-parent
 │ 
 ├─beam-rest        API服务 （post请求签名、token)
 │        
-│           
-│ 
-│ 
-│ 
 │ 
 ├─beam-generator  代码生成器
 │        └─resources 
@@ -39,19 +35,15 @@ beam-parent
 │ 
 │ 
 │ 
-│ 
-│ 
-│     
-│ 
 ````
 
 <br>
 
 #### 技术选型
-- 核心框架：Spring Boot 2.0
+- 核心框架：Spring Boot 2.1.3
 - 安全框架：Apache Shiro 1.4
 - 视图框架：Spring MVC 5.0
-- 持久层框架：MyBatis 3.3
+- 持久层框架：MyBatis-Plus 3.0-RC1
 - 定时器：Quartz 2.3
 - 数据库连接池：hikari
 - 页面交互：Vue2.x
