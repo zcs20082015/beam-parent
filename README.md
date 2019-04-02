@@ -17,7 +17,7 @@ beam-parent
 │           ├─application.yml  配置文件
 │           ├─logback-spring.xml  日志配置文件
 │ 
-├─beam-rest        API服务（后期将删除）
+├─beam-rest        API服务 （post请求签名、token)
 │        
 │           
 │ 
@@ -92,3 +92,5 @@ http://www.hsshy.com
 ![image.png](https://upload-images.jianshu.io/upload_images/13498144-32261ca3ec99e6ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/13498144-5bb29689629e43c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image.png](https://upload-images.jianshu.io/upload_images/13498144-56d2d548f945d51b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+#### 代码生成器使用（待续...）
