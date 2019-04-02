@@ -35,6 +35,8 @@ public class TestController extends BaseBeanController {
     *
     */
 
+    //签名方式：
+    // 请求对象为 object: 整个对象进行base64编码后的值  sign: 将整个对象进行base64编码得到的值拼接上密钥做md5加密作为sign
     @ApiOperation(value = "登陆")
     @IgnoreUTokenAuth
     @PostMapping(value = "/login")
