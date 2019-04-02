@@ -1,4 +1,4 @@
-package com.hsshy.beam.filter.converter;
+package com.hsshy.beam.sign.converter;
 
 /**
  * 基础的传输bean

@@ -1,6 +1,6 @@
-package com.hsshy.beam.filter.security.impl;
+package com.hsshy.beam.sign.security.impl;
 
-import com.hsshy.beam.filter.security.DataSecurityAction;
+import com.hsshy.beam.sign.security.DataSecurityAction;
 import org.springframework.util.Base64Utils;
 
 /**

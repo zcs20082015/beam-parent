@@ -1,12 +1,11 @@
-package com.hsshy.beam.filter.converter;
+package com.hsshy.beam.sign.converter;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.hsshy.beam.filter.properties.JwtProperties;
-import com.hsshy.beam.filter.security.DataSecurityAction;
-import com.hsshy.beam.filter.util.JwtTokenUtil;
+import com.hsshy.beam.common.annotion.IgnoreUTokenAuth;
+import com.hsshy.beam.config.properties.BeamRestProperties;
+import com.hsshy.beam.sign.security.DataSecurityAction;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.exception.BeamException;
-import com.hsshy.beam.common.support.HttpKit;
 import com.hsshy.beam.common.utils.MD5Util;
 import com.hsshy.beam.common.utils.ReflectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,9 @@ import java.lang.reflect.Type;
  */
 public class WithSignMessageConverter extends FastJsonHttpMessageConverter {
 
-    @Autowired
-    JwtProperties jwtProperties;
 
     @Autowired
-    JwtTokenUtil jwtTokenUtil;
+    BeamRestProperties beamRestProperties;
 
     @Autowired
     DataSecurityAction dataSecurityAction;
@@ -37,23 +34,19 @@ public class WithSignMessageConverter extends FastJsonHttpMessageConverter {
     @Override
     public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
 
-        System.out.println(type);
-        System.out.println(contextClass.getAnnotations());
-        System.out.println(inputMessage);
+
 
         InputStream in = inputMessage.getBody();
+
         Object o = JSON.parseObject(in, super.getFastJsonConfig().getCharset(), BaseTransferEntity.class, super.getFastJsonConfig().getFeatures());
+
 
         //先转化成原始的对象
         BaseTransferEntity baseTransferEntity = (BaseTransferEntity) o;
 
-        //校验签名
-        String token = HttpKit.getRequest().getHeader(jwtProperties.getHeader()).substring(7);
-        String md5KeyFromToken = jwtTokenUtil.getMd5KeyFromToken(token);
-
         String object = baseTransferEntity.getObject();
         String json = dataSecurityAction.unlock(object);
-        String encrypt = MD5Util.encrypt(object + md5KeyFromToken);
+        String encrypt = MD5Util.encrypt(object + beamRestProperties.getSecret());
 
         if (encrypt.equals(baseTransferEntity.getSign())) {
             System.out.println("签名校验成功!");

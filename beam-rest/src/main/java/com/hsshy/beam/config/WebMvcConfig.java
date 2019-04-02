@@ -1,7 +1,9 @@
 package com.hsshy.beam.config;
+import com.hsshy.beam.common.config.DefaultFastjsonConfig;
 import com.hsshy.beam.config.properties.BeamRestProperties;
-import com.hsshy.beam.filter.security.DataSecurityAction;
-import com.hsshy.beam.filter.security.impl.Base64SecurityAction;
+import com.hsshy.beam.sign.converter.WithSignMessageConverter;
+import com.hsshy.beam.sign.security.DataSecurityAction;
+import com.hsshy.beam.sign.security.impl.Base64SecurityAction;
 import com.hsshy.beam.interceptors.AppInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -20,6 +22,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(appInterceptor).addPathPatterns("/**");
+    }
+
+
+
+    @Bean
+    @ConditionalOnProperty(prefix = BeamRestProperties.BEAM_REST_PREFIX, name = "sign-open", havingValue = "true", matchIfMissing = true)
+    public WithSignMessageConverter withSignMessageConverter() {
+        WithSignMessageConverter withSignMessageConverter = new WithSignMessageConverter();
+        DefaultFastjsonConfig defaultFastjsonConfig = new DefaultFastjsonConfig();
+        withSignMessageConverter.setFastJsonConfig(defaultFastjsonConfig.fastjsonConfig());
+        withSignMessageConverter.setSupportedMediaTypes(defaultFastjsonConfig.getSupportedMediaType());
+        return withSignMessageConverter;
     }
 
     @Bean

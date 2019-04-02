@@ -37,8 +37,17 @@ public abstract class BaseBeanController<Entity extends Serializable>  {
 		HttpKit.getRequest().setAttribute(name, value);
 	}
 
+	public Object getAttr(String name) {
+		return HttpKit.getRequest().getAttribute(name);
+	}
 
-
+	/**
+	 * 通过请求头中的用户utoken，获取用户id
+	 */
+	public Long getUserId(){
+		String uid = (String) getAttr("uid");
+		return Long.parseLong(uid);
+	}
 
 
 

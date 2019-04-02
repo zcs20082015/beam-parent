@@ -1,5 +1,6 @@
 package com.hsshy.beam.config.properties;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,7 @@ import java.io.File;
 
 import static com.hsshy.beam.common.utils.ToolUtil.getTempPath;
 import static com.hsshy.beam.common.utils.ToolUtil.isEmpty;
-
+@Data
 @Configuration
 @ConfigurationProperties(prefix = BeamRestProperties.BEAM_REST_PREFIX)
 public class BeamRestProperties {
@@ -22,21 +23,9 @@ public class BeamRestProperties {
 
     private Boolean haveCreatePath = false;
 
-    public boolean isAuthOpen() {
-        return authOpen;
-    }
+    private String secret;
 
-    public void setAuthOpen(boolean authOpen) {
-        this.authOpen = authOpen;
-    }
 
-    public boolean isSignOpen() {
-        return signOpen;
-    }
-
-    public void setSignOpen(boolean signOpen) {
-        this.signOpen = signOpen;
-    }
 
     public String getFileUploadPath() {
         //如果没有写文件上传路径,保存到临时目录
