@@ -2,9 +2,9 @@ package ${mainPath}.${package}.${moduleName}.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-    #if(${hasBigDecimal})
-    import java.math.BigDecimal;
-    #end
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -37,17 +37,16 @@ public class ${className} extends RestEntity<Long> {
 #end
 
 
-    @Override
-    public Long getId(){
-        return id;
-    }
-    @Override
-    public void setId(Long id){
-        this.id=id;
-    }
-
-    @Override
-    protected Serializable pkVal(){
-        return this.id;
-    }
+        @Override
+        public Long getId(){
+            return id;
+        }
+        @Override
+        public void setId(Long id){
+            this.id=id;
+        }
+        @Override
+        protected Serializable pkVal(){
+            return this.id;
+        }
 }

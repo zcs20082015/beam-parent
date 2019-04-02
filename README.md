@@ -6,7 +6,9 @@
   - Guns:https://gitee.com/stylefeng/guns。
   - renren-security：https://gitee.com/renrenio/renren-security。
   - vue-manage-system：https://github.com/lin-xin/vue-manage-system。
-- 子项目除了beam-common、beam-web为必须，其他均可删除。后期将把其余演示模块独立出来，此项目改为快速开发框架。
+- 子项目除了beam-common、beam-web为必须，其他均可删除。
+- Mybatis-Plus 默认配置放在了common包的default-config.properties中 xml固定放在com/hsshy/beam/**/mapping/*.xml，实体类固定放在com.hsshy.beam.*.entity。若想改默认配置，可在子工程yml重新写配置，具体参考mybatis-plus官方文档。
+- 全局注入fastjson
 #### 项目结构
 ````
 beam-parent
@@ -86,3 +88,8 @@ http://www.hsshy.com
 ![image.png](https://upload-images.jianshu.io/upload_images/13498144-56d2d548f945d51b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 #### 代码生成器使用（待续...）
+###### 代码生成器是独立的，可以随时删掉或者独立成一个项目
+1、修改generator.properties里的配置，例如包路径、表前缀、作者
+2、运行代码生成器：http://localhost:8083/beam-generator/#generator.html
+3、选中要生成的表、点击生成
+4、将生成的实体类、dao、service、controller、vue、js放到对应的目录下

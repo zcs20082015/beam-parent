@@ -51,7 +51,7 @@
 
             <el-form ref="${classname}" :model="form" label-width="100px">
             #foreach ($column in $columns)
-                #if($column.columnName != $pk.columnName && $column.columnName!="create_time" && $column.columnName!="update_time")
+            #if($column.columnName != $pk.columnName && $column.columnName!="create_time" && $column.columnName!="update_time")
                     <el-form-item label="$column.comments" prop="$column.attrname">
                       <el-input v-model.trim="${classname}.$column.attrname"></el-input>
                     </el-form-item>
@@ -103,8 +103,6 @@
 
         },
         methods: {
-
-
             handleCurrentChange(val) {
                 this.page.pageNo = val;
                 this.getData();
