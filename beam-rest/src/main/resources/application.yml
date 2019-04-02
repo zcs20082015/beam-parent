@@ -1,12 +1,9 @@
 beam:
   rest:
     swagger-open: true  #是否开启swagger (true/false)
-    auth-f-open: false #jwt鉴权机制是否开启(true或者false)
-    auth-i-open: true #拦截器是否开启(true或者false)
+    auth-open: true #拦截器是否开启(true或者false)
     sign-open: false #签名机制是否开启(true或false)
     file-upload-path: /upload/test      #文件上传目录(不配置的话为java.io.tmpdir目录)
-  admin:
-    version: 0.0.1
 jwt:
   header: Authorization   #http请求头所需要的字段
   secret: miyao        #jwt秘钥
@@ -36,15 +33,15 @@ spring:
       username: root
       password: 123456
       filters: log4j,wall,mergeStat
-      #以下通过 HikariProperties注入
-      readOnly: false
-      connectionTimeout: 60000
-      idleTimeout: 60000
-      validationTimeout: 3000
-      maxLifetime: 60000
-      loginTimeout: 5
-      maximumPoolSize: 60
-      minimumIdle: 10
+      hikari:
+        readOnly: false
+        connectionTimeout: 60000
+        idleTimeout: 60000
+        validationTimeout: 3000
+        maxLifetime: 60000
+        loginTimeout: 5
+        maximumPoolSize: 60
+        minimumIdle: 10
   redis:
     database: 0
     host: 127.0.0.1
@@ -52,41 +49,11 @@ spring:
     password:      # 密码（默认为空）
     timeout: 6000ms  # 连接超时时长（毫秒）
 
-##多数据源情况的配置
-beam:
-  muti-datasource:
-    #以下通过 MutiDataSourceProperties 注入
-    open: true
-    url: jdbc:mysql://127.0.0.1:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
-    username: root
-    password: 123456
-    dataSourceNames:
-      - dataSourceBeam
-      - dataSourceBiz
-    readOnly: false
-    connectionTimeout: 60000
-    idleTimeout: 60000
-    validationTimeout: 3000
-    maxLifetime: 60000
-    loginTimeout: 5
-    maximumPoolSize: 60
-    minimumIdle: 10
-
-
-
-
 
 ---
 beam:
   rest:
     swagger-open: false              #是否开启swagger (true/false)
-
-
-#cluster模式
-redisson:
-  cluster: true
-  password: testpwd
-  cluster-addresses: redis://10.186.25.64:7000,redis://10.186.25.64:7001,redis://10.186.25.64:7002,redis://10.186.25.64:7003,redis://10.186.25.64:7004,redis://10.186.25.64:7005
 
 server:
   port: 8080
@@ -115,36 +82,4 @@ spring:
       soTimeOut: 1000 #等待response超时时间
       maxAttempts: 2 #连接失败重试次数
     password: testpwd    # 密码（默认为空）
-
-
-
-# Redis高可用集群Redis Cluster搭建
-# 博客 https://www.jianshu.com/p/c39e7345caff
-#  redis:
-#    database: 0
-#    timeout: 6000ms  # 连接超时时长（毫秒）
-#    cluster:
-#      nodes: 119.29.192.127:7000,119.29.192.127:7001,119.29.192.127:7002,119.29.192.127:7003,119.29.192.127:7004,119.29.192.127:7005
-#      connTimeOut: 1000 #连接server超时时间
-#      soTimeOut: 1000 #等待response超时时间
-#      maxAttempts: 2 #连接失败重试次数
-#    password: testpwd    # 密码（默认为空）
-
-
-
-# 博客 https://www.jianshu.com/p/e1df915f0125
-#dubbo:
-#  application:
-#    id: beam-rest
-#    name: beam-rest
-#    qos-enable: true
-#    qos-port: 33333
-#  protocol:
-#    id: dubbo
-#    name: dubbo
-#    port: 20880
-#  registry:
-#    address: zookeeper://119.29.192.127:2181
-#    timeout: 100000
-
 

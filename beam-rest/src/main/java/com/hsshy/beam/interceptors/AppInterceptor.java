@@ -1,9 +1,9 @@
 package com.hsshy.beam.interceptors;
+import com.hsshy.beam.common.annotion.IgnoreUTokenAuth;
 import com.hsshy.beam.common.enumeration.RetEnum;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.RedisUtil;
 import com.hsshy.beam.common.utils.RenderUtil;
-import com.hsshy.beam.interceptors.annotation.IgnoreUTokenAuth;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

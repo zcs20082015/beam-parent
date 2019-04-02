@@ -109,10 +109,10 @@ public class JwtTokenUtil {
     /**
      * 生成token(通过用户名和签名时候用的随机数)
      */
-    public String generateToken(String userName, String randomKey) {
+    public String generateToken(String userId, String randomKey) {
         Map<String, Object> claims = new HashMap<>();
         claims.put(jwtProperties.getMd5Key(), randomKey);
-        return doGenerateToken(claims, userName);
+        return doGenerateToken(claims, userId);
     }
 
     /**

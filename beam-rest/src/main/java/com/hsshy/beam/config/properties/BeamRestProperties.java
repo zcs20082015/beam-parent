@@ -8,12 +8,6 @@ import java.io.File;
 import static com.hsshy.beam.common.utils.ToolUtil.getTempPath;
 import static com.hsshy.beam.common.utils.ToolUtil.isEmpty;
 
-/**
- * 项目相关配置
- *
- * @author fengshuonan
- * @date 2017年10月23日16:44:15
- */
 @Configuration
 @ConfigurationProperties(prefix = BeamRestProperties.BEAM_REST_PREFIX)
 public class BeamRestProperties {

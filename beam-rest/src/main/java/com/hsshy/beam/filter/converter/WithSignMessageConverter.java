@@ -37,6 +37,10 @@ public class WithSignMessageConverter extends FastJsonHttpMessageConverter {
     @Override
     public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
 
+        System.out.println(type);
+        System.out.println(contextClass.getAnnotations());
+        System.out.println(inputMessage);
+
         InputStream in = inputMessage.getBody();
         Object o = JSON.parseObject(in, super.getFastJsonConfig().getCharset(), BaseTransferEntity.class, super.getFastJsonConfig().getFeatures());
 
