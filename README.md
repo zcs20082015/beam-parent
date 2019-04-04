@@ -54,12 +54,13 @@ beam-parent
 - 前后端分离
 
 #### Spring Boot其他案例：https://gitee.com/hsshy/beam-example
-- 秒杀案例模块
+- 秒杀案例模块（加锁、aop加锁、redis锁、消息队列）
 - 动态数据源案例模块
-- springboot整合rabbitmq案例模块
-- springboot整合dubbo消费者
-- springboot整合dubbo服务提供者
-- springboot整合email发送邮件（异步发送、消息队列发送）
+- Spring Boot 整合RabbitMQ案例
+- Spring Boot 整合dubbo消费者
+- Spring Boot 整合dubbo服务提供者
+- Spring Boot 整合email发送邮件（异步发送、消息队列发送）
+- Spring Boot 整合Kafka案例
 
 
 #### 软件需求
