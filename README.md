@@ -52,6 +52,7 @@ beam-parent
 - 数据库连接池：hikari
 - 页面交互：Vue2.x
 - 前后端分离
+- 缓存：Redis
 
 #### Spring Boot其他案例：https://gitee.com/hsshy/beam-example
 - 秒杀案例模块（加锁、aop加锁、redis锁、消息队列）
@@ -67,6 +68,7 @@ beam-parent
 - JDK1.8
 - MySQL5.5+
 - Maven3.0+
+- Redis
 
 #### 前端地址：
 https://gitee.com/hsshy/beam-manage-system
