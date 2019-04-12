@@ -32,13 +32,13 @@
                 a.parent_id = #{dept.parentId}
             </if>
             <if test="dept.name != null and dept.name != ''">
-                a.name = #{dept.name}
+                and a.name = #{dept.name}
             </if>
             <if test="dept.orderNum != null and dept.orderNum != ''">
-                a.order_num = #{dept.orderNum}
+                and a.order_num = #{dept.orderNum}
             </if>
             <if test="dept.delFlag != null and dept.delFlag != ''">
-                a.del_flag = #{dept.delFlag}
+                and a.del_flag = #{dept.delFlag}
             </if>
 
         </where>

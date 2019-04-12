@@ -22,10 +22,13 @@ import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import com.hsshy.beam.sys.service.ScheduleJobService;
+import com.hsshy.beam.sys.wrapper.ScheduleWrapper;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.quartz.CronExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
@@ -55,9 +58,9 @@ public class ScheduleJobController {
 			qw.like("bean_name",scheduleJobEntity.getBeanName());
 		}
 
-		IPage<ScheduleJobEntity> page = scheduleJobService.page(new Page<ScheduleJobEntity>(scheduleJobEntity.getCurrentPage(),scheduleJobEntity.getPageSize()),qw);
+		IPage<Map> page = scheduleJobService.page(new Page<ScheduleJobEntity>(scheduleJobEntity.getCurrentPage(),scheduleJobEntity.getPageSize()),qw);
 
-		return R.ok(page);
+		return R.ok(new ScheduleWrapper(page).wrap());
 	}
 	
 	/**

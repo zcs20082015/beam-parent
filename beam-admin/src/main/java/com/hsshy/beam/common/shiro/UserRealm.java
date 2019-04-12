@@ -1,7 +1,6 @@
 package com.hsshy.beam.common.shiro;
-import com.hsshy.beam.common.factory.IShiro;
 import com.hsshy.beam.common.utils.ToolUtil;
-import com.hsshy.beam.common.factory.impl.ShiroFactroy;
+import com.hsshy.beam.common.shiro.factory.ShiroFactroy;
 import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -25,6 +24,7 @@ public class UserRealm extends AuthorizingRealm {
     /**
      * 授权(验证权限时调用)
      */
+
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		IShiro shiroFactory = ShiroFactroy.me();

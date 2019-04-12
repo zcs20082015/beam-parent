@@ -1,10 +1,13 @@
-package com.hsshy.beam.common.factory.impl;
+package com.hsshy.beam.common.shiro.factory;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.constant.Constant;
+import com.hsshy.beam.common.constant.cache.Cache;
+import com.hsshy.beam.common.constant.cache.CacheKey;
+import com.hsshy.beam.common.factory.impl.ConstantFactory;
 import com.hsshy.beam.common.shiro.ShiroUser;
 import com.hsshy.beam.common.utils.SpringContextHolder;
-import com.hsshy.beam.common.factory.IShiro;
+import com.hsshy.beam.common.shiro.IShiro;
 import com.hsshy.beam.sys.dao.MenuMapper;
 import com.hsshy.beam.sys.dao.UserMapper;
 import com.hsshy.beam.sys.entity.Menu;
@@ -14,6 +17,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,7 +80,7 @@ public class ShiroFactroy implements IShiro {
 
         return shiroUser;
     }
-
+    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.USER_MENU + "'+#userId")
     @Override
     public List<String> findPermissionsByUserId(Long userId) {
 

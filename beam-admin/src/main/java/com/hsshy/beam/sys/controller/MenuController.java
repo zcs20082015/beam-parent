@@ -10,6 +10,7 @@ import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.entity.Dept;
 import com.hsshy.beam.sys.entity.Menu;
 import com.hsshy.beam.sys.service.IMenuService;
+import com.hsshy.beam.sys.wrapper.MenuWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 菜单管理
@@ -55,8 +57,8 @@ public class MenuController extends BaseController {
 
         QueryWrapper qw = new QueryWrapper<Menu>();
 
-        IPage page = menuService.page(new Page(menu.getCurrentPage(),menu.getPageSize()),qw);
-        return R.ok(page);
+        IPage<Map> page = menuService.page(new Page(menu.getCurrentPage(),menu.getPageSize()),qw);
+        return R.ok(new MenuWrapper(page).wrap());
     }
     @ApiOperation("列表")
     @GetMapping(value = "/list")

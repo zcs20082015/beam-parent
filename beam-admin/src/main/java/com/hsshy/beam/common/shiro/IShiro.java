@@ -1,4 +1,4 @@
-package com.hsshy.beam.common.factory;
+package com.hsshy.beam.common.shiro;
 
 import com.hsshy.beam.common.shiro.ShiroUser;
 import com.hsshy.beam.sys.entity.User;

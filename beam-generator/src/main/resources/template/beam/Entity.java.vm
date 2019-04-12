@@ -2,6 +2,7 @@ package ${mainPath}.${package}.${moduleName}.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.hsshy.beam.common.base.entity.RestEntity;
 #if(${hasBigDecimal})
 import java.math.BigDecimal;
 #end

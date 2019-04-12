@@ -7,6 +7,7 @@ import com.hsshy.beam.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 管理员表
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    IPage<User> selectPageList(Page page, @Param("user") User user);
+    IPage<Map> selectPageList(Page page, @Param("user") User user);
 
     /**
      * 查询用户的所有权限

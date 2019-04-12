@@ -1,6 +1,7 @@
 package com.hsshy.beam.sys.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hsshy.beam.common.annotion.SysLog;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.sys.entity.Role;
 import com.hsshy.beam.sys.service.IRoleService;
@@ -42,6 +43,7 @@ public class RoleController  {
     }
 
 
+    @SysLog(value = "保存角色")
     @RequiresPermissions("sys:role:save")
     @ApiOperation("保存角色")
     @PostMapping(value = "/save")

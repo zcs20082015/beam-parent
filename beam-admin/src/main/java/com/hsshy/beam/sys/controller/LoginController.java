@@ -1,6 +1,8 @@
 package com.hsshy.beam.sys.controller;
 import com.google.code.kaptcha.Constants;
 import com.hsshy.beam.common.base.controller.BaseAdminController;
+import com.hsshy.beam.common.log.LogManager;
+import com.hsshy.beam.common.log.factory.LogTaskFactory;
 import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.util.KaptchaUtil;
 import com.hsshy.beam.common.utils.R;
@@ -10,6 +12,9 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import static com.hsshy.beam.common.support.HttpKit.getIp;
+
 @RestController
 public class LoginController  {
 
@@ -29,6 +34,8 @@ public class LoginController  {
             Subject subject = ShiroUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(loginForm.getUsername(), loginForm.getPassword());
             subject.login(token);
+            LogManager.me().executeLog(LogTaskFactory.loginLog(ShiroUtils.getUserId(), getIp()));
+
         }catch (UnknownAccountException e) {
             return R.fail(e.getMessage());
         }catch (IncorrectCredentialsException e) {

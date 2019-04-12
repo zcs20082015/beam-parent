@@ -1,44 +1,44 @@
 package com.hsshy.beam.sys.entity;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.hsshy.beam.common.base.entity.RestEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
-import java.util.Date;
 
 
 /**
- * 字典表
+ * 登陆日志
  *
  * @author hs
  */
 @Data
 @NoArgsConstructor
-@TableName("sys_dict")
-public class Dict extends RestEntity<Long> {
+@TableName("sys_login_log")
+public class LoginLog extends RestEntity<Long> {
 
-    // 主键id
+    //
     @TableId
     private Long id;
-    // 父级字典
-    @TableField(value = "pid")
-    private Long pid;
-    // 名称
-    @TableField(value = "name")
-    private String name;
-    // 描述
-    @TableField(value = "des")
-    private String des;
-    // 编码
-    @TableField(value = "code")
-    private String code;
-    // 排序
-    @TableField(value = "sort")
-    private Integer sort;
+    // 日志名称
+    @TableField(value = "log_name")
+    private String logName;
+    // 用户ID
+    @TableField(value = "user_id")
+    private Long userId;
+    // 是否成功
+    @TableField(value = "succeed")
+    private String succeed;
+    // 消息
+    @TableField(value = "message")
+    private String message;
+    // ip
+    @TableField(value = "ip_address")
+    private String ipAddress;
+
+    @TableField(exist = false)
+    private String userName;
 
 
     @Override

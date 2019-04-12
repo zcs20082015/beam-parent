@@ -1,5 +1,6 @@
 package com.hsshy.beam.common.quartz;
 import com.hsshy.beam.common.exception.BeamException;
+import com.hsshy.beam.common.quartz.state.QuartzConstant;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import org.quartz.*;
 
@@ -58,7 +59,7 @@ public class ScheduleUtils {
             scheduler.scheduleJob(jobDetail, trigger);
             
             //暂停任务
-            if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
+            if(scheduleJob.getStatus() == QuartzConstant.ScheduleStatus.PAUSE.getValue()){
             	pauseJob(scheduler, scheduleJob.getId());
             }
         } catch (SchedulerException e) {
@@ -88,7 +89,7 @@ public class ScheduleUtils {
             scheduler.rescheduleJob(triggerKey, trigger);
             
             //暂停任务
-            if(scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()){
+            if(scheduleJob.getStatus() == QuartzConstant.ScheduleStatus.PAUSE.getValue()){
             	pauseJob(scheduler, scheduleJob.getId());
             }
             

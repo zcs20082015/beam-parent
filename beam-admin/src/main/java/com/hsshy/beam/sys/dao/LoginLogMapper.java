@@ -1,18 +1,20 @@
 package com.hsshy.beam.sys.dao;
-import com.hsshy.beam.sys.entity.Dict;
+import com.hsshy.beam.sys.entity.LoginLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 /**
- * 字典表
+ * 登陆日志
  * 
  * @author hs
  * @email 457030599@qq.com
- * @date 2019-04-12 16:45:03
+ * @date 2019-04-12 14:08:56
  */
-public interface DictMapper extends BaseMapper<Dict> {
+public interface LoginLogMapper extends BaseMapper<LoginLog> {
 
-    IPage<Dict> selectPageList(Page page, @Param("dict") Dict dict);
+    void deleteAll();
+
+    IPage<LoginLog> selectPageList(Page page, @Param("loginLog") LoginLog loginLog);
 
 }

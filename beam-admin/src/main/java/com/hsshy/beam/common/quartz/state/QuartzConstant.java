@@ -1,4 +1,4 @@
-package com.hsshy.beam.common.quartz;
+package com.hsshy.beam.common.quartz.state;
 
 /**
  * 常量
@@ -6,7 +6,7 @@ package com.hsshy.beam.common.quartz;
  * @author Mark sunlightcs@gmail.com
  * @since 1.0.0 2016-11-15
  */
-public class Constant {
+public class QuartzConstant {
 
 
     /**

@@ -79,13 +79,18 @@ public class User extends DataEntity<Long> {
 
 	@TableField(exist = false)
 	private String deptName;
-
 	//查询
 	@TableField(exist = false)
 	private String deptIds;
 
 	@TableField(exist = false)
 	private List<Long> roleIds;
+
+	@TableField(exist = false)
+	private String sexName;
+
+	@TableField(exist = false)
+	private String statusName;
 
 
 	@Override

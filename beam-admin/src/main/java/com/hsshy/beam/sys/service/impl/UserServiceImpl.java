@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 管理员表
@@ -37,7 +38,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     private RedisUtil redisUtil;
 
     @Override
-    public IPage<User> selectPageList(User user) {
+    public IPage<Map> selectPageList(User user) {
         return baseMapper.selectPageList(new Page(user.getCurrentPage(),user.getPageSize()),user);
     }
 

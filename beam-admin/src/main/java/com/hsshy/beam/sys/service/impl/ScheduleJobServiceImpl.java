@@ -20,7 +20,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hsshy.beam.common.quartz.Constant;
+import com.hsshy.beam.common.quartz.state.QuartzConstant;
 import com.hsshy.beam.common.quartz.ScheduleUtils;
 import com.hsshy.beam.sys.dao.ScheduleJobMapper;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
@@ -74,7 +74,7 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobMapper, Sched
 	@Transactional(rollbackFor = Exception.class)
 	public void saveScheduleJob(ScheduleJobEntity scheduleJob) {
 		scheduleJob.setCreateTime(new Date());
-		scheduleJob.setStatus(Constant.ScheduleStatus.NORMAL.getValue());
+		scheduleJob.setStatus(QuartzConstant.ScheduleStatus.NORMAL.getValue());
         this.saveOrUpdate(scheduleJob);
 		ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
 
@@ -123,7 +123,7 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobMapper, Sched
     		ScheduleUtils.pauseJob(scheduler, jobId);
     	}
         
-    	updateBatch(jobIds, Constant.ScheduleStatus.PAUSE.getValue());
+    	updateBatch(jobIds, QuartzConstant.ScheduleStatus.PAUSE.getValue());
     }
 
 	@Override
@@ -133,7 +133,7 @@ public class ScheduleJobServiceImpl extends ServiceImpl<ScheduleJobMapper, Sched
     		ScheduleUtils.resumeJob(scheduler, jobId);
     	}
 
-    	updateBatch(jobIds, Constant.ScheduleStatus.NORMAL.getValue());
+    	updateBatch(jobIds, QuartzConstant.ScheduleStatus.NORMAL.getValue());
     }
     
 }

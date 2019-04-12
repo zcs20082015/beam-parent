@@ -8,6 +8,7 @@ import com.hsshy.beam.sys.dto.ChangePassowdForm;
 import com.hsshy.beam.sys.entity.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 管理员表
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public interface IUserService extends ICommonService<User> {
 
-    IPage<User> selectPageList(User user);
+    IPage<Map> selectPageList(User user);
 
     R saveUser(User user);
 

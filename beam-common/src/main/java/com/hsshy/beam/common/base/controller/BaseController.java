@@ -1,5 +1,5 @@
 package com.hsshy.beam.common.base.controller;
-import com.hsshy.beam.common.base.warpper.BaseControllerWarpper;
+import com.hsshy.beam.common.base.warpper.BaseControllerWrapper;
 import com.hsshy.beam.common.support.HttpKit;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,13 +39,6 @@ public class BaseController {
     }
 
 
-
-    /**
-     * 包装一个list，让list增加额外属性
-     */
-    protected Object warpObject(BaseControllerWarpper warpper) {
-        return warpper.warp();
-    }
 
 
 

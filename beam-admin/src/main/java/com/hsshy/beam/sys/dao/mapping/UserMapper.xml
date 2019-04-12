@@ -67,7 +67,7 @@
     <select id="getRoleIdsById" resultType="long">
         select role_id from sys_user_role where user_id = #{userId}
     </select>
-    <select id="selectPageList" resultType="com.hsshy.beam.sys.entity.User">
+    <select id="selectPageList" resultType="java.util.Map">
         select <include refid="Base_Column_List"/>,
         b.name as deptName
         from sys_user a left join sys_dept b on a.dept_id = b.id
@@ -76,10 +76,10 @@
                 a.account LIKE concat("%",#{user.account},"%")
             </if>
             <if test="user.name != null and user.name != ''">
-                a.name LIKE concat("%",#{user.name},"%")
+                and a.name LIKE concat("%",#{user.name},"%")
             </if>
             <if test="user.deptIds != null and user.deptIds != ''">
-                a.dept_id in (${user.deptIds})
+                and a.dept_id in (${user.deptIds})
             </if>
         </where>
     </select>
