@@ -1,4 +1,4 @@
-package com.hsshy.beam.quartz;
+package com.hsshy.beam.common.quartz;
 
 /**
  * 常量

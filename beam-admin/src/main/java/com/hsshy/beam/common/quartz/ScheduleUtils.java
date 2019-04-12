@@ -1,4 +1,4 @@
-package com.hsshy.beam.quartz;
+package com.hsshy.beam.common.quartz;
 import com.hsshy.beam.common.exception.BeamException;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import org.quartz.*;

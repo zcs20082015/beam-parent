@@ -1,5 +1,4 @@
 package com.hsshy.beam.common.factory.impl;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hsshy.beam.common.constant.cache.Cache;
 import com.hsshy.beam.common.constant.cache.CacheKey;
 import com.hsshy.beam.common.factory.IConstantFactory;
@@ -10,8 +9,6 @@ import com.hsshy.beam.sys.entity.*;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +23,6 @@ public class ConstantFactory implements IConstantFactory {
 
     private RoleMapper roleMapper = SpringContextHolder.getBean(RoleMapper.class);
     private DeptMapper deptMapper = SpringContextHolder.getBean(DeptMapper.class);
-    private DictMapper dictMapper = SpringContextHolder.getBean(DictMapper.class);
     private UserMapper userMapper = SpringContextHolder.getBean(UserMapper.class);
 
     public static IConstantFactory me() {
@@ -56,21 +52,7 @@ public class ConstantFactory implements IConstantFactory {
         return "";
     }
 
-    /**
-     * 通过角色id获取角色英文名称
-     */
-    @Override
-    @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.SINGLE_ROLE_TIP + "'+#roleId")
-    public String getSingleRoleTip(Long roleId) {
-        if (0 == roleId) {
-            return "--";
-        }
-        Role roleObj = roleMapper.selectById(roleId);
-        if (ToolUtil.isNotEmpty(roleObj) && ToolUtil.isNotEmpty(roleObj.getRoleName())) {
-            return roleObj.getRemark();
-        }
-        return "";
-    }
+
 
     /**
      * 获取部门名称
@@ -86,36 +68,6 @@ public class ConstantFactory implements IConstantFactory {
     }
 
 
-
-
-
-
-
-
-
-
-    /**
-     * 根据字典名称和字典中的值获取对应的名称
-     */
-    @Override
-    public String getDictsByName(String name, Integer val) {
-        QueryWrapper<Dict> temp = new QueryWrapper<>();
-        temp.lambda().eq(Dict::getName,name);
-        Dict dict = dictMapper.selectOne(temp);
-        if (dict == null) {
-            return "";
-        } else {
-            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-            wrapper.lambda().eq(Dict::getPid, dict.getId());
-            List<Dict> dicts = dictMapper.selectList(wrapper);
-            for (Dict item : dicts) {
-                if (item.getNum() != null && item.getNum().equals(val)) {
-                    return item.getName();
-                }
-            }
-            return "";
-        }
-    }
 
 
 
