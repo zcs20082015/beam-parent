@@ -4,6 +4,7 @@ import com.hsshy.beam.common.base.service.ICommonService;
 import com.hsshy.beam.sys.entity.Menu;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 菜单管理
@@ -19,23 +20,23 @@ public interface IMenuService extends IService<Menu> {
      * @param parentId 父菜单ID
      * @param menuIdList  用户菜单ID
      */
-    List<Menu> queryListParentId(Long parentId, List<Long> menuIdList);
+    List<Map> queryListParentId(Long parentId, List<Long> menuIdList);
 
     /**
      * 获取该角色的菜单列表
      */
-    List<Menu> getUserMenuList(Long userId);
+    List<Map> getUserMenuList(Long userId);
 
     /**
      * 根据父菜单，查询子菜单
      * @param parentId 父菜单ID
      */
-    List<Menu> queryListParentId(Long parentId);
+    List<Map> queryListParentId(Long parentId);
 
     /**
      * 获取树形菜单列表
      */
-    List<Menu> treeMenuList(Long menuId, Menu menu);
+    List<Map> treeMenuList(Long menuId, Menu menu);
 
 
 }

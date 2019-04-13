@@ -39,7 +39,9 @@ public class Dict extends RestEntity<Long> {
     // 排序
     @TableField(value = "sort")
     private Integer sort;
-
+    // 编码
+    @TableField(exist = false)
+    private String keyword;
 
     @Override
     public Long getId() {

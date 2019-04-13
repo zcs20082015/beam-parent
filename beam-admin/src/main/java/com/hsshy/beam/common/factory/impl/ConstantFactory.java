@@ -67,26 +67,7 @@ public class ConstantFactory implements IConstantFactory {
         return "";
     }
 
-    @Override
-    public String getDictsByName(String name, String code) {
-        Dict temp = new Dict();
-        temp.setName(name);
-        QueryWrapper<Dict> queryWrapper = new QueryWrapper<>(temp);
-        Dict dict = dictMapper.selectOne(queryWrapper);
-        if (dict == null) {
-            return "";
-        } else {
-            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-            wrapper = wrapper.eq("pid", dict.getId());
-            List<Dict> dicts = dictMapper.selectList(wrapper);
-            for (Dict item : dicts) {
-                if (item.getCode() != null && item.getCode().equals(code)) {
-                    return item.getName();
-                }
-            }
-            return "";
-        }
-    }
+
 
     @Override
     public String getDictsByCode(String pcode, String code) {
@@ -105,6 +86,21 @@ public class ConstantFactory implements IConstantFactory {
                 }
             }
             return "";
+        }
+    }
+
+    @Override
+    public List<Dict> getDictListByCode(String pcode) {
+        QueryWrapper<Dict> queryWrapper = new QueryWrapper<Dict>().eq("code",pcode);
+        Dict dict = dictMapper.selectOne(queryWrapper);
+        if (dict == null) {
+            return null;
+        } else {
+            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+            wrapper = wrapper.eq("pid", dict.getId());
+            List<Dict> dicts = dictMapper.selectList(wrapper);
+
+            return dicts;
         }
     }
 

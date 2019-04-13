@@ -33,12 +33,12 @@
                perms
     	</sql>
 
-    <select id="queryListParentId" resultType="com.hsshy.beam.sys.entity.Menu">
+    <select id="queryListParentId" resultType="java.util.Map">
 		select <include refid="Nav_Column_List" />
         from sys_menu where parent_id = #{parentId} and del_flag = 0  order by order_num asc
 	</select>
 
-    <select id="queryNotButtonList" resultType="com.hsshy.beam.sys.entity.Menu">
+    <select id="queryNotButtonList" resultType="java.util.Map">
 		select <include refid="Nav_Column_List" />
         from sys_menu where type != 2 and del_flag = 0 order by order_num asc
 	</select>

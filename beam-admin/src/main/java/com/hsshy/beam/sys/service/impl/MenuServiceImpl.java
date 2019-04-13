@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 菜单管理
@@ -33,15 +34,15 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 
     @Override
-    public List<Menu> queryListParentId(Long parentId, List<Long> menuIdList) {
-        List<Menu> menuList = queryListParentId(parentId);
+    public List<Map> queryListParentId(Long parentId, List<Long> menuIdList) {
+        List<Map> menuList = queryListParentId(parentId);
         if(menuIdList == null){
             return menuList;
         }
 
-        List<Menu> userMenuList = new ArrayList<>();
-        for(Menu menu : menuList){
-            if(menuIdList.contains(menu.getId())){
+        List<Map> userMenuList = new ArrayList<>();
+        for(Map menu : menuList){
+            if(menuIdList.contains(menu.get("id"))){
                 userMenuList.add(menu);
             }
         }
@@ -51,16 +52,18 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 
     @Override
-    public List<Menu> queryListParentId(Long parentId) {
+    public List<Map> queryListParentId(Long parentId) {
         return baseMapper.queryListParentId(parentId);
     }
 
 
     @Override
-    public List<Menu> treeMenuList(Long menuId,Menu menu) {
-        List<Menu> menuList ;
+    public List<Map> treeMenuList(Long menuId,Menu menu) {
+        List<Map> menuList ;
         if(ToolUtil.isNotEmpty(menu.getName())){
-            menuList = this.list(new QueryWrapper<Menu>().lambda().like(Menu::getName,menu.getName()));
+            QueryWrapper qw = new QueryWrapper<Map>();
+            qw.like("name",menu.getName());
+            menuList = this.list(qw);
         }
         else {
             menuList =  queryListParentId(menuId);
@@ -72,7 +75,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
     @Override
     @Cacheable(value = Cache.CONSTANT, key = "'" + CacheKey.USER_ID + "'+#userId")
-    public List<Menu> getUserMenuList(Long userId) {
+    public List<Map> getUserMenuList(Long userId) {
 
         //系统管理员，拥有最高权限
         if(userId == Constant.SUPER_ADMIN){
@@ -87,9 +90,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     /**
      * 获取所有菜单列表
      */
-    private List<Menu> getAllMenuList(List<Long> menuIdList){
+    private List<Map> getAllMenuList(List<Long> menuIdList){
         //查询根菜单列表
-        List<Menu> menuList = queryListParentId(0L, menuIdList);
+        List<Map> menuList = queryListParentId(0L, menuIdList);
         //递归获取子菜单
         getMenuTreeList(menuList, menuIdList);
 
@@ -99,13 +102,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     /**
      * 获取目录和菜单 递归
      */
-    private List<Menu> getMenuTreeList(List<Menu> menuList, List<Long> menuIdList){
-        List<Menu> subMenuList = new ArrayList<Menu>();
+    private List<Map> getMenuTreeList(List<Map> menuList, List<Long> menuIdList){
+        List<Map> subMenuList = new ArrayList<Map>();
 
-        for(Menu entity : menuList){
+        for(Map entity : menuList){
             //目录
-            if(entity.getType() == Constant.MenuType.CATALOG.getValue()){
-                entity.setList(getMenuTreeList(queryListParentId(entity.getId(), menuIdList), menuIdList));
+            if(Integer.parseInt(entity.get("type")+"") == Constant.MenuType.CATALOG.getValue()){
+                entity.put("list",getMenuTreeList(queryListParentId(Long.parseLong(entity.get("id")+""), menuIdList), menuIdList));
             }
             subMenuList.add(entity);
         }
@@ -116,13 +119,13 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     /**
      * 获取所有菜单 递归
      */
-    private List<Menu> getAllMenuTreeList(List<Menu> menuList){
-        List<Menu> subMenuList = new ArrayList<Menu>();
+    private List<Map> getAllMenuTreeList(List<Map> menuList){
+        List<Map> subMenuList = new ArrayList<Map>();
 
-        for(Menu entity : menuList){
+        for(Map entity : menuList){
             //目录
-            if(entity.getType() == Constant.MenuType.CATALOG.getValue()||entity.getType() == Constant.MenuType.MENU.getValue()){
-                entity.setChildren(getAllMenuTreeList(queryListParentId(entity.getId())));
+            if(Integer.parseInt(entity.get("type")+"") == Constant.MenuType.CATALOG.getValue()||Integer.parseInt(entity.get("type")+"") == Constant.MenuType.MENU.getValue()){
+                entity.put("children",getAllMenuTreeList(queryListParentId(Long.parseLong(entity.get("id")+""))));
             }
             subMenuList.add(entity);
         }

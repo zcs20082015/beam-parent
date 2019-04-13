@@ -66,11 +66,7 @@ public class Menu extends DataEntity<Long> {
 	@TableField(value = "del_flag")
 	private Integer delFlag;
 
-	@TableField(exist=false)
-	private List<?> list;
 
-	@TableField(exist=false)
-	private List<?> children;
 
 
 	@TableField(exist = false)

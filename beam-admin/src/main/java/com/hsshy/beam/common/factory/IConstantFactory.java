@@ -1,5 +1,7 @@
 package com.hsshy.beam.common.factory;
 
+import com.hsshy.beam.sys.entity.Dict;
+
 import java.util.List;
 
 public interface IConstantFactory {
@@ -13,11 +15,11 @@ public interface IConstantFactory {
     //获取部门名称
     String getDeptName(Long deptId);
 
-    //根据父级字典名称和code获取字典名称
-    String getDictsByName(String name,String code);
-
     //根据父级字典code和获取字典名称
     String getDictsByCode(String pcode,String code);
+
+    //根据父级字典code和获取字典名称
+    List<Dict> getDictListByCode(String pcode);
 
 
 }

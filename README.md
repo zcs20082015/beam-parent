@@ -8,7 +8,7 @@
   - vue-manage-system：https://github.com/lin-xin/vue-manage-system
 - 子项目除了beam-common、beam-web为必须，其他均可删除。
 
-- Mybatis-Plus 默认配置放在了common包的default-config.properties中。xml固定放在com/hsshy/beam/**/mapping/**.xml，实体类固定放在com.hsshy.beam.**.entity。若想改默认配置，可在子工程yml重新写配置，具体参考mybatis-plus官方文档。
+- Mybatis-Plus 默认配置放在了common包的default-config.properties中。xml固定放在com/hsshy/beam/\*/mapping/\*.xml，实体类固定放在com.hsshy.beam.**.entity。若想改默认配置，可在子工程yml重新写配置，具体参考mybatis-plus官方文档。
 
 
 #### 项目结构

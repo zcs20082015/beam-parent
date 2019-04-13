@@ -18,16 +18,21 @@ package com.hsshy.beam.sys.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hsshy.beam.common.factory.impl.ConstantFactory;
+import com.hsshy.beam.common.quartz.ScheduleJob;
 import com.hsshy.beam.common.utils.R;
 import com.hsshy.beam.common.utils.ToolUtil;
 import com.hsshy.beam.sys.entity.ScheduleJobEntity;
 import com.hsshy.beam.sys.service.ScheduleJobService;
 import com.hsshy.beam.sys.wrapper.ScheduleWrapper;
+import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.quartz.CronExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.beans.PropertyDescriptor;
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -50,7 +55,7 @@ public class ScheduleJobController {
 	@RequiresPermissions("sys:schedule:list")
 	public R list(ScheduleJobEntity scheduleJobEntity){
 
-		QueryWrapper qw = new QueryWrapper<ScheduleJobEntity>();
+		QueryWrapper qw = new QueryWrapper<Map>();
 		if(ToolUtil.isNotEmpty(scheduleJobEntity.getStatus())){
 			qw.eq("status",scheduleJobEntity.getStatus());
 		}
@@ -58,11 +63,12 @@ public class ScheduleJobController {
 			qw.like("bean_name",scheduleJobEntity.getBeanName());
 		}
 
-		IPage<Map> page = scheduleJobService.page(new Page<ScheduleJobEntity>(scheduleJobEntity.getCurrentPage(),scheduleJobEntity.getPageSize()),qw);
+		IPage<ScheduleJob> page = scheduleJobService.page(new Page(scheduleJobEntity.getCurrentPage(),scheduleJobEntity.getPageSize()),qw);
+
 
 		return R.ok(new ScheduleWrapper(page).wrap());
 	}
-	
+
 	/**
 	 * 定时任务信息
 	 */
@@ -150,6 +156,14 @@ public class ScheduleJobController {
 		scheduleJobService.resume(jobIds);
 		
 		return R.ok();
+	}
+
+	/**
+	 * 获取定时任务状态下拉框
+	 */
+	@GetMapping("/status/list")
+	public R getStatusList(){
+		return R.ok(ConstantFactory.me().getDictListByCode("schedule_status"));
 	}
 
 }

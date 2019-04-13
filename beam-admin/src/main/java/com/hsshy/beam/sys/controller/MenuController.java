@@ -46,7 +46,7 @@ public class MenuController extends BaseController {
     @ApiOperation(value = "导航菜单")
     @GetMapping("/nav")
     public R nav(){
-        List<Menu> menuList = menuService.getUserMenuList(ShiroUtils.getUserId());
+        List<Map> menuList = menuService.getUserMenuList(ShiroUtils.getUserId());
         return R.ok(menuList);
     }
 
@@ -138,6 +138,7 @@ public class MenuController extends BaseController {
     @GetMapping("/tree/menu")
     @RequiresPermissions("sys:menu:tree")
     public R treeMenu(Menu menu){
+
         return R.ok(menuService.treeMenuList(0L,menu));
     }
 
