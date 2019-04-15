@@ -41,6 +41,17 @@ public class MenuController extends BaseController {
     private RedisUtil redisUtil;
 
     /**
+     * 树形菜单
+     */
+    @ApiOperation(value = "树形菜单")
+    @GetMapping("/tree/menu")
+    @RequiresPermissions("sys:menu:tree")
+    public R treeMenu(Menu menu){
+
+        return R.ok(menuService.treeMenuList(0L,menu));
+    }
+
+    /**
      * 导航菜单
      */
     @ApiOperation(value = "导航菜单")
@@ -131,16 +142,7 @@ public class MenuController extends BaseController {
         return R.ok();
     }
 
-    /**
-     * 树形菜单
-     */
-    @ApiOperation(value = "树形菜单")
-    @GetMapping("/tree/menu")
-    @RequiresPermissions("sys:menu:tree")
-    public R treeMenu(Menu menu){
 
-        return R.ok(menuService.treeMenuList(0L,menu));
-    }
 
 
 

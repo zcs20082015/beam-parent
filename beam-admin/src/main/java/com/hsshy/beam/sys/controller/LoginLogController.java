@@ -10,6 +10,7 @@ import com.hsshy.beam.sys.service.ILoginLogService;
 import com.hsshy.beam.common.base.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,6 +37,7 @@ public class LoginLogController extends BaseController {
     //分页
     @ApiOperation("分页列表")
     @GetMapping(value = "/page/list")
+    @RequiresPermissions("sys:loginLog:list")
     public R pageList(LoginLog loginLog) {
 
 
@@ -56,6 +58,7 @@ public class LoginLogController extends BaseController {
     @SysLog(value = "清空日志")
     @ApiOperation("清空")
     @PostMapping(value = "/clear")
+    @RequiresPermissions("sys:loginLog:clear")
     public R clear() {
         loginLogService.deleteAll();
         return R.ok();

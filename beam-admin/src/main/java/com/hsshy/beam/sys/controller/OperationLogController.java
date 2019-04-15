@@ -9,6 +9,7 @@ import com.hsshy.beam.sys.service.IOperationLogService;
 import com.hsshy.beam.common.base.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -35,6 +36,7 @@ public class OperationLogController extends BaseController {
     //分页
     @ApiOperation("分页列表")
     @GetMapping(value = "/page/list")
+    @RequiresPermissions("sys:operationLog:list")
     public R pageList(OperationLog operationLog){
 
 
@@ -52,6 +54,7 @@ public class OperationLogController extends BaseController {
     @SysLog(value = "清空日志")
     @ApiOperation("清空")
     @PostMapping(value = "/clear")
+    @RequiresPermissions("sys:operationLog:clear")
     public R clear() {
         operationLogService.deleteAll();
         return R.ok();

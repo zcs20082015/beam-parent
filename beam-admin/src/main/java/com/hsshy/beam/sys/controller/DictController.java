@@ -9,6 +9,7 @@ import com.hsshy.beam.sys.service.IDictService;
 import com.hsshy.beam.common.base.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,7 @@ public class DictController extends BaseController {
     //分页
     @ApiOperation("分页列表")
     @GetMapping(value = "/page/list")
+    @RequiresPermissions("sys:dict:list")
     public R pageList(Dict dict){
 
         QueryWrapper<Dict> qw = new QueryWrapper();
@@ -61,6 +63,7 @@ public class DictController extends BaseController {
         return R.ok(dictList);
     }
     @ApiOperation("保存")
+    @RequiresPermissions("sys:dict:save")
     @PostMapping(value = "/save")
     public R save(@RequestBody Dict dict){
 
@@ -78,6 +81,7 @@ public class DictController extends BaseController {
         return R.ok();
     }
     @ApiOperation("删除")
+    @RequiresPermissions("sys:dict:delete")
     @PostMapping(value = "/delete")
     public R delete(@RequestBody Long dictIds[]){
 
