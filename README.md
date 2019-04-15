@@ -75,7 +75,7 @@ https://gitee.com/hsshy/beam-manage-system
 
 #### 演示地址
 http://www.hsshy.com
-超级管理员：admin 123456
+演示账户：test 123456
 
 #### 常见问题
 第一次运行项目若菜单没有出来，先注释掉MenuServiceImpl里的缓存注解
