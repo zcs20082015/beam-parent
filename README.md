@@ -16,17 +16,16 @@
   - renren-security：https://gitee.com/renrenio/renren-security
   - vue-manage-system：https://github.com/lin-xin/vue-manage-system
   
-- 项目特点
- - **使用SpringBoot自动装配，MyBatis-Plus配置文件提为默认配置放在了common包的default-config.properties中，子项目的xml只需固定放在com/hsshy/beam/\*/mapping/\*.xml，实体类固定放在com.hsshy.beam.**.entity中。即可使用MyBatis-Plus。**
- - **提出公共的模块，service、dao、entity接口和后台管理系统可共用（将相应的模块放在beam-web中），当然也可不共用，只需将相应的模块放在子工程中**
- - **接口模块已添加拦截和post请求签名，可直接使用**
- - **后端使用guns的map+wrapper返回方式返回字段的字典值**
- - **前后端分离**
- - **集成了异步插入日志**
- - **实现了基础的用户角色菜单权限动态配置**
- - **日志分类等**
+- 项目特点：
+  - **使用SpringBoot自动装配，MyBatis-Plus配置文件提为默认配置放在了common包的default-config.properties中，子项目的xml只需固定放在com/hsshy/beam/\*/mapping/\*.xml，实体类固定放在com.hsshy.beam.**.entity中。即可使用MyBatis-Plus。**
+  - **提出公共的模块，service、dao、entity接口和后台管理系统可共用（将相应的模块放在beam-web中），当然也可不共用，只需将相应的模块放在子工程中**
+  - **接口模块已添加拦截和post请求签名，可直接使用**
+  - **后端使用guns的map+wrapper返回方式返回字段的字典值**
+  - **前后端分离**
+  - **集成了异步插入日志**
+  - **实现了基础的用户角色菜单权限动态配置**
+  - **日志分类等**
 
-- 
 
 
 #### 项目结构
