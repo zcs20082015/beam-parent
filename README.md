@@ -1,7 +1,16 @@
 # beam-parent
 
 #### 项目介绍
-- Beam基于SpringBoot 2，致力于做更简洁的后台管理系统。springmvc + shiro + mybatis-plus + vue。基础模块：用户管理，角色管理，部门管理，菜单模块，定时任务，字典管理，登陆日志，业务日志。
+- Beam基于SpringBoot 2，致力于做更简洁的后台管理系统。springmvc + shiro + mybatis-plus + vue。
+- 基础模块：
+  -  **用户管理**
+  -  **角色管理** 
+  -  **部门管理**
+  -  **菜单模块**
+  -  **定时任务**
+  -  **字典管理**
+  -  **登陆日志**
+  -  **业务日志**
 - 项目代码参考了
   - Guns：https://gitee.com/stylefeng/guns
   - renren-security：https://gitee.com/renrenio/renren-security
