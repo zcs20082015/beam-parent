@@ -51,6 +51,7 @@
                 and a.ip_address like concat("%",#{loginLog.ipAddress},"%")
             </if>
         </where>
+        order by a.create_time desc
     </select>
 
 </mapper>
