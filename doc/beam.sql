@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50638
 File Encoding         : 65001
 
-Date: 2019-04-13 17:06:43
+Date: 2019-04-24 13:49:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -168,7 +168,7 @@ CREATE TABLE `qrtz_scheduler_state` (
 -- ----------------------------
 -- Records of qrtz_scheduler_state
 -- ----------------------------
-INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-JP1B0EBJ1555139488571', '1555146392893', '15000');
+INSERT INTO `qrtz_scheduler_state` VALUES ('RenrenScheduler', 'LAPTOP-JP1B0EBJ1556084639631', '1556084927671', '15000');
 
 -- ----------------------------
 -- Table structure for qrtz_simple_triggers
@@ -340,7 +340,7 @@ CREATE TABLE `sys_dict` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1116979935728599043 DEFAULT CHARSET=utf8 COMMENT='字典表';
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='字典表';
 
 -- ----------------------------
 -- Records of sys_dict
@@ -374,7 +374,7 @@ CREATE TABLE `sys_login_log` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1116962286449688579 DEFAULT CHARSET=utf8mb4 COMMENT='登陆日志';
+) ENGINE=InnoDB AUTO_INCREMENT=1120926408462315523 DEFAULT CHARSET=utf8mb4 COMMENT='登陆日志';
 
 -- ----------------------------
 -- Records of sys_login_log
@@ -397,6 +397,11 @@ INSERT INTO `sys_login_log` VALUES ('1116911588097863681', '登录日志', '1', 
 INSERT INTO `sys_login_log` VALUES ('1116932311302459394', '登录日志', '1', '成功', null, '127.0.0.1', '2019-04-13 05:13:09', '2019-04-13 05:13:09');
 INSERT INTO `sys_login_log` VALUES ('1116961679538049025', '登录日志', '1', '成功', null, '127.0.0.1', '2019-04-13 07:09:51', '2019-04-13 07:09:51');
 INSERT INTO `sys_login_log` VALUES ('1116962286449688578', '登录日志', '1', '成功', null, '127.0.0.1', '2019-04-13 07:12:16', '2019-04-13 07:12:16');
+INSERT INTO `sys_login_log` VALUES ('1117681444483776514', '登录日志', '1072429679148908546', '成功', null, '127.0.0.1', '2019-04-15 06:49:57', '2019-04-15 06:49:57');
+INSERT INTO `sys_login_log` VALUES ('1117686787204988929', '登录日志', '1', '成功', null, '127.0.0.1', '2019-04-15 07:11:10', '2019-04-15 07:11:10');
+INSERT INTO `sys_login_log` VALUES ('1118047087594897410', '登录日志', '1', '成功', null, '0:0:0:0:0:0:0:1', '2019-04-16 07:02:53', '2019-04-16 07:02:53');
+INSERT INTO `sys_login_log` VALUES ('1118395174683222018', '登录日志', '1', '成功', null, '0:0:0:0:0:0:0:1', '2019-04-17 06:06:03', '2019-04-17 06:06:03');
+INSERT INTO `sys_login_log` VALUES ('1120926408462315522', '登录日志', '1', '成功', null, '127.0.0.1', '2019-04-24 05:44:16', '2019-04-24 05:44:16');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -429,25 +434,29 @@ INSERT INTO `sys_menu` VALUES ('17', '15', '角色管理', 'sysrole', 'sys:role:
 INSERT INTO `sys_menu` VALUES ('18', '15', '菜单管理', 'sysmenu', 'sys:menu:tree', '1', null, '18', '1', '1', '2018-12-10 18:36:16', '2019-01-03 01:39:01', '0');
 INSERT INTO `sys_menu` VALUES ('19', '15', '部门管理', 'sysdept', 'sys:dept:tree', '1', null, '19', '1', '1', '2018-12-10 18:37:20', '2019-01-03 01:41:49', '0');
 INSERT INTO `sys_menu` VALUES ('21', '15', '定时任务', 'schedulejob', 'sys:schedule:list', '1', null, '21', '1', '1', '2018-12-10 18:39:14', '2019-01-03 01:42:33', '0');
-INSERT INTO `sys_menu` VALUES ('1080412372541181953', '16', '新增/编辑', 'sysuser/save', 'sys:user:save', '2', null, '1', null, null, '2019-01-02 10:35:57', '2019-01-02 10:37:26', '0');
-INSERT INTO `sys_menu` VALUES ('1080413095496585218', '16', '删除', 'sysuser/del', 'sys:user:del', '2', null, '2', null, null, '2019-01-02 10:38:50', '2019-01-02 10:38:50', '0');
-INSERT INTO `sys_menu` VALUES ('1080636440926232577', '16', '重置密码', 'sysuser/reset/password', 'sys:user:resetPassword', '2', null, '3', null, null, '2019-01-03 01:26:19', '2019-01-03 01:29:49', '0');
-INSERT INTO `sys_menu` VALUES ('1080636634896015362', '16', '修改密码', 'sysuser/change/password', 'sys:user:changePassword', '2', null, '4', null, null, '2019-01-03 01:27:06', '2019-01-03 01:30:05', '0');
-INSERT INTO `sys_menu` VALUES ('1080637598663188481', '17', '新增/编辑', 'sysrole/save', 'sys:role:save', '2', null, '1', null, null, '2019-01-03 01:30:55', '2019-01-03 01:30:55', '0');
-INSERT INTO `sys_menu` VALUES ('1080637823859564545', '17', '删除', 'sysrole/del', 'sys:role:del', '2', null, '2', null, null, '2019-01-03 01:31:49', '2019-01-03 01:31:49', '0');
-INSERT INTO `sys_menu` VALUES ('1080638043456544769', '17', '权限配置', 'sysrole/save/menu/perm', 'sys:role:saveMenuPerm', '2', null, '3', null, null, '2019-01-03 01:32:42', '2019-01-03 01:32:42', '0');
-INSERT INTO `sys_menu` VALUES ('1080639293405274114', '18', '保存', 'sysmenu/save', 'sys:menu:save', '2', null, '1', null, null, '2019-01-03 01:37:40', '2019-01-03 01:37:40', '0');
-INSERT INTO `sys_menu` VALUES ('1080639432148656130', '18', '删除', 'sysmenu/del', 'sys:menu:delete', '2', null, '2', null, null, '2019-01-03 01:38:13', '2019-01-03 01:38:13', '0');
-INSERT INTO `sys_menu` VALUES ('1080639575438663681', '18', '详情', 'sysmenu/info', 'sys:menu:info', '2', null, '3', null, null, '2019-01-03 01:38:47', '2019-01-03 01:38:47', '0');
-INSERT INTO `sys_menu` VALUES ('1080639863587348482', '19', '保存', 'sysdept/save', 'sys:dept:save', '2', null, '1', null, null, '2019-01-03 01:39:55', '2019-01-03 01:39:55', '0');
-INSERT INTO `sys_menu` VALUES ('1080640119691550722', '19', '删除', 'sysdept/del', 'sys:dept:del', '2', null, '2', null, null, '2019-01-03 01:40:57', '2019-01-03 01:40:57', '0');
-INSERT INTO `sys_menu` VALUES ('1080640228772814849', '19', '详情', 'sysdept/info', 'sys:dept:info', '2', null, '3', null, null, '2019-01-03 01:41:23', '2019-01-03 01:41:23', '0');
-INSERT INTO `sys_menu` VALUES ('1080640763785650177', '21', '新增', 'schedule/save', 'sys:schedule:save', '2', null, '1', null, null, '2019-01-03 01:43:30', '2019-01-03 01:43:30', '0');
-INSERT INTO `sys_menu` VALUES ('1080640900176027650', '21', '修改', 'schedule/update', 'sys:schedule:update', '2', null, '2', null, null, '2019-01-03 01:44:03', '2019-01-03 01:44:03', '0');
-INSERT INTO `sys_menu` VALUES ('1080641066287243266', '21', '删除', 'schedule/del', 'sys:schedule:del', '2', null, '3', null, null, '2019-01-03 01:44:42', '2019-01-03 01:44:42', '0');
-INSERT INTO `sys_menu` VALUES ('1116603445676101634', '15', '登陆日志', 'loginlog', null, '1', null, '22', null, null, '2019-04-12 07:26:22', '2019-04-12 07:26:33', '0');
-INSERT INTO `sys_menu` VALUES ('1116613754159702018', '15', '业务日志', 'operationlog', null, '1', null, '23', null, null, '2019-04-12 08:07:19', '2019-04-12 08:07:19', '0');
-INSERT INTO `sys_menu` VALUES ('1116961835054452737', '15', '字典管理', 'sysdict', null, '1', null, '24', null, null, '2019-04-13 07:10:28', '2019-04-13 07:10:28', '0');
+INSERT INTO `sys_menu` VALUES ('1080412372541181953', '16', '新增/编辑', 'sys/user/save', 'sys:user:save', '2', null, '1', null, null, '2019-01-02 10:35:57', '2019-04-15 07:21:26', '0');
+INSERT INTO `sys_menu` VALUES ('1080413095496585218', '16', '删除', 'sys/user/del', 'sys:user:del', '2', null, '2', null, null, '2019-01-02 10:38:50', '2019-04-15 07:21:36', '0');
+INSERT INTO `sys_menu` VALUES ('1080636440926232577', '16', '重置密码', 'sys/user/reset/password', 'sys:user:resetPassword', '2', null, '3', null, null, '2019-01-03 01:26:19', '2019-04-15 07:21:46', '0');
+INSERT INTO `sys_menu` VALUES ('1080636634896015362', '16', '修改密码', 'sys/user/change/password', 'sys:user:changePassword', '2', null, '4', null, null, '2019-01-03 01:27:06', '2019-04-15 07:21:52', '0');
+INSERT INTO `sys_menu` VALUES ('1080637598663188481', '17', '新增/编辑', 'sys/role/save', 'sys:role:save', '2', null, '1', null, null, '2019-01-03 01:30:55', '2019-04-15 07:22:07', '0');
+INSERT INTO `sys_menu` VALUES ('1080637823859564545', '17', '删除', 'sys/role/del', 'sys:role:del', '2', null, '2', null, null, '2019-01-03 01:31:49', '2019-04-15 07:22:21', '0');
+INSERT INTO `sys_menu` VALUES ('1080638043456544769', '17', '权限配置', 'sys/role/save/menu/perm', 'sys:role:saveMenuPerm', '2', null, '3', null, null, '2019-01-03 01:32:42', '2019-04-15 07:22:28', '0');
+INSERT INTO `sys_menu` VALUES ('1080639293405274114', '18', '保存', 'sys/menu/save', 'sys:menu:save', '2', null, '1', null, null, '2019-01-03 01:37:40', '2019-04-15 07:22:43', '0');
+INSERT INTO `sys_menu` VALUES ('1080639432148656130', '18', '删除', 'sys/menu/del', 'sys:menu:delete', '2', null, '2', null, null, '2019-01-03 01:38:13', '2019-04-15 07:22:48', '0');
+INSERT INTO `sys_menu` VALUES ('1080639575438663681', '18', '详情', 'sys/menu/info', 'sys:menu:info', '2', null, '3', null, null, '2019-01-03 01:38:47', '2019-04-15 07:22:54', '0');
+INSERT INTO `sys_menu` VALUES ('1080639863587348482', '19', '保存', 'sys/dept/save', 'sys:dept:save', '2', null, '1', null, null, '2019-01-03 01:39:55', '2019-04-15 07:23:01', '0');
+INSERT INTO `sys_menu` VALUES ('1080640119691550722', '19', '删除', 'sys/dept/del', 'sys:dept:del', '2', null, '2', null, null, '2019-01-03 01:40:57', '2019-04-15 07:23:07', '0');
+INSERT INTO `sys_menu` VALUES ('1080640228772814849', '19', '详情', 'sys/dept/info', 'sys:dept:info', '2', null, '3', null, null, '2019-01-03 01:41:23', '2019-04-15 07:23:13', '0');
+INSERT INTO `sys_menu` VALUES ('1080640763785650177', '21', '新增', 'sys/schedule/save', 'sys:schedule:save', '2', null, '1', null, null, '2019-01-03 01:43:30', '2019-04-15 07:23:35', '0');
+INSERT INTO `sys_menu` VALUES ('1080640900176027650', '21', '修改', 'sys/schedule/update', 'sys:schedule:update', '2', null, '2', null, null, '2019-01-03 01:44:03', '2019-04-15 07:23:28', '0');
+INSERT INTO `sys_menu` VALUES ('1080641066287243266', '21', '删除', 'sys/schedule/del', 'sys:schedule:del', '2', null, '3', null, null, '2019-01-03 01:44:42', '2019-04-15 07:23:44', '0');
+INSERT INTO `sys_menu` VALUES ('1116603445676101634', '15', '登陆日志', 'loginlog', 'sys:loginLog:list', '1', null, '22', null, null, '2019-04-12 07:26:22', '2019-04-15 07:14:49', '0');
+INSERT INTO `sys_menu` VALUES ('1116613754159702018', '15', '业务日志', 'operationlog', 'sys:operationLog:list', '1', null, '23', null, null, '2019-04-12 08:07:19', '2019-04-15 07:18:14', '0');
+INSERT INTO `sys_menu` VALUES ('1116961835054452737', '15', '字典管理', 'sysdict', 'sys:dict:list', '1', null, '24', null, null, '2019-04-13 07:10:28', '2019-04-15 07:18:41', '0');
+INSERT INTO `sys_menu` VALUES ('1117688867416195074', '1116961835054452737', '新增/编辑', 'sys/dict/save', 'sys:dict:save', '2', null, '1', null, null, '2019-04-15 07:19:26', '2019-04-15 07:24:11', '0');
+INSERT INTO `sys_menu` VALUES ('1117689069371932674', '1116961835054452737', '删除', 'sys/dict/delete', 'sys:dict:del', '2', null, '2', null, null, '2019-04-15 07:20:14', '2019-04-15 07:24:16', '0');
+INSERT INTO `sys_menu` VALUES ('1117690423326818305', '1116603445676101634', '清空日志', 'sys/loginLog/clear', 'sys:loginLog:clear', '2', null, '1', null, null, '2019-04-15 07:25:37', '2019-04-15 07:25:37', '0');
+INSERT INTO `sys_menu` VALUES ('1117690805209808898', '1116613754159702018', '清空日志', 'sys/operationLog/clear', 'sys:operationLog:clear', '2', null, '2', null, null, '2019-04-15 07:27:08', '2019-04-15 07:27:08', '0');
 
 -- ----------------------------
 -- Table structure for sys_operation_log
