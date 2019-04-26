@@ -94,6 +94,7 @@ https://gitee.com/hsshy/beam-manage-system
 
 #### 演示地址
 http://www.hsshy.com
+https://www.hsshy.com
 演示账户：test 123456
 
 #### 常见问题
