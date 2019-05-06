@@ -49,7 +49,7 @@
         <!-- 编辑弹出框 -->
         <el-dialog title="编辑" :visible.sync="editVisible" width="30%">
 
-            <el-form ref="${classname}" :model="form" label-width="100px">
+            <el-form ref="${classname}" :model="${classname}" label-width="100px">
             #foreach ($column in $columns)
             #if($column.columnName != $pk.columnName && $column.columnName!="create_time" && $column.columnName!="update_time")
                     <el-form-item label="$column.comments" prop="$column.attrname">
@@ -120,6 +120,7 @@
             // 获取 easy-mock 的模拟数据
             getData() {
 
+                this.loading = true;
                 this.req.currentPage = this.page.pageNo
                 this.req.pageSize = this.page.pageSize
                 ${className}Api.getData(this.req).then((res)=>{
