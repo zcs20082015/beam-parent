@@ -118,3 +118,14 @@ https://www.hsshy.com
 - 2、运行代码生成器：http://localhost:8083/beam-generator/#generator.html
 - 3、选中要生成的表、点击生成
 - 4、将生成的实体类、dao、service、controller、vue、js放到对应的目录下
+
+#### 部署流程
+###后端：
+- 打包：package -Dmaven.test.skip=true -P produce -f pom.xml
+- 上传：scp -r beam-admin-0.0.1-SNAPSHOT.jar root@xxx.xx.xx.xx:/usr/local/beam/
+- 启动：将doc下的脚本上传到和jar包相同目录下，运行脚本(记得给脚本权限)
+- 查看运行日志：tail -f xxx/log_total.log(xxx文件名为yml配置的的log.path)
+###前端（这边是用nginx进行部署）：
+- 打包：npm run build
+- 上传：进入dist文件夹，scp -r * root@xx.xx.xx.xx:/etc/nginx/html/beam-manage-system/
+- nginx配置请参考doc下的beam.conf文件,可直接传到服务器下的nginx/conf.d/下进行使用，记得删除默认的default.conf文件。
