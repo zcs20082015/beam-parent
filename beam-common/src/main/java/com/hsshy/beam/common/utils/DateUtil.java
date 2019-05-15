@@ -224,11 +224,50 @@ public class DateUtil {
         Calendar canlendar = Calendar.getInstance(); // java.util包
         canlendar.add(Calendar.DATE, daysInt); // 日期减 如果不够减会将月变动
         Date date = canlendar.getTime();
+        return getTime(date);
+    }
 
-        SimpleDateFormat sdfd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateStr = sdfd.format(date);
+    /**
+     * 得到n天之前的日期
+     */
+    public static String getBeforeDayDate(String days) {
+        int daysInt = Integer.parseInt(days);
 
-        return dateStr;
+        Calendar canlendar = Calendar.getInstance(); // java.util包
+        canlendar.add(Calendar.DATE, -daysInt); // 日期减 如果不够减会将月变动
+        Date date = canlendar.getTime();
+        return getTime(date);
+    }
+
+    /**
+     * 得到n分钟之前的日期
+     *
+     * @param min
+     * @return
+     */
+    public static String getBeforeMinDate(Date nowDate,String min) {
+        int minInt = Integer.parseInt(min);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(nowDate);
+        calendar.add(Calendar.MINUTE,-minInt);
+        Date dt=calendar.getTime();
+        return getTime(dt);
+
+    }
+
+    /**
+     * 得到n分钟之前的日期
+     *
+     * @param min
+     * @return
+     */
+    public static String getAfterMinDate(Date nowDate,String min) {
+        int minInt = Integer.parseInt(min);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(nowDate);
+        calendar.add(Calendar.MINUTE,minInt);
+        Date dt=calendar.getTime();
+        return getTime(dt);
     }
 
     /**
