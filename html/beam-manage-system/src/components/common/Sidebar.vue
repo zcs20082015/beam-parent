@@ -10,13 +10,13 @@
                         </template>
                         <template v-for="subItem in item.list">
                             <el-submenu v-if="subItem.list" :index="subItem.url" :key="subItem.url">
-                                <template slot="title">{{ subItem.name }}</template>
+                                <template slot="title"><i :class="subItem.icon"></i><span slot="title">{{ subItem.name }}</span>{{ subItem.name }}</template>
                                 <el-menu-item v-for="(threeItem,i) in subItem.list" :key="i" :index="threeItem.url">
                                     {{ threeItem.name }}
                                 </el-menu-item>
                             </el-submenu>
                             <el-menu-item v-else :index="subItem.url" :key="subItem.url">
-                                {{ subItem.name }}
+                                <i :class="subItem.icon"></i><span slot="title">{{ subItem.name }}</span>
                             </el-menu-item>
                         </template>
                     </el-submenu>

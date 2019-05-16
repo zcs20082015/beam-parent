@@ -93,7 +93,7 @@ beam-parent
 /html/beam-manage-system
 
 #### 演示地址
-https://www.hsshy.com
+http://www.hsshy.com
 演示账户：test 123456
 
 #### 常见问题
