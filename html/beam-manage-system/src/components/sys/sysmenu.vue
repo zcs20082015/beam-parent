@@ -14,7 +14,7 @@
                 <!--<el-button type="danger" icon="delete" class="handle-del mr10" @click="delAll">批量删除</el-button>-->
                 <el-button type="primary" icon="add" class="handle-del mr10" @click="handleAdd">新增</el-button>
             </div>
-            <!--<el-table :data="tableData" v-loading="loading" border class="table" ref="multipleTable"
+            <el-table row-key="id" :data="treeData" v-loading="loading" border class="table" ref="multipleTable"
                       @selection-change="handleSelectionChange">
                 <el-table-column type="selection" width="55" align="center"></el-table-column>
                 <el-table-column
@@ -58,18 +58,8 @@
 
                     </template>
                 </el-table-column>
-            </el-table>-->
-            <tree-table :data="treeData" :columns="columns" v-loading="loading" :expandAll="true" border>
-                <el-table-column label="操作" width="180" align="center">
-                    <template slot-scope="scope">
-                        <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑
-                        </el-button>
-                        <el-button type="text" icon="el-icon-delete" class="red"
-                                   @click="handleDelete(scope.$index, scope.row)">删除
-                        </el-button>
-                    </template>
-                </el-table-column>
-            </tree-table>
+            </el-table>
+
             <!--<div class="pagination">-->
                 <!--<el-pagination-->
                     <!--background-->

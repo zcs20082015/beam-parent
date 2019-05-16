@@ -28,25 +28,73 @@
                         <a href="https://gitee.com/hsshy/beam-parent" target="_blank">
                             <el-dropdown-item>项目仓库</el-dropdown-item>
                         </a>
+                        <el-dropdown-item divided  command="changePassword">修改密码</el-dropdown-item>
+                        <el-dropdown-item divided  command="clearCache">清除缓存</el-dropdown-item>
                         <el-dropdown-item divided  command="loginout">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
             </div>
         </div>
+        <el-dialog title="修改密码" :visible.sync="dialogFormVisible">
+            <el-form :model="pwdForm" ref="AccountForm" :rules="rules" label-width="80px">
+                <el-form-item label="旧密码" prop="oldPwd">
+                    <el-input type="password" v-model.trim="pwdForm.oldPwd" auto-complete="off" placeholder="旧密码"></el-input>
+                </el-form-item>
+                <el-form-item label="新密码" prop="newPwd">
+                    <el-input type="password" v-model.trim="pwdForm.newPwd" auto-complete="off" placeholder="新密码"></el-input>
+                </el-form-item>
+                <el-form-item label="确认密码" prop="password_confirm">
+                    <el-input type="password" v-model.trim="pwdForm.password_confirm" placeholder="确认密码"></el-input>
+                </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false" size="mini">取 消</el-button>
+                <el-button type="primary" @click="modifyPwd()" :loading="loading" size="mini">确 定</el-button>
+            </div>
+        </el-dialog>
     </div>
+
 </template>
 <script>
     import bus from '../common/bus';
     import AccountApi from '../common/account';
 
     export default {
+
         data() {
+            var validatePass = (rule, value, callback) => {
+                if (value === '') {
+                    callback(new Error('请再次输入密码'));
+                } else if (value !== this.pwdForm.newPwd) {
+                    callback(new Error('两次输入密码不一致!'));
+                } else {
+                    callback();
+                }
+            };
             return {
                 collapse: false,
                 fullscreen: false,
-                name: '黄帅',
+                name: '',
                 message: 2,
-                user: null
+                user: null,
+                loading: false,
+                dialogFormVisible:false,
+                pwdForm: {
+                    oldPwd: "",
+                    newPwd: "",
+                    password_confirm: ""
+                },
+                rules:{
+                    oldPwd: [
+                        { required: true, message: '请输入旧密码', trigger: 'blur' },
+                    ],
+                    newPwd: [
+                        { required: true, message: '请输入新密码', trigger: 'blur' },
+                    ],
+                    password_confirm:[
+                        {validator: validatePass, trigger: 'blur' }
+                    ]
+                }
             }
         },
         computed:{
@@ -61,16 +109,49 @@
 
         },
         methods:{
+            // 修改密码
+            modifyPwd() {
+                this.$refs.AccountForm.validate((valid) => {
+                    if (valid) {
+                        this.loading = true;
+                        AccountApi.modifyPwd(this.pwdForm).then((res) => {
+                            this.loading = false;
+                            if (res.error === false) {
+                                this.dialogFormVisible = false;
+                                this.$message.success(res.msg);
+                            } else {
+                                this.$message.error(res.msg);
+                            }
+                        }, (err) => {
+                            this.loading = false;
+                            this.$message.error(err.msg);
+                        })
+                    }
+                });
+            },
             // 用户名下拉菜单选择事件
             handleCommand(command) {
                 if(command == 'loginout'){
                    this.handleLogout();
+                }
+                if(command == 'clearCache'){
+                    this.clearCache();
+                }
+                if(command == 'changePassword'){
+                    this.dialogFormVisible=true;
                 }
             },
             handleLogout(){
                 AccountApi.handleLogout().then((res) => {
                     localStorage.removeItem('sysuser')
                     this.$router.push('/login');
+                }, (err) => {
+                    this.$message.error(err.msg);
+                })
+            },
+            clearCache(){
+                AccountApi.clearCache().then((res) => {
+                    this.$message.success(res.msg);
                 }, (err) => {
                     this.$message.error(err.msg);
                 })

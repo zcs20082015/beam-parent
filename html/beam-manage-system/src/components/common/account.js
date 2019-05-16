@@ -12,6 +12,9 @@ export default {
     },
     getNavList:()=>{
         return http.get("/sys/menu/nav", {})
-    }
+    },
+    clearCache:()=>{
+        return http.get("/clearCache", {})
+    },
 
 }

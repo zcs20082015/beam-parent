@@ -6,10 +6,12 @@ import com.hsshy.beam.common.log.factory.LogTaskFactory;
 import com.hsshy.beam.common.shiro.ShiroUtils;
 import com.hsshy.beam.common.util.KaptchaUtil;
 import com.hsshy.beam.common.utils.R;
+import com.hsshy.beam.common.utils.RedisUtil;
 import com.hsshy.beam.sys.dto.LoginForm;
 import com.hsshy.beam.sys.entity.User;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import static com.hsshy.beam.common.support.HttpKit.getIp;
 @RestController
 public class LoginController  {
 
+    @Autowired
+    private RedisUtil redisUtil;
 
 
     @PostMapping(value = "/login")
@@ -58,6 +62,16 @@ public class LoginController  {
     public Object logout() {
         ShiroUtils.logout();
         return R.ok("退出成功");
+    }
+
+    /**
+     * 清除缓存
+     */
+    @GetMapping(value = "/clearCache")
+    @ResponseBody
+    public R clearCache() {
+        redisUtil.clearCache();
+        return R.ok("清除成功");
     }
 
 

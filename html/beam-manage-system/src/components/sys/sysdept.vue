@@ -14,17 +14,39 @@
                 <el-button type="primary" icon="add" class="handle-del mr10" @click="handleAdd">新增</el-button>
             </div>
 
-            <tree-table :data="treeData" v-loading="loading" :columns="columns" border>
+            <el-table row-key="id" :data="treeData" v-loading = "loading" border class="table" ref="multipleTable" @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55" align="center"></el-table-column>
+
+
+                <el-table-column
+                    label="部门名称"
+                    align="center"
+                    prop="name">
+                </el-table-column>
+                <el-table-column
+                    label="排序"
+                    align="center"
+                    prop="orderNum">
+                </el-table-column>
+
+                <el-table-column
+                    label="创建时间"
+                    align="center"
+                    prop="createTime">
+                </el-table-column>
+                <el-table-column
+                    label="更新时间"
+                    align="center"
+                    prop="updateTime">
+                </el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template slot-scope="scope">
-                        <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑
-                        </el-button>
-                        <el-button type="text" icon="el-icon-delete" class="red"
-                                   @click="handleDelete(scope.$index, scope.row)">删除
-                        </el-button>
+                        <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                        <el-button type="text" icon="el-icon-delete" class="red" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+
                     </template>
                 </el-table-column>
-            </tree-table>
+            </el-table>
 
         </div>
 
