@@ -128,3 +128,6 @@ http://www.hsshy.com
 - 打包：npm run build
 - 上传：进入dist文件夹，scp -r * root@xx.xx.xx.xx:/etc/nginx/html/beam-manage-system/
 - nginx配置请参考doc下的beam.conf文件,可直接传到服务器下的nginx/conf.d/下进行使用，记得删除默认的default.conf文件。
+
+### 加入Java互助群
+搜索qq号：750416471（欢迎各位大神，该群暂空无一人）
