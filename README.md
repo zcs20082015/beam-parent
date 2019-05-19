@@ -88,6 +88,7 @@ beam-parent
 - MySQL5.5+
 - Maven3.0+
 - Redis
+- lombok插件
 
 #### 前端地址：
 /html/beam-manage-system
