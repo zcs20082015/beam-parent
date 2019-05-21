@@ -130,7 +130,7 @@
                         this.page.pageNo = parseInt(res.data.current)
                         this.page.totalRows = parseInt(res.data.total)
                         this.tableData.forEach(item => {
-                            item.status = Boolean(item.status)
+                            item.frozen = Boolean(item.frozen)
                         })
                     }
                     else{
