@@ -119,7 +119,7 @@
                     <el-input v-model.trim="scheduleJob.cronExpression"></el-input>
                 </el-form-item>
                 <el-form-item label="任务状态" prop="status">
-                    <el-select filterable  v-model="scheduleJob.status+''" placeholder="请选择">
+                    <el-select filterable  v-model="scheduleJob.status" placeholder="请选择">
                         <el-option
                             v-for="item in statusName"
                             :key="item.id"
@@ -404,6 +404,9 @@
                 http.get("/sys/schedule/status/list").then((res) => {
                     if (res.error === false) {
                         this.statusName = res.data;
+                        this.statusName.forEach(item=>{
+                            item.code = parseInt(item.code);
+                        })
                     } else {
                         this.$message.error(res.msg);
                     }
